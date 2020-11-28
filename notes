@@ -1,0 +1,7 @@
+Colors:
+
+	Integer format: 0xTTRRGGBB
+		T: Transparency
+		R: Red color
+		G: Green Color
+		B: Blue color
