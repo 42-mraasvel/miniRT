@@ -1,0 +1,1 @@
+make debug && ./a.out
