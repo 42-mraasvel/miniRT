@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 19:45:58 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/29 21:13:46 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/29 21:40:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	print_y_coords(double *coords, int size)
 	i = 0;
 	while (i < size)
 	{
-		printf("%2d: %f\n", i + 1, round(coords[i]));
+		printf("%2d: %f\n", i + 1, coords[i]);
 		i++;
 	}
 	printf("size: %d\n", size);
