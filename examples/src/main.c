@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:28:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/29 10:29:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/29 10:48:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
-	init_window_example();
+	// init_window_example();
+	init_image_example();
 	return (0);
 }
