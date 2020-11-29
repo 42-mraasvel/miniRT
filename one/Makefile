@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/28 22:34:16 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/29 09:21:21 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/11/29 09:25:48 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,8 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFLAG = -L$(LIBDIR) -lm -lbsd
 MLXFLAGS = -L$(MLXDIR) -lmlx -lXext -lX11
 
-# Debug target, "make debug" to compile with fsanitize
-ifdef WITH_DEBUG
+# Debug flags, "make debug" to compile with fsanitize
 DEBUG = -O0 -g -fsanitize=address -fsanitize=leak
-endif
 
 # directories
 OBJDIR = obj
@@ -37,14 +35,14 @@ SRCDIR = src
 # vpath so makefile knows where to find .c files
 vpath %.c src
 
-all: dep $(NAME)
+all: $(OBJDIR) $(NAME)
 .PHONY: all clean fclean re dep
 
-dep:
+$(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 $(NAME): $(DEPS) $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(MLXFLAGS) $(DEBUG)
+	$(CC) -o $(NAME) $(OBJ) $(MLXFLAGS)
 $(OBJDIR)/%.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $< $(IFLAG)
 
@@ -55,4 +53,4 @@ fclean: clean
 re: fclean all
 
 debug:
-	$(MAKE) WITH_DEBUG=1 re
+	$(CC) -o $(NAME) $(OBJ) $(MLXFLAGS) $(DEBUG)
