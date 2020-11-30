@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 19:50:22 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/30 10:26:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/30 16:35:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ typedef struct	s_data
 }				t_data;
 
 int	dda_line_drawing(int x0, int y0, int x1, int y1);
+int	bresenham_alg(int x0, int y0, int x1, int y1);
 
 #endif

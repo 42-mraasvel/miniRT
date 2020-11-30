@@ -6,14 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/30 10:22:06 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/30 11:03:31 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/30 11:51:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <stdio.h>
 
-int	ft_abs(int x)
+static int	ft_abs(int x)
 {
 	if (x < 0)
 		return (-x);
