@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/30 12:14:59 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/30 17:42:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/30 21:27:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 ** only works for slope <= 1 && slope >= 0
+** I gave up and just used the DDA alg, maybe I'll come back to this later.
 */
 
 int	bresenham_alg(int x0, int y0, int x1, int y1)

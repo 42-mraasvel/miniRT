@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 22:38:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/30 21:02:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/30 21:52:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,30 @@ int	call_draw_line(t_data *img)
 	t_pair one, two;
 	int	ret;
 
-	one.x = 0; one.y = 250;
-	two.x = 125; two.y = 0;
+	one.x = 100; one.y = 250;
+	two.x = 200; two.y = 500;
 	ret = draw_line(one, two, img);
 	if (ret != success)
 		ft_strerror(ret);
 	return (ret);
 }
 
-int	main(void)
+int	call_draw_triangle(t_data *img)
+{
+	t_triangle	triangle;
+	int			ret;
+
+	triangle.points[0].x = 100;
+	triangle.points[0].y = 100;
+	triangle.points[1].x = 200;
+	triangle.points[1].y = 200;
+	triangle.points[2].x = 150;
+	triangle.points[2].y = 400;
+	draw_triangle(triangle, img);
+	return (success);
+}
+
+int	start_mlx(void)
 {
 	void	*mlx;
 	void	*mlx_window;
@@ -54,12 +69,18 @@ int	main(void)
 	{
 		for (int j = 0; j < 720; j++)
 		{
-			ft_pixel_put(&img, i, j, 0x00FFFFFF);
+			ft_pixel_put(&img, i, j, 0x00000000);
 		}
 	}
-	call_draw_line(&img);
+	call_draw_triangle(&img);
 	mlx_put_image_to_window(mlx, mlx_window, img.img, 0, 0);
 	mlx_loop(mlx);
 	free(mlx);
+	return (success);
+}
+
+int	main(void)
+{
+	start_mlx();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/30 18:32:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/30 21:01:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/30 21:44:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	put_line_to_window(t_line line, t_data *img)
 	i = 0;
 	while (i < line.size)
 	{
-		ft_pixel_put(img, line.coordinates[i].x, line.coordinates[i].y, 0x00FF0000);
+		ft_pixel_put(img, line.coordinates[i].x, line.coordinates[i].y, 0x000000FF);
 		i++;
 	}
 	return (success);
@@ -100,7 +100,6 @@ int	draw_line(t_pair one, t_pair two, t_data *img)
 	line = generate_line(one.x, one.y, two.x, two.y);
 	if (line.coordinates == NULL)
 		return (malloc_error);
-	print_line_coordinates(line);
 	put_line_to_window(line, img);
 	free(line.coordinates);
 	return (success);
