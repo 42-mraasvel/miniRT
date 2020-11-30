@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/28 22:34:16 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/29 10:21:55 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/11/30 19:17:35 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ DEPS = $(MLXDIR)/libmlx.a Makefile
 
 # compilation
 CC = gcc
-IFLAG = -I$(MLXDIR)
+IFLAG = -I$(MLXDIR) -I$(IDIR)
 CFLAGS = -Wall -Wextra -Werror
 LIBFLAG = -L$(LIBDIR) -lm -lbsd
 MLXFLAGS = -L$(MLXDIR) -lmlx -lXext -lX11
@@ -42,7 +42,9 @@ $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 $(NAME): $(DEPS) $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(MLXFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(LIBFLAG) $(MLXFLAGS) $(DEBUG)
+# $(NAME): $(DEPS) $(OBJ)
+# 	$(CC) -o $(NAME) $(OBJ) $(MLXFLAGS)
 $(OBJDIR)/%.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $< $(IFLAG)
 
