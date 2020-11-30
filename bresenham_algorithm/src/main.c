@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 19:45:58 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/29 21:40:36 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/11/30 10:36:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,13 @@ void	print_y_coords(double *coords, int size)
 
 int	main(void)
 {
-	double	*coords;
-	int		x0 = 1;
-	int		y0 = 1;
-	int		x1 = 11;
-	int		y1 = 5;
-	int		size = x1 - x0 + 1;
+	int x0;
+	int	y0;
+	int	x1;
+	int	y1;
 
-	coords = get_pixel_coordinates(x0, y0, x1, y1);
-	print_y_coords(coords, size);
-	free(coords);
+	scanf("%d %d", &x0, &y0);
+	scanf("%d %d", &x1, &y1);
+	dda_line_drawing(x0, y0, x1, y1);
 	return (0);
 }

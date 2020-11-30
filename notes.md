@@ -24,5 +24,7 @@ https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#:~:text=Bresenham's%2
 Sources:
 
 https://github.com/ilkou/minilibx - Linux/WSL setup tutorial
+
 https://harm-smits.github.io/42docs/libs/minilibx/ - Tutorial on using minilibx by hsmits
+
 https://qst0.github.io/ft_libgfx/man_mlx.html
