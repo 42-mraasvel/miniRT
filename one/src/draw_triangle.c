@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/30 21:31:39 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/01 10:40:00 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/01 17:35:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ int	free_triangle(t_triangle triangle, t_errnum type, int location)
 	}
 	return (type);
 }
+
+/*
+** vert_points.x = highest y value
+** vert_points.y = lowest y value
+** 1. loop through all the y's, assigning
+*/
 
 int	set_min_max_values(t_pair vert_points, t_pair *hori_points, t_line line)
 {
