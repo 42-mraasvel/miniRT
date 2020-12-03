@@ -1,0 +1,11 @@
+Definitions
+
+	Backward ray tracing: trace a ray starting from the receptor (eye/camera)
+	Forward ray tracing: trace a ray starting from the light source (most common path tracing technique in CG)
+
+	Primary/visibility/camera ray: ray thrown from the receptor to the object.
+	Light/Shadow ray: ray thrown from the hit point (where the camera ray hit the object) to the source of light.
+
+
+1. Input: image made of pixels.
+2. Trace the primary ray through every pixel, to see if it encounters an object. Then trace this hit point to the light source to determine how to fill in the pixel?
