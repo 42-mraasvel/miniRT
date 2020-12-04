@@ -6,6 +6,34 @@ Definitions
 	Primary/visibility/camera ray: ray thrown from the receptor to the object.
 	Light/Shadow ray: ray thrown from the hit point (where the camera ray hit the object) to the source of light.
 
+	Transmission Ray: (light going through an object, like a glass ball)
 
-1. Input: image made of pixels.
-2. Trace the primary ray through every pixel, to see if it encounters an object. Then trace this hit point to the light source to determine how to fill in the pixel?
+	The Normal: line, ray or vector that is perpendicular to an object.
+
+Basic Process:
+	1. Input: image made of pixels.
+	2. Trace the primary ray through every pixel, to see if it encounters an object. Then trace this hit point to the light source to determine how to fill in the pixel?
+
+Calculating mix of refraction and reflection using the Fresnel Equation
+
+Refraction: takes places anytime there is a change of medium. It slightly bends the ray into a different direction.
+
+1. Compute reflection color 2. Compute refraction color 3. Apply Fresnel Equation to find final color.
+
+	Computing Reflection Direction:
+		Required Items:
+			1. Normal at Point of Intersection
+			2. Primary Ray's Direction
+
+	Computing Transmission Direction:
+		- Ray is refracted when "entering" an object, and when "exiting" an object.
+		Required Items:
+			1. Normal at the Hit Point
+			2. Primary Ray's Direction
+			3. Refractive Index of the material
+
+	Computing Fresnel Equation
+		Required Items:
+			1. Refractive Index of the glass ball.
+			2. Angle between Primary Ray, and the Normal at the Hit Point. using dot product(?)
+		Return: two mixing values.
