@@ -1,4 +1,3 @@
-la
 **Linux Setup:**
 
 	https://github.com/ilkou/minilibx
