@@ -1,0 +1,36 @@
+Coordinates: (Cartesian Coordinate System)
+
+	Each number represents a signed distance from the origin of a line, to the position of the point on that line.
+	Each line in a signle dimension is called an axis.
+	So a vector travels from the origin, to a point in a three dimensional space, this is the direction of the vector (line), and will continue infinitely.
+
+Ordered Pair:
+	Notation to write the coordinates of the point: (x, y).
+	x = horizontal, y = vertical.
+	A point can only be presented in one way in a single coordinate system, but there can be multiple coordinate systems.
+
+	Operations on points:
+		Change of Basis: (transformation)?
+
+			Transforming points from one coordinate system to another is a very important operation.
+			(add the coordinate value of the other system to the point, and you will get the coordinates of this point in that system).
+			Example: Origin of B in A is (3, 1)
+			so point (-1, 3) in B wil be (2, 4) in A
+
+		Translation of a point = addition of some values to a point.
+			Moving a point to another location in the same coordinate system.
+		Scaling a point = multiplying both values of a point
+
+Euclidian Space:
+	3D coordinate system: x-axis = right, y-axis = up, z-axis = backwards
+Left-Hand vs Right-Hand system:
+	The x-axis can point to both the right and the left.
+	Typically in a right-hand coordinate system the z-axis (forward vector) points away from the screen.
+	Front-facing objects' vertices will be specified in a counter-clockwise order.
+	Only the left-or-right vector determines the handedness of the system.
+
+Conventions:
+	It's important to determine which conventions a CG program uses, right handed, left handed? up-axis is called y or z?
+
+World Coordinate System:
+	the origin and the main x, y, and z-axes from which all other systems are defined.
