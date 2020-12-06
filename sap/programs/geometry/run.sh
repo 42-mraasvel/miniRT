@@ -1,1 +1,1 @@
-g++ vector.cpp && ./a.out
+g++ vp_ops.cpp && ./a.out

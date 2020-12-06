@@ -1,0 +1,25 @@
+Vector and Point Operations:
+
+Length of a vector formula:
+	||V|| = (root)(x^2 + y^2 + z^2);
+	||V|| = length, also called norm or magnitude.
+
+Normalized vector (unit vector):
+	length = 1 unit.
+	V^ = V / ||V||
+	(Euclidean Norm Function)
+
+Dot Product
+	Vector A * Vector B
+	< A, B >
+	a.x * b.x + a.y * b.y + a.z + b.z
+	If both are unit vectors, then < A, B > = cos(angle subtended by the two vectors)
+
+	angle theta = cos-1(A^ * B^);
+	(A^ * B^) = A * B / ||A|| * ||B||
+
+	Returns:
+		If 2 vectors are perpendicular: 0
+		Opposite direction: -1
+		Same direction: 1
+	Used to compute the angle between 2 vectors.

@@ -28,8 +28,8 @@ Definitions:
 		For changing the position or rotation of the vector.
 		Translation for points, rotation for vectors.
 
-	Normalised vector:
-		When the length of a vector is equal to 1.
+	Normalized vector: (unit vector)
+		When the length of a vector is equal to 1 unit.
 		Normalising a vector means to change it so it's length is 1, but direction is unchanged.
 
 	Normals:
