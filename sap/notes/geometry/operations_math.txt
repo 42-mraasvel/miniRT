@@ -9,7 +9,7 @@ Normalized vector (unit vector):
 	V^ = V / ||V||
 	(Euclidean Norm Function)
 
-Dot Product
+Dot Product: (return number)
 	Vector A * Vector B
 	< A, B >
 	a.x * b.x + a.y * b.y + a.z + b.z
@@ -23,3 +23,10 @@ Dot Product
 		Opposite direction: -1
 		Same direction: 1
 	Used to compute the angle between 2 vectors.
+
+Cross Product: (return vector)
+	C = A x B
+	Cx = Ay * Bz - Az * By
+	Cy = Az * Bx - Ax * Bz
+	Cz = Ax * By - Ay * Bx
+	Resulting vector orthogonal to the other 2.
