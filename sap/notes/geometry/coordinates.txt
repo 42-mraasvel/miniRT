@@ -34,3 +34,7 @@ Conventions:
 
 World Coordinate System:
 	the origin and the main x, y, and z-axes from which all other systems are defined.
+
+Real Coordinate Space
+	R^2 (superscript 2) = two dimensional, all possible real-valued 2-tuples.
+	R^3 = 3D coordinate space.. etc
