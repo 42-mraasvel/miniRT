@@ -30,3 +30,5 @@ Cross Product: (return vector)
 	Cy = Az * Bx - Ax * Bz
 	Cz = Ax * By - Ay * Bx
 	Resulting vector orthogonal to the other 2.
+	If A and B are perpendicular, then A, B and C will form a cartesian coordinate system.
+	Cross Product is anticommutative.

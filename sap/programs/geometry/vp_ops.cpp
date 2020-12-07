@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/06 11:04:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/06 14:24:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/07 08:27:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,22 @@ T	ft_dotproduct(vec3<T> &a, vec3<T> &b)
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
+// Cross Product
+template <typename T>
+vec3<T>	cross_product(vec3<T> &a, vec3<T> &b)
+{
+	// wtf this works, typecasting vector initialization?
+	return (vec3<T>(
+		a.y * b.z - a.z * b.y,
+		a.x * b.z - a.z * b.x,
+		a.x * b.y - a.y * b.x));
+}
+
 int	main(void)
 {
 	vec3<double>	v(1, 1, 0);
 	vec3<double>	v2(1, 0, 0);
+	vec3<double>	c;
 	vec3<double>	nv;
 
 	// nv = v2.normalize();
@@ -104,5 +116,6 @@ int	main(void)
 	printf("nv: %f %f %f\n", v2.x, v2.y, v2.z);
 	cout << "product: " << ft_dotproduct(v, v2) << endl;
 	cout << "angle: " << acos(ft_dotproduct(v, v2)) * 180 / 3.14 << endl;
+	c = cross_product(v, v2);
 	return (0);
 }
