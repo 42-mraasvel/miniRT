@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/06 11:04:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/07 08:27:18 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/07 17:47:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int	main(void)
 	v2.normalize();
 	printf("nv: %f %f %f\n", v.x, v.y, v.z);
 	printf("nv: %f %f %f\n", v2.x, v2.y, v2.z);
+	
 	cout << "product: " << ft_dotproduct(v, v2) << endl;
 	cout << "angle: " << acos(ft_dotproduct(v, v2)) * 180 / 3.14 << endl;
 	c = cross_product(v, v2);
