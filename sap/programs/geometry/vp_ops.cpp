@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/06 11:04:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/07 17:47:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/08 21:30:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ T	ft_dotproduct(vec3<T> &a, vec3<T> &b)
 template <typename T>
 vec3<T>	cross_product(vec3<T> &a, vec3<T> &b)
 {
+	
 	// wtf this works, typecasting vector initialization?
 	return (vec3<T>(
 		a.y * b.z - a.z * b.y,
