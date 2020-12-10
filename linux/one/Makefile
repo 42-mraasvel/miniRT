@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/28 22:34:16 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/30 21:33:40 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/10 13:06:02 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ $(NAME): $(DEPS) $(OBJ)
 # 	$(CC) -o $(NAME) $(OBJ) $(MLXFLAGS)
 $(OBJDIR)/%.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $< $(IFLAG)
+$(MLXDIR)/libmlx.a:
+	$(MAKE) -C $(MLXDIR)
 
 clean:
 	rm -f $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 22:38:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/01 21:04:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/10 13:16:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,39 @@ int	call_draw_triangle(t_data *img)
 	return (success);
 }
 
+typedef struct	s_vars
+{
+	void *mlx;
+	void *win;
+}				t_vars;
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	printf("Key: %d\n", keycode);
+}
+
 int	start_mlx(void)
 {
+	t_vars vars;
 	void	*mlx;
 	void	*mlx_window;
 	t_data	img;
 
-	mlx = mlx_init();
-	mlx_window = mlx_new_window(mlx, 1280, 720, "Mini.maaRTen");
-	img.img = mlx_new_image(mlx, 1280, 720);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	for (int i = 0; i < 1280; i++)
-	{
-		for (int j = 0; j < 720; j++)
-		{
-			ft_pixel_put(&img, i, j, 0x00000000);
-		}
-	}
-	call_draw_triangle(&img);
-	mlx_put_image_to_window(mlx, mlx_window, img.img, 0, 0);
-	mlx_loop(mlx);
-	free(mlx);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1280, 720, "Mini.maaRTen");
+	// img.img = mlx_new_image(vars.mlx, 1280, 720);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// for (int i = 0; i < 1280; i++)
+	// {
+	// 	for (int j = 0; j < 720; j++)
+	// 	{
+	// 		ft_pixel_put(&img, i, j, 0x00000000);
+	// 	}
+	// }
+	// call_draw_triangle(&img);
+	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_loop(vars.mlx);
 	return (success);
 }
 
