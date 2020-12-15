@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 22:38:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/15 18:06:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/15 21:04:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,21 @@ int	move_square(int keycode, t_vars *vars)
 		//move down
 		vars->coords.y += 1;
 	}
+	else if (keycode == 101)
+	{
+		// move top right
+		if (vars->coords.y > 0)
+			vars->coords.y -= 1;
+		vars->coords.x += 1;
+	}
+	else if (keycode == 113)
+	{
+		// move top left
+		if (vars->coords.y > 0)
+			vars->coords.y -= 1;
+		if (vars->coords.x > 0)
+			vars->coords.x -= 1;
+	}
 	return (0);
 }
 
@@ -180,6 +195,17 @@ int	render_next_frame(int keycode, t_vars *vars)
 	free(img.img);
 }
 
+int	put_first_square(t_vars vars)
+{
+	t_data	img;
+
+	img.img = mlx_new_image(vars.mlx, 200, 200);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	draw_square(&img, 0, 0, 200, 0x00FF00000);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	free(img.img);
+}
+
 int	test_loop(void)
 {
 	t_vars	vars;
@@ -188,14 +214,42 @@ int	test_loop(void)
 	vars.win = mlx_new_window(vars.mlx, 1280, 720, "Mini.maaRTen");
 	vars.coords.x = 0;
 	vars.coords.y = 0;
+	put_first_square(vars);
 	mlx_hook(vars.win, 2, 1L<<0, render_next_frame, &vars);
 	// mlx_loop_hook(vars.mlx, render_next_frame, &vars);
 	mlx_loop(vars.mlx);
 	free(vars.mlx);
 }
 
+int	test_image(void)
+{
+	void	*mlx;
+	void	*img;
+	void	*win;
+	char	*relative_path = "/home/maarten/Downloads/image.xpm";
+	int	img_width;
+	int	img_height;
+
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, 1280, 720, "test");
+	img = mlx_xpm_file_to_image(mlx, "/home/maarten/Downloads/image.xpm", &img_width, &img_height);
+	printf("%p\n", img);
+	printf("Width: %d\nHeight: %d\n", img_width, img_height);
+	if (img == NULL)
+		return (0);
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	mlx_put_image_to_window(mlx, win, img, 500, 100);
+	mlx_put_image_to_window(mlx, win, img, 900, 200);
+	mlx_loop(mlx);
+	mlx_destroy_image(mlx, img);
+	// mlx_destroy_window(mlx, win);
+	mlx_destroy_display(mlx);
+	free(mlx);
+	return (0);
+}
+
 int	main(void)
 {
-	test_loop();
+	test_image();
 	return (0);
 }
