@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 22:38:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/10 13:16:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/15 18:06:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,40 @@ typedef struct	s_vars
 {
 	void *mlx;
 	void *win;
+	t_pair coords;
 }				t_vars;
+
+int	mouse_motion(int keycode, t_vars *vars)
+{
+	printf("You moved the mouse! |%d|\n", keycode);
+}
+
+int	mouse_button(int keycode, t_vars *vars)
+{
+	if (keycode == 1)
+	{
+		printf("You pressed the left mouse button! |%d|\n", keycode);
+	}
+	else if (keycode == 3)
+	{
+		printf("You pressed the right mouse button!\n");
+	}
+	else
+	{
+		printf("You did something with the mouse. |%d|\n", keycode);
+	}
+}
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	printf("Key: %d\n", keycode);
+	if (keycode == 65307)
+	{
+		printf("You pressed ESC.\nClosing MLX...");
+		mlx_destroy_window(vars->mlx, vars->win);
+		return (0);
+	}
+	printf("You pressed a key! |%d|\n", keycode);
+	// mlx_destroy_window(vars->mlx, vars->win);
 }
 
 int	start_mlx(void)
@@ -74,7 +103,7 @@ int	start_mlx(void)
 	t_data	img;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1280, 720, "Mini.maaRTen");
+	// vars.win = mlx_new_window(vars.mlx, 1280, 720, "Mini.maaRTen");
 	// img.img = mlx_new_image(vars.mlx, 1280, 720);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// for (int i = 0; i < 1280; i++)
@@ -86,13 +115,87 @@ int	start_mlx(void)
 	// }
 	// call_draw_triangle(&img);
 	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_key_hook(vars.win, key_hook, &vars);
+	// mlx_hook(vars.win, 4, 1L<<2, mouse_button, &vars);
+	// mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
+	// mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop(vars.mlx);
 	return (success);
 }
 
+int	draw_square(t_data *img, int x, int y, int length, int color)
+{
+	for (int i = x; i < length + x; i++)
+	{
+		for (int j = y; j < length + y; j++)
+			ft_pixel_put(img, i, j, color);
+	}
+}
+
+int	move_square(int keycode, t_vars *vars)
+{
+	printf("keycode: %d\n", keycode);
+	if (keycode == 100)
+	{
+		//move right
+		vars->coords.x += 1;
+	}
+	else if (keycode == 97)
+	{
+		//move left
+		if (vars->coords.x > 0)
+			vars->coords.x -= 1;
+	}
+	else if (keycode == 119)
+	{
+		//move up
+		if (vars->coords.y > 0)
+			vars->coords.y -= 1;
+	}
+	else if (keycode == 115)
+	{
+		//move down
+		vars->coords.y += 1;
+	}
+	return (0);
+}
+
+int	render_next_frame(int keycode, t_vars *vars)
+{
+	t_data	img;
+	int	background_color = 0x00000000;
+	int	color = 0x00FF0000;
+
+	move_square(keycode, vars);
+	img.img = mlx_new_image(vars->mlx, 1280, 720);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	for (int i = 0; i < 1280; i++)
+	{
+		for (int j = 0; j < 720; j++)
+			ft_pixel_put(&img, i, j, background_color);
+	}
+	// draw_square(&img, coords.x, coords.y, 200, 0x00FF0000 + (int)((((double)cnt) * 5.20)));
+	draw_square(&img, vars->coords.x, vars->coords.y, 200, color);
+	// draw_square(&img, 50, 50, 200, color);
+	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
+	free(img.img);
+}
+
+int	test_loop(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1280, 720, "Mini.maaRTen");
+	vars.coords.x = 0;
+	vars.coords.y = 0;
+	mlx_hook(vars.win, 2, 1L<<0, render_next_frame, &vars);
+	// mlx_loop_hook(vars.mlx, render_next_frame, &vars);
+	mlx_loop(vars.mlx);
+	free(vars.mlx);
+}
+
 int	main(void)
 {
-	start_mlx();
+	test_loop();
 	return (0);
 }
