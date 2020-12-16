@@ -6,10 +6,11 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/16 21:55:59 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/16 22:00:33 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/16 23:03:42 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+# filename vars
 NAME = a.out
 SRC = $(shell find $(SRCDIR) -name "*.c" -exec basename {} \;)
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
@@ -19,26 +20,49 @@ HEADERS = $(shell find $(IDIR) -name "*.h")
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 DFLAGS = -O0 -g -fsanitize=address
-IFLAGS = -I $(IDIR)
+IFLAGS = -I $(IDIR) -I$(MLXDIR)
+
+# MLX
+MLXDIR = ../minilibx_linux
+MLXFIND = -L$(MLXDIR)
+# LIBFLAGS = -lmlx -lXext -lX11 -lz -lm
+LIBFLAGS = -lmlx -lXext -lX11
+MLXFLAGS = $(MLXFIND) $(LIBFLAGS)
 
 # dirs
 OBJDIR = obj
 SRCDIR = src
 IDIR = include
 
+# colors
+RED = '\033[031;1m'
+GREEN = '\033[032;1m'
+YELLOW = '\033[033;1m'
+BLUE = '\033[034;1m'
+CLEAR = '\033[0;0m'
+ECHO = @echo -en
+
 all: $(NAME)
 .PHONY: all re fclean clean
 
 $(NAME): $(OBJ) Makefile
-	$(CC) -o $@ $(OBJ) $(DFLAGS)
+	$(ECHO) $(GREEN)
+	$(CC) -o $@ $(OBJ) $(MLXFLAGS) $(DFLAGS)
+	$(ECHO) $(CLEAR)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS) | $(OBJDIR)
-	$(CC) -o $@ $< $(CFLAGS) $(IFLAGS)
+	$(ECHO) $(YELLOW)
+	$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
+	$(ECHO) $(CLEAR)
 
 $(OBJDIR):
-	mkdir -p $@
+	@mkdir -p $@
 
 clean:
+	$(ECHO) $(RED)
 	rm -f $(OBJ)
+	$(ECHO) $(CLEAR)
 fclean: clean
+	$(ECHO) $(BLUE)
 	rm -f $(NAME)
+	$(ECHO) $(CLEAR)
 re: fclean all

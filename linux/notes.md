@@ -2,6 +2,12 @@
 
 	https://github.com/ilkou/minilibx
 
+Compilation (Linux):
+
+	xorg, x11 and zlib
+	Libraries : -lmlx_linux -lXext -lX11 -lz -lm
+	Includes : mlx.h in mlx_linux folder
+
 Colors:
 
 	Integer format: 0xTTRRGGBB
