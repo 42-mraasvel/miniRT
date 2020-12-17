@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/16 21:55:59 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/16 23:03:42 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/17 19:45:35 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,21 +18,22 @@ HEADERS = $(shell find $(IDIR) -name "*.h")
 
 # compilation
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+# CFLAGS = -Wall -Werror -Wextra
 DFLAGS = -O0 -g -fsanitize=address
-IFLAGS = -I $(IDIR) -I$(MLXDIR)
+IFLAGS = -I $(IDIR) -I$(MLXDIR) -I $(LIBFTDIR)
 
 # MLX
 MLXDIR = ../minilibx_linux
 MLXFIND = -L$(MLXDIR)
-# LIBFLAGS = -lmlx -lXext -lX11 -lz -lm
-LIBFLAGS = -lmlx -lXext -lX11
+# LIBFLAGS = -lmlx -lXext -lX11 -lz -lm -lft
+LIBFLAGS = -lmlx -lXext -lX11 -L$(LIBFTDIR) -lft
 MLXFLAGS = $(MLXFIND) $(LIBFLAGS)
 
 # dirs
 OBJDIR = obj
 SRCDIR = src
 IDIR = include
+LIBFTDIR = libft
 
 # colors
 RED = '\033[031;1m'
