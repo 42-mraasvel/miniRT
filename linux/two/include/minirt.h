@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:01:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 14:07:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 19:19:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mlx.h>
+#include <math.h>
 #include <unistd.h>
 
-# define X_WIN 1280
-# define Y_WIN 720
+# define X_WIN 200
+# define Y_WIN 300
 
 typedef enum	e_errnum
 {

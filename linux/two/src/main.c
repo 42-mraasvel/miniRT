@@ -6,12 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:00:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 15:18:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 19:24:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "../include/minirt.h"
 #include "libft.h"
+#include "scene.h"
 // #include "minirt.h"
 
 int	free_boys(void *mlx_ptr)
@@ -35,11 +37,11 @@ void	put_pixel_to_image(t_img img, int x, int y, int color)
 
 int	hook_event(int keycode, t_mlx *data)
 {
-	// if (keycode == ESC)
-	// {
-	// 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	// 	exit(1);
-	// }
+	if (keycode == ESC)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		exit(1);
+	}
 	printf("Keycode: %d\n", keycode);
 }
 
@@ -65,17 +67,16 @@ void	fill_image_randomly(t_img *img, int x, int y)
 
 	i = 0;
 	r = 0;
-	printf("x: %d\ny: %d\n", x, y);
 	while (i < y)
 	{
-		if (i % (y / 255 + 1) == 0)
+		if (i % (y / 255) == 0)
 			if (r < 255)
 				r++;
 		j = 0;
 		g = 0;
 		while (j < x)
 		{
-			if (j % (y / 255 + 1) == 0)
+			if (j % (y / 255) == 0)
 			{
 				if (g < 255)
 					g++;
@@ -123,8 +124,8 @@ void	fill_window(t_mlx data)
 	int		m2;
 
 	i = 0;
-	m = Y_WIN / 255 + 2;
-	m2 = X_WIN / 255 + 2;
+	m = Y_WIN / 255;
+	m2 = X_WIN / 255;
 	color = 0;
 	r = g = 0;
 	while(i < Y_WIN)
@@ -159,7 +160,6 @@ int	mlx_test(t_mlx data)
 
 	x = X_WIN;
 	y = Y_WIN;
-	mlx_hook(data.win_ptr, 33, 1L<<0, window_x, &data);
 	init_image(&img, data, x, y);
 	fill_image_randomly(&img, x, y);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img_ptr, 0, 0);
@@ -181,13 +181,42 @@ int	mlx_engine(t_mlx *data)
 	return (success);
 }
 
+t_point	gen_point(double x, double y, double z)
+{
+	t_point	p;
+
+	p.x = x;
+	p.y = y;
+	p.z = z;
+	return (p);
+}
+
+void	set_scene_data(t_scene *scene)
+{
+	scene->camera.position = gen_point(0, 0, -1);
+	scene->camera.orientation_vector = gen_point(0, 0, 1);
+	scene->camera.fov = atan(100.0) * (180 / M_PI);
+	scene->screen.x = X_WIN;
+	scene->screen.y = Y_WIN;
+}
+
 int	main(void)
 {
 	t_mlx	data;
+	t_scene	scene;
 
 	if (mlx_engine(&data) == error)
 		return (0);
 	mlx_test(data);
+	mlx_hook(data.win_ptr, 2, 1L<<0, hook_event, &data);
+	set_scene_data(&scene);
+	printf("%f\n", scene.camera.fov);
+	if (render_scene(scene, data) == error)
+	{
+		mlx_destroy_display(data.mlx_ptr);
+		free(data.mlx_ptr);
+		return (0);
+	}
 	mlx_loop(data.mlx_ptr);
 	if (data.mlx_ptr != NULL)
 		mlx_destroy_display(data.mlx_ptr);

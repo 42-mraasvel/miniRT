@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   vectors.h                                          :+:    :+:            */
+/*   libvect.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 13:29:17 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/19 21:17:04 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 15:27:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,17 +112,17 @@ t_ldblvect	*ldblvect_init(size_t initial_size);
 ** Send own delete function for freeing contents of void* (like free for strings/pointers)
 */
 
-typedef struct	s_vector
+typedef struct	s_vect
 {
 	void	*table;
 	size_t	data_size;
 	size_t	nmemb;
 	size_t	size;
-}				t_vector;
+}				t_vect;
 
-t_vector	*vector_init(size_t initial_size, unsigned int data_type);
-int			vector_pushback(t_vector *vector, void *data);
-void		vector_free(t_vector *vector, void (*del)(void*));
-void		*vector_add(t_vector *vector);
+t_vect		*vect_init(size_t initial_size, unsigned int data_type);
+int			vect_pushback(t_vect *vector, void *data);
+void		vect_free(t_vect *vector, void (*del)(void*));
+void		*vect_add(t_vect *vector);
 
 #endif

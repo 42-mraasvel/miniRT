@@ -1,0 +1,25 @@
+Algorithm For MiniRT
+
+1. Check program arguments (rt file and --save option)
+2. Read in the scene from the rt file.
+	- Capital definitions can only be declared once in the scene
+3. Render the scene
+4. Display scene on MLX window or save to bmp file
+5. Exit program cleanly
+
+
+Rendering the scene:
+
+	For each Pixel p in the window:
+	{
+		1. Associate a black color to p
+		2. 'trace' the ray from the camera to p, if it intersects any object then
+		{
+			1. calculate the intersection point to the nearest object
+			2. If there is no object between the intersection point and the light source:
+			{
+				1. calculate the color of the intersection point.
+				2. associate the color of the intersection point to p
+			}
+		}
+	}

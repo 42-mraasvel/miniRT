@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 10:16:55 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 12:16:51 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 16:52:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	ft_perror(char *argument, t_errnums error_type)
 		"Input Error: Invalid number of arguments."
 	};
 
+	ft_printf("Error\n");
 	if (error_type < open_error)
 	{
-		if (ft_printf("%d: %s\n", error_type, table[error_type]) == -1)
+		if (ft_printf("%s\n", table[error_type]) == -1)
 			return (write_error);
 	}
 	else if (argument != NULL)
