@@ -1,1 +1,1 @@
-make && ./a.out
+make && time ./a.out

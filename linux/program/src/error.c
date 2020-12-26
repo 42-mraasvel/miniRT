@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 10:16:55 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 10:33:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 12:16:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 int	ft_perror(char *argument, t_errnums error_type)
 {
 	static const char	*table[] = {
-		"success",
-		"error",
-		"input_error",
-		"open_error",
-		"read_error",
-		"write_error"
+		"Success",
+		"Error",
+		"Input Error: Invalid file.",
+		"Option Error: Invalid option.",
+		"Input Error: Invalid number of arguments."
 	};
 
-	ft_printf("%s\n", table[error_type]);
-	if (error_type == input_error)
+	if (error_type < open_error)
 	{
-		if (ft_printf("Invalid argument: Please give a valid pathname with the '.rt' suffix.\n") == -1)
+		if (ft_printf("%d: %s\n", error_type, table[error_type]) == -1)
 			return (write_error);
 	}
 	else if (argument != NULL)
 		perror(argument);
+	if (ft_printf("Use --help for instructions.\n") == -1)
+		return (write_error);
 	return (error_type);
 }

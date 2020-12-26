@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 10:20:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 12:09:26 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ typedef enum	e_errnums
 	success,
 	error,
 	input_error,
+	option_error,
+	argc_error,
 	open_error,
 	read_error,
 	write_error

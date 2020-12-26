@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:00:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/17 22:07:27 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 15:18:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,164 @@ void	put_pixel_to_image(t_img img, int x, int y, int color)
 	*addr = color;
 }
 
-int	mlx_test(void)
+int	hook_event(int keycode, t_mlx *data)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
+	// if (keycode == ESC)
+	// {
+	// 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	// 	exit(1);
+	// }
+	printf("Keycode: %d\n", keycode);
+}
 
-	mlx_ptr = mlx_init();
-	if (mlx_ptr == NULL)
-		return (ft_perror("mlx_init", mlx_error));
-
-	win_ptr = mlx_new_window(mlx_ptr, X_WIN, Y_WIN, "Mini Window");
-	if (win_ptr == NULL)
-		return (free_boys(mlx_ptr));
-	mlx_pixel_put(mlx_ptr, win_ptr, 5, 5, gen_color(0, 255, 0));
-
-	img.img_ptr = mlx_new_image(mlx_ptr, 200, 200);
-	if (win_ptr == NULL)
-		return (free_boys(mlx_ptr));
-	img.addr = mlx_get_data_addr(img.img_ptr, &img.bpp, &img.size_line, &img.endian);
-	put_pixel_to_image(img, 6, 5, gen_color(255, 0, 0));
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img_ptr, 0, 0);
-	mlx_destroy_image(mlx_ptr, img.img_ptr);
-
-	mlx_loop(mlx_ptr);
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
+int	window_x(int keycode, t_mlx *data)
+{
+	printf("WINDOW IS CLOSED!\n\n");
 	return (0);
+}
+
+void	init_image(t_img *img, t_mlx data, int x, int y)
+{
+	img->img_ptr = mlx_new_image(data.mlx_ptr, x, y);
+	img->addr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, &img->endian);
+}
+
+void	fill_image_randomly(t_img *img, int x, int y)
+{
+	size_t	i;
+	size_t	j;
+	int		color;
+	int		r;
+	int		g;
+
+	i = 0;
+	r = 0;
+	printf("x: %d\ny: %d\n", x, y);
+	while (i < y)
+	{
+		if (i % (y / 255 + 1) == 0)
+			if (r < 255)
+				r++;
+		j = 0;
+		g = 0;
+		while (j < x)
+		{
+			if (j % (y / 255 + 1) == 0)
+			{
+				if (g < 255)
+					g++;
+			}
+			color =  gen_color(r, g, 0);
+			put_pixel_to_image(*img, j, i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	change_r(int color, int r)
+{
+	int	r_mask;
+
+	r_mask = -1 - (255 << 16);
+	color = (color & r_mask) + (r << 16);
+	return (color);
+}
+int	change_g(int color, int g)
+{
+	int	g_mask;
+
+	g_mask = -1 - (255 << 8);
+	color = (color & g_mask) + (g << 8);
+	return (color);
+}
+int	change_b(int color, int b)
+{
+	int	b_mask;
+
+	b_mask = -1 - (255);
+	color = (color & b_mask) + b;
+	return (color);
+}
+
+void	fill_window(t_mlx data)
+{
+	size_t	i;
+	size_t	j;
+	int		color;
+	int		r, g;
+	int		m;
+	int		m2;
+
+	i = 0;
+	m = Y_WIN / 255 + 2;
+	m2 = X_WIN / 255 + 2;
+	color = 0;
+	r = g = 0;
+	while(i < Y_WIN)
+	{
+		j = 0;
+		if (i % m == 0)
+		{
+			color = change_r(color, r);
+			if (r < 255)
+				r++;
+		}
+		g = 0;
+		while (j < X_WIN)
+		{
+			if (j % m2 == 0)
+			{
+				color = change_g(color, g);
+				if (g < 255)
+					g++;
+			}
+			mlx_pixel_put(data.mlx_ptr, data.win_ptr, j, i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	mlx_test(t_mlx data)
+{
+	t_img	img;
+	int		x, y;
+
+	x = X_WIN;
+	y = Y_WIN;
+	mlx_hook(data.win_ptr, 33, 1L<<0, window_x, &data);
+	init_image(&img, data, x, y);
+	fill_image_randomly(&img, x, y);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img_ptr, 0, 0);
+	mlx_destroy_image(data.mlx_ptr, img.img_ptr);
+	return (success);
+}
+
+int	mlx_engine(t_mlx *data)
+{
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+		return (error);
+	data->win_ptr = mlx_new_window(data->mlx_ptr, X_WIN, Y_WIN, "Mini Window");
+	if (data->win_ptr == NULL)
+	{
+		free_boys(data->mlx_ptr);
+		return (error);
+	}
+	return (success);
 }
 
 int	main(void)
 {
-	printf("lol\n");
-	mlx_test();
+	t_mlx	data;
+
+	if (mlx_engine(&data) == error)
+		return (0);
+	mlx_test(data);
+	mlx_loop(data.mlx_ptr);
+	if (data.mlx_ptr != NULL)
+		mlx_destroy_display(data.mlx_ptr);
+	free(data.mlx_ptr);
 	return (0);
 }

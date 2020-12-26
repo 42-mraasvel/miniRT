@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:01:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/17 21:46:39 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/26 14:07:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <mlx.h>
 #include <unistd.h>
 
-# define X_WIN 800
-# define Y_WIN 800
+# define X_WIN 1280
+# define Y_WIN 720
 
 typedef enum	e_errnum
 {
@@ -36,6 +36,22 @@ typedef struct	s_img
 	int		size_line;
 	int		endian;
 }				t_img;
+
+typedef struct	s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}				t_mlx;
+
+/*
+** MLX keycodes
+*/
+
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 /*
 ** error.c
