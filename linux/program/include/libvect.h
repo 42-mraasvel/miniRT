@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 13:29:17 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 15:27:00 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/27 20:54:27 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,6 @@ t_ldblvect	*ldblvect_init(size_t initial_size);
 
 /*
 ** Vector that can take any data type
-** except floats and doubles.
-** 
-** Pushback non_ptr: vector_pushback(vector, (void*)'a');
-** Pushback string should be done like: vector_pushback(vector, ft_strdup("abcd"));
-** since it will copy the ptr itself, not the contents.
-**
 ** Send own delete function for freeing contents of void* (like free for strings/pointers)
 */
 
@@ -124,5 +118,13 @@ t_vect		*vect_init(size_t initial_size, unsigned int data_type);
 int			vect_pushback(t_vect *vector, void *data);
 void		vect_free(t_vect *vector, void (*del)(void*));
 void		*vect_add(t_vect *vector);
+
+typedef struct	s_vpvect
+{
+	void	**table;
+	size_t	nmemb;
+	size_t	size;
+}				t_vpvect;
+
 
 #endif

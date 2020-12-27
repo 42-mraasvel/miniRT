@@ -1,9 +1,9 @@
 if [ $# -eq 0 ]
 then
-    make && ./a.out
+    make && time ./a.out ./files/test.rt
 elif [[ $1 == "re" ]]
 then
-	make re && ./a.out
+	make re && time ./a.out
 else
-	make && ./a.out $1
+	make && time ./a.out $1 $2
 fi

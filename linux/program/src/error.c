@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 10:16:55 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 16:52:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/27 23:18:27 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ int	ft_perror(char *argument, t_errnums error_type)
 		"Error",
 		"Input Error: Invalid file.",
 		"Option Error: Invalid option.",
-		"Input Error: Invalid number of arguments."
+		"Input Error: Invalid number of arguments.",
+		"GNL: Error encountered while reading file.",
+		"File Error: encountered while parsing file."
 	};
 
-	ft_printf("Error\n");
 	if (error_type < open_error)
 	{
-		if (ft_printf("%s\n", table[error_type]) == -1)
+		if (ft_printf("Error\n%s\n", table[error_type]) == -1)
+			return (write_error);
+		if (ft_printf("Use --help for instructions.\n") == -1)
 			return (write_error);
 	}
 	else if (argument != NULL)
 		perror(argument);
-	if (ft_printf("Use --help for instructions.\n") == -1)
-		return (write_error);
+	else
+		perror("Error");
 	return (error_type);
 }

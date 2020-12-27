@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 12:21:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/27 23:19:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	print_help(void)
 	ft_printf("\t\tIf no option is specified: the image is displayed in a window.\n");
 	ft_printf("Options:\n");
 	ft_printf("\t--save: save the rendered image in .bmp format\n");
-	return (success);
+	return (input_error);
 }
 
 static int	check_argument(char *argument, char *option)
@@ -32,7 +32,7 @@ static int	check_argument(char *argument, char *option)
 		if (ft_strcmp(option, "--save") != 0)
 			return (option_error);
 	len = ft_strlen(argument);
-	if (argument[len - 1] != 't' || argument[len - 2] != 'r' || argument[len - 3] != '.')
+	if (ft_strcmp(argument + len - 3, ".rt") != 0)
 		return (input_error);
 	fd = open(argument, O_RDONLY);
 	if (fd == -1)
@@ -70,9 +70,21 @@ static int	check_input(int argc, char *argv[])
 	return (success);
 }
 
+/*
+** 1. Check input arguments
+** 2. Parse the file
+** 3. Render the scene(s)
+** 4. Output scene(s) to window or save to .bmp file
+*/
+
 int	main(int argc, char *argv[])
 {
+	t_scene	scene;
+
 	if (check_input(argc, argv) != success)
 		return (0);
+	if (parse_file(argv[1], &scene) != success)
+		return (0);
+	free_scene(scene);
 	return (0);
 }

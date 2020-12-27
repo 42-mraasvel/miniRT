@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minirt.h                                           :+:    :+:            */
+/*   prototypes.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/27 23:08:50 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/27 22:16:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef PROTOTYPES_H
+# define PROTOTYPES_H
 
-typedef enum	e_errnums
-{
-	success,
-	error,
-	input_error,
-	option_error,
-	argc_error,
-	gnl_error,
-	file_error,
-	open_error,
-	read_error,
-	write_error,
-	malloc_error
-}				t_errnums;
+# include "minirt.h"
+# include "objects.h"
+# include "scene.h"
 
-typedef struct	s_vec3
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_vec3;
+/*
+** parse.c
+*/
+
+int		parse_file(char *pathname, t_scene *scene);
+
+/*
+** scene.c
+*/
+
+int		init_scene(t_scene *scene);
+void	free_scene(t_scene scene);
+
+/*
+** error.c
+*/
+
+int		ft_perror(char *argument, t_errnums error_type);
 
 #endif
