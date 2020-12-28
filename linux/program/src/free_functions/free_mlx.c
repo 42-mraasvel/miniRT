@@ -6,11 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:32:29 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:35:34 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:56:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include <stdlib.h>
+#include "minirt.h"
+#include "mlx.h"
 
 void	free_mlx(t_mlx mlx)
 {

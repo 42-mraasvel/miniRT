@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 17:16:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:37:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ typedef struct	s_mlx
 
 typedef union	u_color
 {
-	int	color;
-	struct s_rgb
+	int		val;
+	struct		s_rgb
 	{
 		unsigned char	b;
 		unsigned char	g;
 		unsigned char	r;
 		unsigned char	t;
-	}	rgb;
+	}		rgb;
 }				t_color;
 
 #endif

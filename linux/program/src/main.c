@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 17:36:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 21:05:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	print_help(void)
 	ft_printf("Usage:\n");
 	ft_printf("\t./exec <--help>\n");
 	ft_printf("\t./exec <.rt file> <option>\n");
-	ft_printf("\t\tIf no option is specified: the image is displayed in a window.\n");
-	ft_printf("Options:\n");
+	ft_printf("\t\tIf no option is specified:");
+	ft_printf(" the image is displayed in a window.\nOptions:\n");
 	ft_printf("\t--save: save the rendered image in .bmp format\n");
 	return (input_error);
 }
@@ -77,7 +77,7 @@ static int	check_input(int argc, char *argv[])
 ** 4. Output scene(s) to window or save to .bmp file
 */
 
-int	main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	t_scene	scene;
 	t_mlx	mlx;
@@ -89,5 +89,7 @@ int	main(int argc, char *argv[])
 		return (ft_perror(NULL, mlx_error));
 	if (parse_file(argv[1], &scene, mlx) != success)
 		return (free_program(mlx, scene));
+	print_file(&scene);
+	free_program(mlx, scene);
 	return (0);
 }

@@ -6,11 +6,15 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:57:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:55:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include <stdlib.h>
+#include <fcntl.h>
+#include "libft.h"
+#include "libftprintf.h"
+#include "prototypes.h"
 
 /*
 ** Since every string has to be error-checked
@@ -24,11 +28,11 @@ static int	parse_jump(char **element, t_scene *scene, t_mlx mlx)
 	else if (ft_strcmp(element[0], "A") == 0)
 		;
 	else if (ft_strcmp(element[0], "c") == 0)
-		return (parse_camera(element, scene));
+		return (parse_camera(element, scene->cameras));
 	else if (ft_strcmp(element[0], "l") == 0)
 		;
 	else if (ft_strcmp(element[0], "sp") == 0)
-		;
+		return (parse_sphere(element, scene->objects.spheres));
 	else if (ft_strcmp(element[0], "pl") == 0)
 		;
 	else if (ft_strcmp(element[0], "sq") == 0)
@@ -49,6 +53,11 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 	if (element == NULL)
 		return (malloc_error);
 	ret = parse_jump(element, scene, mlx);
+	if (ret != success)
+	{
+		if (ft_printf("Parse Error:\n|%s|\n", line) == -1)
+			ret = write_error;
+	}
 	ft_free_split(element);
 	return (ret);
 }
@@ -56,10 +65,12 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 {
 	int		ret;
+	int		cnt;
 	int		parse_ret;
 	char	*line;
 
 	ret = 1;
+	cnt = 1;
 	while (ret > 0)
 	{
 		ret = ft_getline(fd, &line);
@@ -74,6 +85,7 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 				return (parse_ret);
 			}
 		}
+		cnt++;
 		free(line);
 	}
 	return (success);

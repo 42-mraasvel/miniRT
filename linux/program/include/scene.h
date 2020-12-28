@@ -6,14 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 17:08:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:51:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
-# include "minirt.h"
 # include "objects.h"
 
 /*
@@ -25,7 +24,6 @@
 ** 1. Cameras
 ** 2. Lights
 ** 3. Any object
-**
 */
 
 typedef struct	s_resolution

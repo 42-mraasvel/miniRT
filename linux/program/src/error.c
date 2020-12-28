@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 10:16:55 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:28:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:10:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_perror(char *argument, t_errnums error_type)
 
 	if (error_type < open_error)
 	{
-		if (ft_printf("Error\n%s\n", table[error_type]) == -1)
+		if (ft_printf("%s\n", table[error_type]) == -1)
 			return (write_error);
 		if (ft_printf("Use --help for instructions.\n") == -1)
 			return (write_error);

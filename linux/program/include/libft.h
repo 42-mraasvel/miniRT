@@ -45,6 +45,7 @@ void				*ft_calloc(size_t nmemb, size_t size);
 /*
 ** part 2
 */
+
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -59,6 +60,7 @@ void				ft_putnbr_fd(int n, int fd);
 /*
 ** Bonus Part
 */
+
 typedef struct		s_list
 {
 	void			*content;
@@ -102,8 +104,8 @@ int					ft_strcmp(char *s1, char *s2);
 /*
 ** get_next_line libft version.
 */
-int			ft_getline(int fd, char **line);
 
+int					ft_getline(int fd, char **line);
 
 /*
 ** Number functions

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 17:09:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:38:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 ** 1. Cube
 ** 2. Pyramid
 ** 3. Cone, Hyperboloid, Paraboloid
-**
 */
 
 typedef struct	s_objects
@@ -52,7 +51,6 @@ typedef struct	s_plane
 	t_vec3	position;
 	t_vec3	orientation;
 	t_color	color;
-	
 }				t_plane;
 
 typedef struct	s_square

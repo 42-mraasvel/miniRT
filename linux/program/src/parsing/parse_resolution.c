@@ -6,17 +6,19 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:03:17 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:47:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 20:55:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
+#include "libft.h"
+#include "prototypes.h"
+#include "mlx.h"
 
 /*
 ** First information: 'R'
 ** Second information: x render size
 ** Third information: y render size
-** 
+**
 ** If the declared size of the scene is greater than the display resolution, the
 ** window size will be set depending to the current display resolution.
 */

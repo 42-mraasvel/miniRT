@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/26 09:42:23 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/28 16:01:01 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/28 20:29:30 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ DFLAGS = -O0 -g -fsanitize=address
 CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
 IFLAGS = -I $(IDIR) -I $(MLXDIR)
-LIBFLAGS = -L$(LIBDIR) -lft -lvect -lftprintf
+LIBFLAGS = -L$(LIBDIR) -lft -lvect -lftprintf -lm
 
 # MLX FLAGS
 
