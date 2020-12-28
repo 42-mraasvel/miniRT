@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/27 23:21:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 16:57:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 ** we might as well create a chain of if-else statements right?
 */
 
-static int	parse_jump(char **element, t_scene *scene)
+static int	parse_jump(char **element, t_scene *scene, t_mlx mlx)
 {
 	if (ft_strcmp(element[0], "R") == 0)
-		;
+		return (parse_resolution(element, scene, mlx));
 	else if (ft_strcmp(element[0], "A") == 0)
 		;
 	else if (ft_strcmp(element[0], "c") == 0)
-		;
+		return (parse_camera(element, scene));
 	else if (ft_strcmp(element[0], "l") == 0)
 		;
 	else if (ft_strcmp(element[0], "sp") == 0)
@@ -40,7 +40,7 @@ static int	parse_jump(char **element, t_scene *scene)
 	return (file_error);
 }
 
-static int	parse_information(char *line, t_scene *scene)
+static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 {
 	char	**element;
 	int		ret;
@@ -48,12 +48,12 @@ static int	parse_information(char *line, t_scene *scene)
 	element = ft_split(line, ' ');
 	if (element == NULL)
 		return (malloc_error);
-	ret = parse_jump(element, scene);
+	ret = parse_jump(element, scene, mlx);
 	ft_free_split(element);
 	return (ret);
 }
 
-static int	read_file(int fd, t_scene *scene)
+static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 {
 	int		ret;
 	int		parse_ret;
@@ -67,7 +67,7 @@ static int	read_file(int fd, t_scene *scene)
 			return (gnl_error);
 		if (*line != '\0')
 		{
-			parse_ret = parse_information(line, scene);
+			parse_ret = parse_information(line, scene, mlx);
 			if (parse_ret != success)
 			{
 				free(line);
@@ -84,7 +84,7 @@ static int	read_file(int fd, t_scene *scene)
 ** 2. Read in file line by line, one element for each line.
 */
 
-int			parse_file(char *pathname, t_scene *scene)
+int			parse_file(char *pathname, t_scene *scene, t_mlx mlx)
 {
 	int	fd;
 	int	ret;
@@ -94,11 +94,10 @@ int			parse_file(char *pathname, t_scene *scene)
 		return (ft_perror(pathname, open_error));
 	if (init_scene(scene) != success)
 		return (ft_perror(NULL, malloc_error));
-	ret = read_file(fd, scene);
+	ret = read_file(fd, scene, mlx);
 	if (ret != success)
 	{
 		close(fd);
-		free_scene(*scene);
 		return (ft_perror(NULL, ret));
 	}
 	close(fd);

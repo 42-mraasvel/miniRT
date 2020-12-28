@@ -6,22 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 21:58:27 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/27 22:22:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 16:31:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h"
-
-void		free_scene(t_scene scene)
-{
-	vect_free(scene.cameras, NULL);
-	vect_free(scene.lights, NULL);
-	vect_free(scene.objects.spheres, NULL);
-	vect_free(scene.objects.planes, NULL);
-	vect_free(scene.objects.squares, NULL);
-	vect_free(scene.objects.cylinders, NULL);
-	vect_free(scene.objects.triangles, NULL);
-}
 
 static int	abort_init(t_scene scene, int position)
 {
@@ -43,6 +32,7 @@ static int	abort_init(t_scene scene, int position)
 
 int			init_scene(t_scene *scene)
 {
+	ft_bzero(scene, sizeof(t_scene));
 	scene->cameras = vect_init(0, sizeof(t_camera));
 	if (scene->cameras == NULL)
 		return (error);

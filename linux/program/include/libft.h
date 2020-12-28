@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/14 09:49:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 16:41:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int					ft_putllu_base(unsigned long long nbr,
 					int base, int precision, int upcase);
 char				*ft_llutoa(unsigned long long nbr, int min_len);
 unsigned long long	ft_atoull(char *str);
+double				ft_atof(char *str);
 
 /*
 ** math functions
@@ -125,5 +126,9 @@ unsigned long long	ft_atoull(char *str);
 double				ft_pow(double x, double y);
 int					ft_numlen_dbl(double num);
 int					ft_dbl_tenthpow(double nbr);
+int					ft_min(int a, int b);
+int					ft_max(int a, int b);
+double				ft_fmax(double a, double b);
+double				ft_fmin(double a, double b);
 
 #endif

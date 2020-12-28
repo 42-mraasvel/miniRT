@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/26 09:42:23 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/26 10:24:40 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/28 16:01:01 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,15 @@ LIBFLAGS = -L$(LIBDIR) -lft -lvect -lftprintf
 MLXDIR = ../minilibx_linux
 MLXLIB = -L$(MLXDIR) -lmlx -lXext -lX11
 
+# PATHS
+VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -r 's/(.*):/\1/')
+
 all: $(NAME)
 .PHONY: all clean fclean re
 
 $(NAME): $(OBJ)
 	$(CC) -o $@ $(OBJ) $(MLXLIB) $(LIBFLAGS) $(DFLAGS)
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS) | $(OBJDIR)
+$(OBJDIR)/%.o: %.c $(HEADERS) | $(OBJDIR)
 	$(CC) -c -o $@ $< $(IFLAGS) $(CFLAGS)
 
 $(OBJDIR):

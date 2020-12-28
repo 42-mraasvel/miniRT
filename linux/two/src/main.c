@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:00:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/26 19:24:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 16:20:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ void	fill_image_randomly(t_img *img, int x, int y)
 	r = 0;
 	while (i < y)
 	{
-		if (i % (y / 255) == 0)
+		if (i % (y / 255 + 1) == 0)
 			if (r < 255)
 				r++;
 		j = 0;
 		g = 0;
 		while (j < x)
 		{
-			if (j % (y / 255) == 0)
+			if (j % (y / 255 + 1) == 0)
 			{
 				if (g < 255)
 					g++;
@@ -172,6 +172,9 @@ int	mlx_engine(t_mlx *data)
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (error);
+	int x, y;
+	int ret = mlx_get_screen_size(data->mlx_ptr, &x, &y);
+	printf("ret: %d\n%d %d\n", ret, x, y);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, X_WIN, Y_WIN, "Mini Window");
 	if (data->win_ptr == NULL)
 	{

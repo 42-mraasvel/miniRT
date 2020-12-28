@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/27 23:19:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/28 17:36:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,14 @@ static int	check_input(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_scene	scene;
+	t_mlx	mlx;
 
 	if (check_input(argc, argv) != success)
 		return (0);
-	if (parse_file(argv[1], &scene) != success)
-		return (0);
-	free_scene(scene);
+	mlx.mlx_ptr = mlx_init();
+	if (mlx.mlx_ptr == NULL)
+		return (ft_perror(NULL, mlx_error));
+	if (parse_file(argv[1], &scene, mlx) != success)
+		return (free_program(mlx, scene));
 	return (0);
 }
