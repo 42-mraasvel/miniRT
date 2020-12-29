@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 20:51:41 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 12:54:50 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,13 @@ typedef struct	s_scene
 	t_vect			*lights;
 	t_objects		objects;
 }				t_scene;
+
+typedef struct	s_data
+{
+	t_mlx	*mlx;
+	t_scene	*scene;
+	t_img	*img;
+	t_img	*next_image;
+}				t_data;
 
 #endif

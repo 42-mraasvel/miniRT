@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 19:18:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 20:52:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 14:14:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	check_information(char **element, int expected)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (element[i] != NULL)

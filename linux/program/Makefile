@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/26 09:42:23 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/28 20:29:30 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/29 14:14:17 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBDIR = libs
 
 # Compilation
 
-DFLAGS = -O0 -g -fsanitize=address
+DFLAGS = -O0 -g -fsanitize=address -fsanitize=leak
 CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
 IFLAGS = -I $(IDIR) -I $(MLXDIR)
@@ -42,7 +42,7 @@ VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -r 's/(.*):/\1/')
 all: $(NAME)
 .PHONY: all clean fclean re
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) Makefile
 	$(CC) -o $@ $(OBJ) $(MLXLIB) $(LIBFLAGS) $(DFLAGS)
 $(OBJDIR)/%.o: %.c $(HEADERS) | $(OBJDIR)
 	$(CC) -c -o $@ $< $(IFLAGS) $(CFLAGS)

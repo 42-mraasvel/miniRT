@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:01:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:21:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 09:30:57 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct	s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	img;
 }				t_mlx;
 
 /*
@@ -53,6 +54,10 @@ typedef struct	s_mlx
 # define A 97
 # define S 115
 # define D 100
+# define SPACE 32
+# define R 114
+# define G 103
+# define B 98
 
 /*
 ** error.c

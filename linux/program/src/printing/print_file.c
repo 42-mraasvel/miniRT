@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 20:50:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 21:25:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 12:46:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	print_vec(t_vec3 a)
 
 int	print_color(t_color a)
 {
-	return (ft_printf("%d,%d,%d", a.rgb.r, a.rgb.g, a.rgb.g));
+	return (ft_printf("%d,%d,%d", a.rgb.r, a.rgb.g, a.rgb.b));
 }
 
 int	print_resolution(t_resolution resolution)

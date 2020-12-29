@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 22:00:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 16:20:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 14:44:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,17 @@ int	gen_color(int red, int green, int blue)
 	return ((red << 16) + (green << 8) + blue);
 }
 
+void	ft_pixel_put(t_img img, int x, int y, int color)
+{
+	*(int*)(img.addr + (y * img.size_line) + x * (img.bpp / 8)) = color;
+}
+
 void	put_pixel_to_image(t_img img, int x, int y, int color)
 {
 	unsigned int	*addr;
 
 	addr = (unsigned int *)(img.addr + (y * img.size_line) + x * (img.bpp / 8));
 	*addr = color;
-}
-
-int	hook_event(int keycode, t_mlx *data)
-{
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		exit(1);
-	}
-	printf("Keycode: %d\n", keycode);
 }
 
 int	window_x(int keycode, t_mlx *data)
@@ -57,11 +52,10 @@ void	init_image(t_img *img, t_mlx data, int x, int y)
 	img->addr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, &img->endian);
 }
 
-void	fill_image_randomly(t_img *img, int x, int y)
+void	fill_image_randomly(t_img *img, int x, int y, int color)
 {
 	size_t	i;
 	size_t	j;
-	int		color;
 	int		r;
 	int		g;
 
@@ -161,7 +155,7 @@ int	mlx_test(t_mlx data)
 	x = X_WIN;
 	y = Y_WIN;
 	init_image(&img, data, x, y);
-	fill_image_randomly(&img, x, y);
+	fill_image_randomly(&img, x, y, 0x00FF0000);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img_ptr, 0, 0);
 	mlx_destroy_image(data.mlx_ptr, img.img_ptr);
 	return (success);
@@ -203,6 +197,75 @@ void	set_scene_data(t_scene *scene)
 	scene->screen.y = Y_WIN;
 }
 
+void	fill_image(t_img *img, int x, int y, int color)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < y)
+	{
+		j = 0;
+		while(j < x)
+		{
+			ft_pixel_put(*img, j, i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	new_image(t_mlx *data, int color)
+{
+	fill_image(&data->img, X_WIN, Y_WIN, color);
+}
+
+int	expose_hook(t_mlx *data)
+{
+	printf("Expose MLX: %p\n", data->mlx_ptr);
+}
+
+int	key_hook(int keycode, t_mlx *data)
+{
+	int	color;
+
+	printf("Key: %d\n", keycode);
+	if (keycode == ESC)
+	{
+		printf("Destroying window\n");
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		exit(EXIT_SUCCESS);
+	}
+	color = 0x00000000;
+	if (keycode == SPACE)
+		color = 0x00FFFFFF;
+	else if (keycode == R)
+		color = gen_color(255, 0, 0);
+	else if (keycode == G)
+		color = gen_color(0, 255, 0);
+	else if (keycode == B)
+		color = gen_color(0, 0, 255);
+	if (color != 0)
+	{
+		new_image(data, color);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.img_ptr, 0, 0);
+	}
+}
+
+int	mouse_hook(int button, int x, int y, t_mlx *data)
+{
+	printf("Button: %d - (%d, %d)\n", button, x, y);
+}
+
+int	window_loop(t_mlx *data)
+{
+	mlx_expose_hook(data->win_ptr, expose_hook, data);
+	mlx_key_hook(data->win_ptr, key_hook, data);
+	mlx_mouse_hook(data->win_ptr, mouse_hook, data);
+	mlx_loop(data->mlx_ptr);
+	return (success);
+}
+
 int	main(void)
 {
 	t_mlx	data;
@@ -210,19 +273,14 @@ int	main(void)
 
 	if (mlx_engine(&data) == error)
 		return (0);
-	mlx_test(data);
-	mlx_hook(data.win_ptr, 2, 1L<<0, hook_event, &data);
-	set_scene_data(&scene);
-	printf("%f\n", scene.camera.fov);
-	if (render_scene(scene, data) == error)
-	{
-		mlx_destroy_display(data.mlx_ptr);
-		free(data.mlx_ptr);
-		return (0);
-	}
-	mlx_loop(data.mlx_ptr);
-	if (data.mlx_ptr != NULL)
-		mlx_destroy_display(data.mlx_ptr);
+	data.img.img_ptr = mlx_new_image(data.mlx_ptr, X_WIN, Y_WIN);
+	if (data.img.img_ptr == NULL)
+		exit(EXIT_FAILURE);
+	data.img.addr = mlx_get_data_addr(data.img.img_ptr, &data.img.bpp, &data.img.size_line, &data.img.endian);
+	if (data.img.addr == NULL)
+		exit(EXIT_FAILURE);
+	window_loop(&data);
+	mlx_destroy_image(data.mlx_ptr, data.img.img_ptr);
 	free(data.mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 20:55:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 14:21:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 	element = ft_split(line, ' ');
 	if (element == NULL)
 		return (malloc_error);
-	ret = parse_jump(element, scene, mlx);
-	if (ret != success)
+	ret = success;
+	if (*element != NULL)
 	{
-		if (ft_printf("Parse Error:\n|%s|\n", line) == -1)
-			ret = write_error;
+		ret = parse_jump(element, scene, mlx);
+		if (ret != success)
+		{
+			if (ft_printf("Parse Error:\n|%s|\n", line) == -1)
+				ret = write_error;
+		}
 	}
 	ft_free_split(element);
 	return (ret);
@@ -65,12 +69,10 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 {
 	int		ret;
-	int		cnt;
 	int		parse_ret;
 	char	*line;
 
 	ret = 1;
-	cnt = 1;
 	while (ret > 0)
 	{
 		ret = ft_getline(fd, &line);
@@ -85,7 +87,6 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 				return (parse_ret);
 			}
 		}
-		cnt++;
 		free(line);
 	}
 	return (success);
@@ -108,10 +109,7 @@ int			parse_file(char *pathname, t_scene *scene, t_mlx mlx)
 		return (ft_perror(NULL, malloc_error));
 	ret = read_file(fd, scene, mlx);
 	if (ret != success)
-	{
-		close(fd);
-		return (ft_perror(NULL, ret));
-	}
+		ft_perror(NULL, ret);
 	close(fd);
-	return (success);
+	return (ret);
 }

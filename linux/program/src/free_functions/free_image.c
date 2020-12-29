@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_program.c                                     :+:    :+:            */
+/*   free_image.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/28 16:31:55 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 14:15:19 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/12/29 13:01:02 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/29 14:06:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libftprintf.h"
-#include "prototypes.h"
+#include "minirt.h"
 #include "mlx.h"
 
-void	free_program(t_data data, int status)
+void	free_image(void *mlx_ptr, t_img *img)
 {
-	free_image(data.mlx->mlx_ptr, data.img);
-	free_image(data.mlx->mlx_ptr, data.next_image);
-	free_scene(*data.scene);
-	free_mlx(*data.mlx);
-	if (status == success)
-	{
-		ft_printf("Exit status: Success\n");
-		exit(EXIT_SUCCESS);
-	}
-	ft_printf("Exit status: Failure\n");
-	exit(EXIT_FAILURE);
+	if (img == NULL)
+		return ;
+	if (img->img_ptr != NULL)
+		mlx_destroy_image(mlx_ptr, img->img_ptr);
+	free(img);
 }

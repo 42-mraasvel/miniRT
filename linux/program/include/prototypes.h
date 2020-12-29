@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 21:05:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 14:56:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@
 
 // Print function, remove when turning in
 
-int	print_file(t_scene *scene);
+int		print_file(t_scene *scene);
+
+/*
+** argument_checks.c
+*/
+
+int		check_input(int argc, char *argv[]);
 
 /*
 ** src/parsing/
@@ -38,11 +44,39 @@ int		check_coordinates(char *information);
 int		check_number(char *information);
 int		parse_color(char *information);
 int		parse_coordinates(char *information, t_vec3 *point);
+
 /*
 ** scene.c
 */
 
 int		init_scene(t_scene *scene);
+
+/*
+** hooks.c
+*/
+
+int		expose_hook(t_data *data);
+int		mouse_hook(int keycode, int x, int y, t_data *data);
+int		key_hook(int keycode, t_data *data);
+
+/*
+** mlx_util.c
+*/
+
+void	ft_pixel_put(t_img img, int x, int y, t_color color);
+
+/*
+** init_image.c
+*/
+
+t_img	*init_image(t_data *data);
+int		next_frame(t_data *data);
+
+/*
+** render_image.c
+*/
+
+int		render_image(t_scene *scene, t_img *img, t_camera camera);
 
 /*
 ** error.c
@@ -54,7 +88,8 @@ int		ft_perror(char *argument, t_errnums error_type);
 ** Free Functions
 */
 
-int		free_program(t_mlx mlx, t_scene scene);
+void	free_program(t_data data, int status);
+void	free_image(void *mlx_ptr, t_img *img);
 void	free_scene(t_scene scene);
 void	free_mlx(t_mlx mlx);
 

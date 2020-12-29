@@ -6,12 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 20:37:36 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 14:39:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# define WINDOW_NAME "MiniMaarten"
 
 typedef enum	e_errnums
 {
@@ -41,6 +43,16 @@ typedef struct	s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 }				t_mlx;
+
+typedef struct	s_img
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		byte_pp;
+	int		size_line;
+	int		endian;
+}				t_img;
 
 typedef union	u_color
 {

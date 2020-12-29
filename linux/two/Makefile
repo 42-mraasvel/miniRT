@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/16 21:55:59 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/17 19:45:35 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/29 09:48:18 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HEADERS = $(shell find $(IDIR) -name "*.h")
 # compilation
 CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
-DFLAGS = -O0 -g -fsanitize=address
+DFLAGS = -O0 -g -fsanitize=address -fsanitize=leak
 IFLAGS = -I $(IDIR) -I$(MLXDIR) -I $(LIBFTDIR)
 
 # MLX
