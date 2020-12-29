@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 14:39:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 20:09:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,26 @@ typedef enum	e_errnums
 	malloc_error
 }				t_errnums;
 
+typedef struct	s_found
+{
+	unsigned char	resolution;
+	unsigned char	camera;
+}				t_found;
+
 typedef struct	s_vec3
 {
 	double	x;
 	double	y;
 	double	z;
 }				t_vec3;
+
+typedef struct	s_space
+{
+	t_vec3	origin;
+	t_vec3	base_x;
+	t_vec3	base_y;
+	t_vec3	base_z;
+}				t_space;
 
 typedef struct	s_mlx
 {

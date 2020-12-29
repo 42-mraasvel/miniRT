@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 14:21:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 20:13:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 ** we might as well create a chain of if-else statements right?
 */
 
-static int	parse_jump(char **element, t_scene *scene, t_mlx mlx)
+static int	parse_jump(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
 {
 	if (ft_strcmp(element[0], "R") == 0)
-		return (parse_resolution(element, scene, mlx));
+		return (parse_resolution(element, scene, mlx, bools));
 	else if (ft_strcmp(element[0], "A") == 0)
 		;
 	else if (ft_strcmp(element[0], "c") == 0)
-		return (parse_camera(element, scene->cameras));
+		return (parse_camera(element, scene->cameras, bools));
 	else if (ft_strcmp(element[0], "l") == 0)
 		;
 	else if (ft_strcmp(element[0], "sp") == 0)
@@ -44,7 +44,7 @@ static int	parse_jump(char **element, t_scene *scene, t_mlx mlx)
 	return (file_error);
 }
 
-static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
+static int	parse_information(char *line, t_scene *scene, t_mlx mlx, t_found *bools)
 {
 	char	**element;
 	int		ret;
@@ -55,7 +55,7 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 	ret = success;
 	if (*element != NULL)
 	{
-		ret = parse_jump(element, scene, mlx);
+		ret = parse_jump(element, scene, mlx, bools);
 		if (ret != success)
 		{
 			if (ft_printf("Parse Error:\n|%s|\n", line) == -1)
@@ -71,8 +71,10 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 	int		ret;
 	int		parse_ret;
 	char	*line;
+	t_found	bools;
 
 	ret = 1;
+	ft_bzero(&bools, sizeof(bools));
 	while (ret > 0)
 	{
 		ret = ft_getline(fd, &line);
@@ -80,7 +82,7 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 			return (gnl_error);
 		if (*line != '\0')
 		{
-			parse_ret = parse_information(line, scene, mlx);
+			parse_ret = parse_information(line, scene, mlx, &bools);
 			if (parse_ret != success)
 			{
 				free(line);
@@ -89,6 +91,8 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 		}
 		free(line);
 	}
+	if (bools.resolution == 0 || bools.camera == 0)
+		return (file_error);
 	return (success);
 }
 

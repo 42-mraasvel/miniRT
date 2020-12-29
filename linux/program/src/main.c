@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 14:56:45 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 17:04:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ int			main(int argc, char *argv[])
 		free_program(data, error);
 	if (print_file(&scene) != success)
 		free_program(data, error);
-	run(&data);
-	free_program(data, error);
+	if (run(&data) != success)
+		free_program(data, error);
+	else
+		free_program(data, success);
 	return (0);
 }

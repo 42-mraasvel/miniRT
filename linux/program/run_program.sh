@@ -1,6 +1,8 @@
+file='./files/easy.rt'
+
 if [ $# -eq 0 ]
 then
-    make && time ./a.out ./files/test.rt
+    make && time ./a.out $file
 elif [[ $1 == "re" ]]
 then
 	make re && time ./a.out

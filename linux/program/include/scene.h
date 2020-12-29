@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 12:54:50 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 20:12:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 
 typedef struct	s_resolution
 {
-	int	taken;
 	int	x;
 	int	y;
 	int	upp;

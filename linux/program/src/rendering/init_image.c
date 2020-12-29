@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 15:01:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 17:30:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ int			next_frame(t_data *data)
 	static int	camera_index = 0;
 
 	ft_printf("Rendering Camera Number: %d\n", camera_index + 1);
-	if (render_image(data->scene, data->img,
+	if (render_image(data->scene, data->next_image,
 	((t_camera*)data->scene->cameras->table)[camera_index]) != success)
 		return (error);
 	mlx_put_image_to_window(data->mlx->mlx_ptr,
-	data->mlx->win_ptr, data->img->img_ptr, 0, 0);
+	data->mlx->win_ptr, data->next_image->img_ptr, 0, 0);
+	ft_swap_ptr(&data->img, &data->next_image);
 	camera_index++;
 	if (camera_index == data->scene->cameras->nmemb)
 		camera_index = 0;

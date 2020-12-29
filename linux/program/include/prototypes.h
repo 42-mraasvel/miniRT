@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 14:56:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 20:12:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 // Print function, remove when turning in
 
+int	print_vec(t_vec3 a);
 int		print_file(t_scene *scene);
 
 /*
@@ -30,8 +31,8 @@ int		check_input(int argc, char *argv[]);
 */
 
 int		parse_file(char *pathname, t_scene *scene, t_mlx mlx);
-int		parse_resolution(char **element, t_scene *scene, t_mlx mlx);
-int		parse_camera(char **element, t_vect *cameras);
+int		parse_resolution(char **element, t_scene *scene, t_mlx mlx, t_found *bools);
+int		parse_camera(char **element, t_vect *cameras, t_found *bools);
 int		parse_sphere(char **element, t_vect *spheres);
 
 /*
@@ -64,6 +65,7 @@ int		key_hook(int keycode, t_data *data);
 */
 
 void	ft_pixel_put(t_img img, int x, int y, t_color color);
+t_color	gen_color(int r, int g, int b);
 
 /*
 ** init_image.c
@@ -108,5 +110,23 @@ t_vec3	vec_add(t_vec3 a, t_vec3 b);
 t_vec3	vec_normalize(t_vec3 v);
 double	vec_magnitude(t_vec3 v);
 double	vec_dot(t_vec3 a, t_vec3 b);
+t_vec3	vec_cross(t_vec3 a, t_vec3 b);
+t_vec3	vec_scalar(t_vec3 a, double scalar);
+
+/*
+** Vector rotation
+** Can probably be easier using matrices
+*/
+
+t_vec3	vec_rotate_x(t_vec3 a, double rad);
+t_vec3	vec_rotate_y(t_vec3 a, double rad);
+t_vec3	vec_rotate_z(t_vec3 a, double rad);
+
+/*
+** math_utils.c
+*/
+
+double	deg_to_rad(double degrees);
+double	rad_to_deg(double radians);
 
 #endif
