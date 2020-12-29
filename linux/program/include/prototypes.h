@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:12:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 23:05:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,13 @@ int		next_frame(t_data *data);
 int		render_image(t_scene *scene, t_img *img, t_camera camera);
 
 /*
+** Intersection Functions
+*/
+
+double	ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects);
+double	intersect_spheres(t_vec3 origin, t_vec3 direction, t_vect *spheres);
+
+/*
 ** error.c
 */
 
@@ -100,6 +107,8 @@ void	free_mlx(t_mlx mlx);
 */
 
 t_vec3	vec_gen(double x, double y, double z);
+int		vec_equal(t_vec3 a, t_vec3 b);
+t_space	new_coordinate_space(t_vec3 origin, t_vec3 base_z);
 
 /*
 ** Vector Operations
@@ -112,6 +121,8 @@ double	vec_magnitude(t_vec3 v);
 double	vec_dot(t_vec3 a, t_vec3 b);
 t_vec3	vec_cross(t_vec3 a, t_vec3 b);
 t_vec3	vec_scalar(t_vec3 a, double scalar);
+t_vec3	vec_dir(t_vec3 a, t_vec3 b);
+double	vec_square(t_vec3 a);
 
 /*
 ** Vector rotation

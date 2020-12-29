@@ -1,4 +1,4 @@
-file='./files/easy.rt'
+file='./files/spheres.rt'
 
 if [ $# -eq 0 ]
 then

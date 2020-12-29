@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:17:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 22:56:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,25 @@ t_vec3	calculate_image_start(t_scene *scene, t_space camera_space, t_camera came
 	double	x_half;
 	double	y_half;
 
-	x_half = (double)scene->resolution.x / 2.0;
-	y_half = (double)scene->resolution.y / 2.0;
-	image_distance = (x_half / 2.0) / (tan(deg_to_rad(camera.fov / 2)));
-	start = vec_scalar(camera_space.base_z, image_distance);
+	x_half = (double)scene->resolution.x / 2.0 - 0.5;
+	y_half = (double)scene->resolution.y / 2.0 - 0.5;
+	image_distance = x_half / (tan(deg_to_rad(camera.fov / 2)));
+	start = vec_add(camera_space.origin, vec_scalar(camera_space.base_z, image_distance));
 	start = vec_sub(start, vec_scalar(camera_space.base_x, x_half));
 	start = vec_sub(start, vec_scalar(camera_space.base_y, y_half));
 	return (start);
 }
 
-/*
-** Takes origin and direction as input.
-** Returns 3 basis vectors relative to
-** the world coordinate system.
-*/
-
-t_space	new_coordinate_space(t_vec3 origin, t_vec3 base_z)
+int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_color *color)
 {
-	t_space	new;
+	double	yes;
 
-	new.origin = origin;
-	new.base_z = base_z;
-	new.base_x = vec_rotate_y(base_z, deg_to_rad(-90));
-	new.base_y = vec_cross(new.base_x, new.base_z);
-	return (new);
+	yes = ray_intersection(camera.position, direction, scene->objects);
+	if (yes >= 0)
+		color->val = 0x00FF0000;
+	else
+		color->val = 0;
+	return (success);
 }
 
 /*
@@ -74,28 +69,40 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 {
 	int		i;
 	int		j;
+	// move camera_space into struct of camera, to make camera rotation easy
+	// start can also be part of t_camera
 	t_space	camera_space;
 	t_vec3	start;
 	t_vec3	pixel_position;
+	t_color	color;
 
 	print_camera_info(camera);
 	i = 0;
 	camera_space = new_coordinate_space(camera.position, camera.orientation);
 	start = calculate_image_start(scene, camera_space, camera);
-	ft_printf("Start: %.2f %.2f %.2f %.2f\n", -1.0, -10.0, -100.0, -1000.0);
+	ft_printf("\nBasis:\n");
+	print_vec(camera_space.base_x);
+	ft_printf("\n");
+	print_vec(camera_space.base_y);
+	ft_printf("\n");
+	print_vec(camera_space.base_z);
+	ft_printf("\n");
+	ft_printf("\nStart:\n");
 	print_vec(start);
-	printf("\n");
+	printf("\n\n");
 	while (i < scene->resolution.y)
 	{
 		j = 0;
 		pixel_position = start;
 		while (j < scene->resolution.x)
 		{
-			// ray_tracing(camera_position, vec_dir(camera_origin, pixel_position), scene);
-			vec_add(pixel_position, camera_space.base_x);
+			if (ray_tracing(camera, vec_dir(camera.position, pixel_position), scene, &color) != success)
+				return (render_error);
+			ft_pixel_put(*img, j, i, color);
+			pixel_position = vec_add(pixel_position, camera_space.base_x);
 			j++;
 		}
-		vec_add(start, camera_space.base_y);
+		start = vec_add(start, camera_space.base_y);
 		i++;
 	}
 	return (success);

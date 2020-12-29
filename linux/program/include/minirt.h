@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:09:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/29 22:41:52 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef enum	e_errnums
 	gnl_error,
 	file_error,
 	mlx_error,
+	render_error,
 	open_error,
 	read_error,
 	write_error,
