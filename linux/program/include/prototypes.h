@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 23:05:24 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/30 11:16:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	free_mlx(t_mlx mlx);
 
 t_vec3	vec_gen(double x, double y, double z);
 int		vec_equal(t_vec3 a, t_vec3 b);
+int		vec_parallel(t_vec3 a, t_vec3 b);
 t_space	new_coordinate_space(t_vec3 origin, t_vec3 base_z);
 
 /*
