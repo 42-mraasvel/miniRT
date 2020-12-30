@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 22:48:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 23:08:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/30 12:06:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ double	calculate_discriminant(double b, double c)
 	return (discriminant);
 }
 
-double	solve_for_t(double b, double c, double discriminant, int sign)
+double	solve_for_t(double b, double discriminant, int sign)
 {
 	return ((-b + sign * sqrt(discriminant)) / 2);
 }
 
-double	get_nearest_t(double b, double c, double discriminant)
+double	get_nearest_t(double b, double discriminant)
 {
 	double	t1;
 	double	t2;
 
-	t1 = solve_for_t(b, c, discriminant, 1);
+	t1 = solve_for_t(b, discriminant, 1);
 	if (discriminant == 0)
 		return (t1);
-	t2 = solve_for_t(b, c, discriminant, -1);
+	t2 = solve_for_t(b, discriminant, -1);
 	if (t1 < 0 || t2 < 0)
 		return (ft_fmax(t1, t2));
 	return (ft_fmin(t1, t2));
@@ -52,7 +52,6 @@ double	get_nearest_t(double b, double c, double discriminant)
 double	intersect_sphere(t_vec3 origin, t_vec3 direction, t_sphere sphere)
 {
 	double	radius;
-	double	a;
 	double	b;
 	double	c;
 	double	discriminant;
@@ -63,7 +62,7 @@ double	intersect_sphere(t_vec3 origin, t_vec3 direction, t_sphere sphere)
 	discriminant = calculate_discriminant(b, c);
 	if (discriminant < 0)
 		return (-1);
-	return (get_nearest_t(b, c, discriminant));
+	return (get_nearest_t(b, discriminant));
 }
 
 

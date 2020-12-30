@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/30 11:22:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/30 12:06:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_img		*init_image(t_data *data)
 #include <time.h>
 int			next_frame(t_data *data)
 {
-	static int	camera_index = 0;
+	static size_t	camera_index = 0;
 	clock_t	t;
 
 	ft_printf("\033[1;33mRendering Camera Number: %d\033[0;0m\n", camera_index + 1);

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 19:15:14 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:03:46 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/30 12:54:54 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vec3	vec_cross(t_vec3 a, t_vec3 b)
 	t_vec3	c;
 
 	c.x = a.y * b.z - a.z * b.y;
-	c.y = a.x * b.z - a.z * b.x;
+	c.y = -(a.x * b.z - a.z * b.x);
 	c.z = a.x * b.y - a.y * b.x;
 	return (c);
 }

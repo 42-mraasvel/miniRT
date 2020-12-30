@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 22:56:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/30 14:13:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_color *colo
 	if (yes >= 0)
 		color->val = 0x00FF0000;
 	else
-		color->val = 0;
+		color->val = 0x00FFFFFF;
 	return (success);
 }
 

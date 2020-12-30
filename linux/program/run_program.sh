@@ -1,4 +1,4 @@
-file='./files/spheres.rt'
+file='./files/camera_angles/sideways.rt'
 
 if [ $# -eq 0 ]
 then
