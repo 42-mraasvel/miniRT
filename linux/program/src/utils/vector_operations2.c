@@ -6,12 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 19:15:14 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/30 12:54:54 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 13:05:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "minirt.h"
+#include "prototypes.h"
 
 t_vec3	vec_cross(t_vec3 a, t_vec3 b)
 {

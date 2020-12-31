@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/31 08:33:18 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 13:04:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ double	vec_magnitude(t_vec3 v);
 double	vec_dot(t_vec3 a, t_vec3 b);
 t_vec3	vec_cross(t_vec3 a, t_vec3 b);
 t_vec3	vec_scalar(t_vec3 a, double scalar);
+t_vec3	vec_divide(t_vec3 a, double s);
 t_vec3	vec_dir(t_vec3 a, t_vec3 b);
 double	vec_square(t_vec3 a);
 
