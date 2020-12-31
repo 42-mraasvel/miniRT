@@ -6,21 +6,23 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 22:42:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 22:56:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 08:48:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minirt.h"
 #include "prototypes.h"
+#include <headers.h> // rm
 
 /*
 ** Goal: Find nearest POSITIVE intersection
 */
 
-double	ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects)
+int	ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects, t_intersection_data *data)
 {
-	double	t;
-
-	t = 0.0;
-	t = intersect_spheres(origin, direction, objects.spheres);
-	return (t);
+	intersect_spheres(origin, direction, objects.spheres, data);
+	if (data->t < 0.0)
+		return (error);
+	data->surface_normal = vec_normalize(data->surface_normal);
+	return (success);
 }

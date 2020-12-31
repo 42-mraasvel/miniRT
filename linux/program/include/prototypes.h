@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/30 11:16:29 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 08:33:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,8 @@ int		render_image(t_scene *scene, t_img *img, t_camera camera);
 ** Intersection Functions
 */
 
-double	ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects);
-double	intersect_spheres(t_vec3 origin, t_vec3 direction, t_vect *spheres);
-
+int	ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects, t_intersection_data *data);
+void	intersect_spheres(t_vec3 origin, t_vec3 direction, t_vect *spheres, t_intersection_data *data);
 /*
 ** error.c
 */

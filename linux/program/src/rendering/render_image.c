@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/30 14:13:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 08:45:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,16 @@ t_vec3	calculate_image_start(t_scene *scene, t_space camera_space, t_camera came
 
 int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_color *color)
 {
+	t_intersection_data data;
 	double	yes;
 
-	yes = ray_intersection(camera.position, direction, scene->objects);
-	if (yes >= 0)
-		color->val = 0x00FF0000;
-	else
-		color->val = 0x00FFFFFF;
+	data.t = -1.0;
+	if (ray_intersection(camera.position, direction, scene->objects, &data) != success)
+	{
+		color->val = 0;
+		return (success);
+	}
+	color->val = data.color.val;
 	return (success);
 }
 

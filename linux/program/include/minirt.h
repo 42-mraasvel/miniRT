@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 22:41:52 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 08:28:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,13 @@ typedef union	u_color
 		unsigned char	t;
 	}		rgb;
 }				t_color;
+
+typedef struct	s_intersection_data
+{
+	double	t;
+	t_vec3	intersection_point;
+	t_vec3	surface_normal;
+	t_color	color;
+}				t_intersection_data;
 
 #endif
