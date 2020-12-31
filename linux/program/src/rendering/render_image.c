@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/31 08:45:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/31 08:53:19 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,6 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 	i = 0;
 	camera_space = new_coordinate_space(camera.position, camera.orientation);
 	start = calculate_image_start(scene, camera_space, camera);
-	ft_printf("\nBasis:\n");
-	print_vec(camera_space.base_x);
-	ft_printf("\n");
-	print_vec(camera_space.base_y);
-	ft_printf("\n");
-	print_vec(camera_space.base_z);
-	ft_printf("\n");
-	ft_printf("\nStart:\n");
-	print_vec(start);
-	printf("\n\n");
 	while (i < scene->resolution.y)
 	{
 		j = 0;
