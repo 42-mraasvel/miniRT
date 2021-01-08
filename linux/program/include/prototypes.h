@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/31 13:04:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/08 23:41:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		parse_file(char *pathname, t_scene *scene, t_mlx mlx);
 int		parse_resolution(char **element, t_scene *scene, t_mlx mlx, t_found *bools);
 int		parse_camera(char **element, t_vect *cameras, t_found *bools);
 int		parse_sphere(char **element, t_vect *spheres);
+int		parse_plane(char **element, t_vect* planes);
 
 /*
 ** parsing_utils
@@ -84,8 +85,9 @@ int		render_image(t_scene *scene, t_img *img, t_camera camera);
 ** Intersection Functions
 */
 
-int	ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects, t_intersection_data *data);
+int		ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects, t_intersection_data *data);
 void	intersect_spheres(t_vec3 origin, t_vec3 direction, t_vect *spheres, t_intersection_data *data);
+void	intersect_planes(t_vec3 origin, t_vec3 direction, t_vect *planes, t_intersection_data *data);
 /*
 ** error.c
 */

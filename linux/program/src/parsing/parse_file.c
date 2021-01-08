@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:13:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/08 23:44:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	parse_jump(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
 	else if (ft_strcmp(element[0], "sp") == 0)
 		return (parse_sphere(element, scene->objects.spheres));
 	else if (ft_strcmp(element[0], "pl") == 0)
-		;
+		return (parse_plane(element, scene->objects.planes));
 	else if (ft_strcmp(element[0], "sq") == 0)
 		;
 	else if (ft_strcmp(element[0], "cy") == 0)
@@ -80,7 +80,8 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 		ret = ft_getline(fd, &line);
 		if (ret == -1)
 			return (gnl_error);
-		if (*line != '\0')
+		// remove hashtag check
+		if (*line != '\0' && *line != '#')
 		{
 			parse_ret = parse_information(line, scene, mlx, &bools);
 			if (parse_ret != success)
