@@ -6,20 +6,21 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/11 15:43:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/11 16:03:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 16:15:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h" // rm
-
 
 static double	calculate_b(t_vec3 one, t_vec3 two, t_vec3 three, t_vec3 p)
 {
 	double	constant;
 	double	denominator;
 
-	constant = -one.x * (three.y - one.y) + (one.y - p.y) * (three.x - one.x) + p.x * (three.y - one.y);
-	denominator = (two.x - one.x) * (three.y - one.y) - (two.y - one.y) * (three.x - one.x);
+	constant = -one.x * (three.y - one.y) +
+	(one.y - p.y) * (three.x - one.x) + p.x * (three.y - one.y);
+	denominator = (two.x - one.x) *
+	(three.y - one.y) - (two.y - one.y) * (three.x - one.x);
 	return (constant / denominator);
 }
 
@@ -74,14 +75,14 @@ static t_vec3	calculate_triangle_normal(t_triangle triangle)
 }
 
 void			intersect_triangles(t_vec3 origin, t_vec3 direction,
-		t_vect *triangles, t_intersection_data *data)
+				t_vect *triangles, t_intersection_data *data)
 {
 	size_t		i;
 	t_triangle	*table;
 	double		intersection;
 
 	i = 0;
-	table = (t_sphere*)triangles->table;
+	table = (t_triangle*)triangles->table;
 	while (i < triangles->nmemb)
 	{
 		intersection = intersect_triangle(origin, direction, table[i]);

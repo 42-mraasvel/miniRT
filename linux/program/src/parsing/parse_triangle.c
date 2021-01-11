@@ -6,13 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/11 15:38:15 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/11 15:42:31 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 16:07:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-int parse_triangle(char **element, t_vect *triangles)
+int	parse_triangle(char **element, t_vect *triangles)
 {
 	t_triangle	triangle;
 

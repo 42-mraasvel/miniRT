@@ -6,14 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/08 23:36:53 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/08 23:41:43 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 16:07:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 #include "libft.h"
 
-int	parse_plane(char **element, t_vect* planes)
+int	parse_plane(char **element, t_vect *planes)
 {
 	t_plane	plane;
 

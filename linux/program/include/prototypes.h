@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/11 15:48:13 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 16:14:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ int		ray_intersection(t_vec3 origin, t_vec3 direction, t_objects objects, t_inte
 void	intersect_spheres(t_vec3 origin, t_vec3 direction, t_vect *spheres, t_intersection_data *data);
 void	intersect_planes(t_vec3 origin, t_vec3 direction, t_vect *planes, t_intersection_data *data);
 double	intersect_plane(t_vec3 origin, t_vec3 direction, t_vec3 position, t_vec3 normal);
+void	intersect_triangles(t_vec3 origin, t_vec3 direction,
+		t_vect *triangles, t_intersection_data *data);
+
 /*
 ** error.c
 */
