@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/08 23:44:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 15:39:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	parse_jump(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
 	else if (ft_strcmp(element[0], "cy") == 0)
 		;
 	else if (ft_strcmp(element[0], "tr") == 0)
-		;
+		return (parse_triangle(element, scene->objects.triangles));
 	return (file_error);
 }
 

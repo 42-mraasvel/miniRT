@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/07 13:31:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/10 10:39:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 15:48:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 ** Derived from the plane equation: ax + by + cz = d
 */
 
-double	intersect_plane(t_vec3 origin, t_vec3 direction, t_vec3 position, t_vec3 normal) {
+double	intersect_plane(t_vec3 origin, t_vec3 direction, t_vec3 position, t_vec3 normal)
+{
 	double	n_dot_d;
 
 	n_dot_d = vec_dot(normal, direction);
