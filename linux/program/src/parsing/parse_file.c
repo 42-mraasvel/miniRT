@@ -49,7 +49,7 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx, t_found *boo
 	char	**element;
 	int		ret;
 
-	element = ft_split(line, ' ');
+	element = ft_split_set(line, " \t\n\r\v\f");
 	if (element == NULL)
 		return (malloc_error);
 	ret = success;

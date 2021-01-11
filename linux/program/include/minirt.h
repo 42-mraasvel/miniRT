@@ -6,14 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/31 08:28:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/11 14:46:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define WINDOW_NAME "MiniMaarten"
+# define WINDOW_NAME "MiniMaaRTen"
 
 typedef enum	e_errnums
 {
