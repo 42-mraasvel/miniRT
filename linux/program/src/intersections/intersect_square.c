@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/17 10:22:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 13:23:46 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/17 15:05:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_m34	square_basis(t_square square)
 	x = vec_normalize(x);
 	y = vec_cross(x, z);
 	y = vec_normalize(y);
-	return (matrix_assign(x, y, z, square.position));
+	return (matrix_assign(x, y, z, vec_gen(0, 0, 0)));
 }
 
 /*
@@ -60,7 +60,6 @@ double	intersect_square(t_vec3 origin, t_vec3 direction, t_square square)
 		return (-1);
 	if (ft_fabs(point.y) > square.side_size / 2)
 		return (-1);
-	// print_matrix(cob_matrix);
 	return (t);
 }
 

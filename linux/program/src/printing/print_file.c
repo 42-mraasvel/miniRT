@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 20:50:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 12:46:39 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/17 13:50:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_vec(t_vec3 a)
 {
-	return (ft_printf("%.2f,%.2f,%.2f", a.x, a.y, a.z));
+	return (ft_printf("(%.2f,%.2f,%.2f)", a.x, a.y, a.z));
 }
 
 int	print_color(t_color a)
