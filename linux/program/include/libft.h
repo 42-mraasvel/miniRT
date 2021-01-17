@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 16:17:24 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/17 12:51:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,8 @@ int					ft_min(int a, int b);
 int					ft_max(int a, int b);
 double				ft_fmax(double a, double b);
 double				ft_fmin(double a, double b);
+int					ft_abs(int a);
+double				ft_fabs(double x);
+long long			ft_absll(long long l);
 
 #endif

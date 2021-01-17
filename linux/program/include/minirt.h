@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/11 14:46:24 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/17 12:23:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ typedef struct	s_vec3
 	double	y;
 	double	z;
 }				t_vec3;
+
+typedef struct	s_m34
+{
+	double	m[3][4];
+}				t_m34;
 
 typedef struct	s_space
 {

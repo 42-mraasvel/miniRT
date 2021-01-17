@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/11 16:14:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/17 13:18:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 int	print_vec(t_vec3 a);
 int		print_file(t_scene *scene);
+void print_matrix(t_m34 matrix);
 
 /*
 ** argument_checks.c
@@ -36,6 +37,7 @@ int		parse_camera(char **element, t_vect *cameras, t_found *bools);
 int		parse_sphere(char **element, t_vect *spheres);
 int		parse_plane(char **element, t_vect* planes);
 int		parse_triangle(char **element, t_vect *triangles);
+int		parse_square(char **element, t_vect *squares);
 
 /*
 ** parsing_utils
@@ -92,6 +94,8 @@ void	intersect_planes(t_vec3 origin, t_vec3 direction, t_vect *planes, t_interse
 double	intersect_plane(t_vec3 origin, t_vec3 direction, t_vec3 position, t_vec3 normal);
 void	intersect_triangles(t_vec3 origin, t_vec3 direction,
 		t_vect *triangles, t_intersection_data *data);
+void	intersect_squares(t_vec3 origin, t_vec3 direction,
+		t_vect *squares, t_intersection_data *data);
 
 /*
 ** error.c
@@ -131,6 +135,16 @@ t_vec3	vec_scalar(t_vec3 a, double scalar);
 t_vec3	vec_divide(t_vec3 a, double s);
 t_vec3	vec_dir(t_vec3 a, t_vec3 b);
 double	vec_square(t_vec3 a);
+
+/*
+** Matrix Operations
+*/
+
+t_m34	matrix_init(void);
+t_vec3	matrix_vector_mult(t_m34 a, t_vec3 x);
+t_m34	matrix_transpose(t_m34 matrix);
+t_vec3	matrix_point_mult(t_m34 a, t_vec3 x);
+t_m34	matrix_assign(t_vec3 col1, t_vec3 col2, t_vec3 col3, t_vec3 col4);
 
 /*
 ** Vector rotation
