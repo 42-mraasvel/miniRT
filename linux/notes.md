@@ -37,12 +37,7 @@ Error Handling:
 		5. mlx_xpm_file_to_image();
 
 
-Line Drawing Algorithm
-
-https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)
-https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#:~:text=Bresenham's%20line%20algorithm%20is%20a,straight%20line%20between%20two%20points.
-
-Sources:
+Tutorials:
 
 https://github.com/ilkou/minilibx - Linux/WSL setup tutorial
 
