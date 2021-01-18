@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse_sphere.c                                     :+:    :+:            */
+/*   parse_square.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/28 19:23:34 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 10:42:26 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/01/17 10:37:50 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/01/17 13:21:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "prototypes.h"
 
-int	parse_sphere(char **element, t_vect *spheres)
+int	parse_square(char **element, t_vect *squares)
 {
-	t_sphere	sphere;
+	t_square	square;
 
-	if (check_information(element, 4) != success)
+	if (check_information(element, 5) != success)
 		return (file_error);
-	if (parse_coordinates(element[1], &sphere.position) != success)
+	if (parse_coordinates(element[1], &square.position) != success)
 		return (file_error);
-	if (check_number(element[2]) != success)
+	if (parse_coordinates(element[2], &square.orientation) != success)
 		return (file_error);
-	sphere.diameter = ft_atof(element[2]);
-	if (sphere.diameter <= 0)
+	square.orientation = vec_normalize(square.orientation);
+	if (check_number(element[3]) != success)
 		return (file_error);
-	sphere.color.val = parse_color(element[3]);
-	if (sphere.color.val < 0)
+	square.side_size = ft_atof(element[3]);
+	if (square.side_size <= 0)
 		return (file_error);
-	if (vect_pushback(spheres, &sphere) == -1)
+	square.color.val = parse_color(element[4]);
+	if (square.color.val < 0)
+		return (file_error);
+	if (vect_pushback(squares, &square) == -1)
 		return (malloc_error);
 	return (success);
 }
