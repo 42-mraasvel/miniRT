@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 20:22:53 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/19 21:25:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/19 21:30:52 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ int		vec_parallel(t_vec3 a, t_vec3 b)
 	return (1);
 }
 
+int		vec_zero(t_vec3 v)
+{
+	if (v.x == 0 && v.y == 0 && v.z == 0)
+		return (1)
+	return (0);
+}
+
 /*
 ** Takes origin and direction as input.
 ** Returns 3 basis vectors relative to
@@ -53,11 +60,9 @@ t_space	new_coordinate_space(t_vec3 origin, t_vec3 base_z)
 
 	new.origin = origin;
 	new.base_z = vec_normalize(base_z);
-	y = vec_gen(0, 1, 0);
-	if (vec_parallel(base_z, y) == 0)
-		new.base_x = vec_cross(base_z, vec_gen(0, 0, 1));
-	else
-		new.base_x = vec_cross(base_z, y);
+	new.base_x = vec_cross(base_z, vec_gen(0, 0, 1));
+	if (vec_zero(new.base_x) == 1)
+		new.base_x = vec_cross(base_z, vec_gen(0, 1, 0));
 	new.base_x = vec_normalize(new.base_x);
 	new.base_y = vec_cross(new.base_x, new.base_z);
 	return (new);
