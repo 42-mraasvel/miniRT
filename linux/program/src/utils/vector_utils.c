@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 20:22:53 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/30 11:35:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/19 21:25:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ t_space	new_coordinate_space(t_vec3 origin, t_vec3 base_z)
 	t_vec3	y;
 
 	new.origin = origin;
-	new.base_z = base_z;
+	new.base_z = vec_normalize(base_z);
 	y = vec_gen(0, 1, 0);
 	if (vec_parallel(base_z, y) == 0)
 		new.base_x = vec_cross(base_z, vec_gen(0, 0, 1));
 	else
 		new.base_x = vec_cross(base_z, y);
+	new.base_x = vec_normalize(new.base_x);
 	new.base_y = vec_cross(new.base_x, new.base_z);
 	return (new);
 }
