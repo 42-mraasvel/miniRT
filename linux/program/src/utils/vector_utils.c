@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 20:22:53 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/19 21:30:52 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/19 21:36:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		vec_parallel(t_vec3 a, t_vec3 b)
 int		vec_zero(t_vec3 v)
 {
 	if (v.x == 0 && v.y == 0 && v.z == 0)
-		return (1)
+		return (1);
 	return (0);
 }
 
@@ -56,7 +56,6 @@ int		vec_zero(t_vec3 v)
 t_space	new_coordinate_space(t_vec3 origin, t_vec3 base_z)
 {
 	t_space	new;
-	t_vec3	y;
 
 	new.origin = origin;
 	new.base_z = vec_normalize(base_z);

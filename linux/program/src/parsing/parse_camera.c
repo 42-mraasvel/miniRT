@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:47:52 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/30 11:32:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/18 20:55:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	parse_camera(char **element, t_vect *cameras, t_found *bools)
 		return (file_error);
 	if (vec_magnitude(camera.orientation) == 0)
 		return (file_error);
-	if (vec_magnitude(camera.orientation) != 1)
+	// if (vec_magnitude(camera.orientation) != 1)
 		camera.orientation = vec_normalize(camera.orientation);
 	if (check_number(element[3]) != success)
 		return (file_error);

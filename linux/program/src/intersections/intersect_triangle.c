@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/11 15:43:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/11 16:15:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/19 22:34:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static double	intersect_triangle(t_vec3 origin, t_vec3 direction, t_triangle tri
 
 	normal = vec_normalize(vec_cross(vec_sub(triangle.point_2, triangle.point_1), vec_sub(triangle.point_3, triangle.point_1)));
 	t = intersect_plane(origin, direction, triangle.point_1, normal);
-	if (t < 0)
+	if (t <= 0)
 		return (-1);
 	intersection_point = vec_add(origin, vec_scalar(direction, t));
 	b = calculate_b(triangle.point_1, triangle.point_2, triangle.point_3, intersection_point);
