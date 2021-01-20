@@ -6,12 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/11 15:43:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/19 22:34:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/19 22:44:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h" // rm
 
+// when the denominator = 0 or 3.y - 1.y = 0, it will return -2 and find nointersection, even though an intersection is probably possible
 static double	calculate_b(t_vec3 one, t_vec3 two, t_vec3 three, t_vec3 p)
 {
 	double	constant;
@@ -21,6 +22,8 @@ static double	calculate_b(t_vec3 one, t_vec3 two, t_vec3 three, t_vec3 p)
 	(one.y - p.y) * (three.x - one.x) + p.x * (three.y - one.y);
 	denominator = (two.x - one.x) *
 	(three.y - one.y) - (two.y - one.y) * (three.x - one.x);
+	if (denominator == 0)
+		return (-2);
 	return (constant / denominator);
 }
 
@@ -34,6 +37,8 @@ static double	calculate_c(t_triangle triangle, t_vec3 p, double b)
 	one = triangle.point_1;
 	two = triangle.point_2;
 	three = triangle.point_3;
+	if (three.y - one.y == 0)
+		return (-2);
 	c = (p.y - one.y - b * (two.y - one.y)) / (three.y - one.y);
 	return (c);
 }

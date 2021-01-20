@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/19 21:39:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/20 13:07:10 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_vec3	calculate_image_start(t_scene *scene, t_space camera_space, t_camera came
 	image_distance = x_half / (tan(deg_to_rad(camera.fov / 2)));
 	start = vec_add(camera_space.origin, vec_scalar(camera_space.base_z, image_distance));
 	start = vec_sub(start, vec_scalar(camera_space.base_x, x_half));
-	start = vec_sub(start, vec_scalar(camera_space.base_y, y_half));
+	start = vec_add(start, vec_scalar(camera_space.base_y, y_half));
 	return (start);
 }
 
@@ -95,7 +95,7 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 			pixel_position = vec_add(pixel_position, camera_space.base_x);
 			j++;
 		}
-		start = vec_add(start, camera_space.base_y);
+		start = vec_sub(start, camera_space.base_y);
 		i++;
 	}
 	return (success);
