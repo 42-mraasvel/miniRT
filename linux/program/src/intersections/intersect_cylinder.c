@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/20 17:38:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/20 17:47:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,31 @@ static double	get_nearest_t(double b, double discriminant)
 	return (ft_fmin(t1, t2));
 }
 
+/*
+** Source: https://mrl.cs.nyu.edu/~dzorin/rend05/lecture2.pdf
+*/
+
 static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cylinder)
 {
 	double	a;
 	double	b;
 	double	c;
 	t_vec3 tmp;
+	t_vec3 tmp2;
 	t_vec3 cip;
 
+	// calculate a
+	a = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
+	a = vec_dot(a, a);
+
+	// calculate b
 	tmp = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
-	a = vec_dot(tmp, tmp);
-	cip = vec_sub(origin, cylinder.position);
-	tmp = vec_sub(direction, vec_dot(vec_dot(vec_dot(direction, cylinder.orientation), cylinder.orientation), cip));
-	tmp = vec_sub(tmp, vec_dot(vec_dot(cip, cylinder.orientation), cylinder.orientation));
-	b = vec_scalar(tmp, 2);
-	tmp = vec_sub(cip, vec_dot(vec_dot(cip, cylinder.orientation), cylinder.orientation));
-	c = vec_dot(tmp, tmp) - (cylinder.diameter / 2) * (cylinder.diameter/2)
+	tmp2 = vec_sub(cip, vec_scalar(cylinder.orientation, vec_dot(cip, cylinder.orientation)));
+	b = 2 * vec_dot(tmp, tmp2);
+
+	// calculate c
+	tmp = vec_sub(cip, vec_scalar(cylinder.orientation, vec_dot(cip, cylinder.orientation)));
+	c = vec_dot(tmp, tmp) - pow(cylinder.diameter / 2, 2);
 
 	double discriminant = (b * b) - 4 * c;
 	double t = get_nearest_t(b, discriminant);
