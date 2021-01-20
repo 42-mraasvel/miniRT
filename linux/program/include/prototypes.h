@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 13:18:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/20 13:20:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		parse_sphere(char **element, t_vect *spheres);
 int		parse_plane(char **element, t_vect* planes);
 int		parse_triangle(char **element, t_vect *triangles);
 int		parse_square(char **element, t_vect *squares);
+int		parse_cylinder(char **element, t_vect *cylinders);
 
 /*
 ** parsing_utils
@@ -96,6 +97,8 @@ void	intersect_triangles(t_vec3 origin, t_vec3 direction,
 		t_vect *triangles, t_intersection_data *data);
 void	intersect_squares(t_vec3 origin, t_vec3 direction,
 		t_vect *squares, t_intersection_data *data);
+void	intersect_cylinders(t_vec3 origin, t_vec3 direction,
+		t_vect *cylinders, t_intersection_data *data);
 
 /*
 ** error.c
