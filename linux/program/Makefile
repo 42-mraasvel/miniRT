@@ -27,7 +27,7 @@ LIBDIR = libs
 
 DFLAGS = -O0 -g -fsanitize=address -fsanitize=leak
 # DFLAGS = -O3
-CC = clang
+CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
 CFLAGS = -Wall -Wextra
 IFLAGS = -I $(IDIR) -I $(MLXDIR)
