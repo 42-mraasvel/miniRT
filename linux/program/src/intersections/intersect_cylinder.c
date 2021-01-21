@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/20 17:47:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/20 17:51:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	t_vec3 tmp2;
 	t_vec3 cip;
 
+	// change in p = p - pa
+	cip = vec_sub(origin, cylinder.position);
+
 	// calculate a
-	a = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
-	a = vec_dot(a, a);
+	tmp = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
+	a = vec_dot(tmp, tmp);
 
 	// calculate b
 	tmp = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
@@ -58,9 +61,9 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	c = vec_dot(tmp, tmp) - pow(cylinder.diameter / 2, 2);
 
 	double discriminant = (b * b) - 4 * c;
-	double t = get_nearest_t(b, discriminant);
-
-	return (t);
+	if (discriminant < 0)
+		return (-1);
+	return (get_nearest_t(b, discriminant));
 }
 
 t_vec3	calculate_cylinder_normal(t_cylinder cylinder, t_vec3 intersection_point)
