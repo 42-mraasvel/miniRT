@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/21 15:47:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/21 16:20:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static double	get_nearest_t(double b, double discriminant)
 /*
 ** Source: https://mrl.cs.nyu.edu/~dzorin/rend05/lecture2.pdf
 ** https://math.stackexchange.com/questions/3248356/calculating-ray-cylinder-intersection-points
+** https://math.stackexchange.com/questions/406446/cylinder-ray-intersections-equation
 */
 
 static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cylinder)
