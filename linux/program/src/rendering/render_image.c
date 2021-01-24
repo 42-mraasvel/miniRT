@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/24 17:48:26 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/24 17:52:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_color *colo
 	get_viewing_direction(&data, camera);
 	check_normal(&data);
 	facing_ratio(&data);
-	// color->val = data.color.val;
+	color->val = data.color.val;
 	return (success);
 }
 
