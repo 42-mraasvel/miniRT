@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/20 13:20:14 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/24 17:48:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ t_vec3	vec_scalar(t_vec3 a, double scalar);
 t_vec3	vec_divide(t_vec3 a, double s);
 t_vec3	vec_dir(t_vec3 a, t_vec3 b);
 double	vec_square(t_vec3 a);
+void	vec_invert(t_vec3 *v);
 
 /*
 ** Matrix Operations
@@ -164,5 +165,12 @@ t_vec3	vec_rotate_z(t_vec3 a, double rad);
 
 double	deg_to_rad(double degrees);
 double	rad_to_deg(double radians);
+
+/*
+** Testing shading
+*/
+void	get_viewing_direction(t_intersection_data *data, t_camera camera);
+void	check_normal(t_intersection_data *data);
+void	facing_ratio(t_intersection_data *data);
 
 #endif

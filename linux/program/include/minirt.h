@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 12:23:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/24 17:26:47 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct	s_intersection_data
 	t_vec3	intersection_point;
 	t_vec3	surface_normal;
 	t_color	color;
+	t_vec3	viewing_direction;
 }				t_intersection_data;
 
 #endif

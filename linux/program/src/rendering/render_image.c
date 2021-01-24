@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/20 13:07:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/24 17:48:26 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_color *colo
 		color->val = 0;
 		return (success);
 	}
-	color->val = data.color.val;
+	//! Compute distance intersection point to all light sources
+	//! Compute color using the parameters: light intensity, surface normal, viewing direction
+
+	//! Here we are testing some basic shading
+	get_viewing_direction(&data, camera);
+	check_normal(&data);
+	facing_ratio(&data);
+	// color->val = data.color.val;
 	return (success);
 }
 
