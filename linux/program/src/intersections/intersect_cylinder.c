@@ -6,26 +6,26 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/21 16:20:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/25 19:54:47 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h"
 
-static double	solve_for_t(double b, double discriminant, int sign)
+static double	solve_for_t(double a, double b, double discriminant, int sign)
 {
-	return ((-b + sign * sqrt(discriminant)) / 2);
+	return ((-b + sign * sqrt(discriminant)) / (2 * a));
 }
 
-static double	get_nearest_t(double b, double discriminant)
+static double	get_nearest_t_cylinder(double a, double b, double discriminant)
 {
 	double	t1;
 	double	t2;
 
-	t1 = solve_for_t(b, discriminant, 1);
+	t1 = solve_for_t(a, b, discriminant, 1);
 	if (discriminant == 0)
 		return (t1);
-	t2 = solve_for_t(b, discriminant, -1);
+	t2 = solve_for_t(a, b, discriminant, -1);
 	if (t1 < 0 || t2 < 0)
 		return (ft_fmax(t1, t2));
 	return (ft_fmin(t1, t2));
@@ -42,30 +42,30 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	double	a;
 	double	b;
 	double	c;
-	t_vec3 tmp;
-	t_vec3 tmp2;
-	t_vec3 cip;
+	double	discriminant;
+	t_vec3 v1;
+	t_vec3 v2;
+	t_vec3	delta_p;
+	
+	delta_p = vec_sub(origin, cylinder.position);
+	// a = (v - (v . va)va)^2
+	// v = ray direction
+	// va = cylinder direction
+	
+	v1 = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
+	a = vec_dot(v1, v1);
 
-	// change in p = p - pa
-	cip = vec_sub(origin, cylinder.position);
+	// b = 2(v - (v . va)va . delta_p - (delta_p . va)va)
+	v2 = vec_sub(delta_p, vec_scalar(cylinder.orientation, vec_dot(delta_p, cylinder.orientation)));
+	b = 2 * vec_dot(v1, v2);
 
-	// calculate a
-	tmp = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
-	a = vec_dot(tmp, tmp);
+	// c = (delta_p - (delta_p . va)va)^2 - r^2
+	c = vec_dot(v2, v2) - (cylinder.diameter / 2 * cylinder.diameter / 2);
 
-	// calculate b
-	tmp = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
-	tmp2 = vec_sub(cip, vec_scalar(cylinder.orientation, vec_dot(cip, cylinder.orientation)));
-	b = 2 * vec_dot(tmp, tmp2);
-
-	// calculate c
-	tmp = vec_sub(cip, vec_scalar(cylinder.orientation, vec_dot(cip, cylinder.orientation)));
-	c = vec_dot(tmp, tmp) - pow(cylinder.diameter / 2, 2);
-
-	double discriminant = (b * b) - 4 * c;
-	if (discriminant < 0)
+	discriminant = b * b - 4 * a * c;
+	if (c < 0)
 		return (-1);
-	return (get_nearest_t(b, discriminant));
+	return (get_nearest_t_cylinder(a, b, discriminant));
 }
 
 t_vec3	calculate_cylinder_normal(t_cylinder cylinder, t_vec3 intersection_point)
