@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/25 19:54:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/25 20:01:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	c = vec_dot(v2, v2) - (cylinder.diameter / 2 * cylinder.diameter / 2);
 
 	discriminant = b * b - 4 * a * c;
-	if (c < 0)
+	if (discriminant < 0)
 		return (-1);
+	printf("T: %f\n%f\n", get_nearest_t_cylinder(a, b, discriminant), discriminant);
+	print_vec(vec_gen(a, b, c));
+	printf("\n");
 	return (get_nearest_t_cylinder(a, b, discriminant));
 }
 
