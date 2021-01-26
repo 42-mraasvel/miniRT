@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/25 20:01:34 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/25 21:02:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	double	b;
 	double	c;
 	double	discriminant;
-	t_vec3 v1;
-	t_vec3 v2;
+	t_vec3	v1;
+	t_vec3	v2;
 	t_vec3	delta_p;
-	
+
 	delta_p = vec_sub(origin, cylinder.position);
 	// a = (v - (v . va)va)^2
 	// v = ray direction
 	// va = cylinder direction
-	
+
 	v1 = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
 	a = vec_dot(v1, v1);
 
