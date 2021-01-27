@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 20:22:53 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/26 10:29:45 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 21:28:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,15 @@ int		vec_equal(t_vec3 a, t_vec3 b)
 	return (1);
 }
 
+
 int		vec_parallel(t_vec3 a, t_vec3 b)
 {
+	// cauchy schwartz inequality
+	// a . b = |a| * |b| * cos theta, but cos(0) = 1 so (a . b = |a| * |b|) if the angle between them is 0 (parallel)
+	if (vec_dot(a, b) == vec_magnitude(a) * vec_magnitude(b))
+		return (0);
+	else
+		return (1);
 	a = vec_normalize(a);
 	b = vec_normalize(b);
 	if (a.x == b.x && a.y == b.y && a.z == b.z)
