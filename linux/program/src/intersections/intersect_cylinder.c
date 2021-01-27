@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/27 12:23:36 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 12:31:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ static double	get_discriminant(double a, double b, double c)
 ** https://math.stackexchange.com/questions/406446/cylinder-ray-intersections-equation
 
 
+Derived from point line distance equation: Area = |N x (P - A)| = |N| * r
+where r is the distance from the line to the point
+and P = the intersection point = P(t) = O + t * D
+
 N = cylinder orientation
 O = position of the camera
 D = direction of the ray
@@ -49,9 +53,9 @@ r = radius
 A = a point on the cylinder axis
 
 
-A = (N x D)^2
-B = 2 * ((N x D) . (N x A) - (N x D) . (N x O))
-C = (N x A)^2 + (N x O)^2 - 2 * ((N x A) . (N x O)) - r^2 * |N|^2
+a = (N x D)^2
+b = 2 * ((N x D) . (N x A) - (N x D) . (N x O))
+c = (N x A)^2 + (N x O)^2 - 2 * ((N x A) . (N x O)) - r^2 * |N|^2
 
 */
 
@@ -75,7 +79,10 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	c += vec_dot(tmp, tmp);
 	c -= 2 * vec_dot(vec_cross(cylinder.orientation, cylinder.position), vec_cross(cylinder.orientation, origin));
 	c -= (pow(radius, 2.0) * vec_dot(cylinder.orientation, cylinder.orientation));
-	return (get_nearest_t_cylinder(a, b, get_discriminant(a, b, c)));
+	double discriminant = get_discriminant(a, b, c);
+	if (discriminant < 0.0)
+		return (-1);
+	return (get_nearest_t_cylinder(a, b, discriminant));
 }
 
 t_vec3	calculate_cylinder_normal(t_cylinder cylinder, t_vec3 intersection_point)
