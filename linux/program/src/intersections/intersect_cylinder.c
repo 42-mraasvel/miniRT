@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/27 12:31:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 15:43:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,23 @@ D = direction of the ray
 r = radius
 A = a point on the cylinder axis
 
-
 a = (N x D)^2
 b = 2 * ((N x D) . (N x A) - (N x D) . (N x O))
 c = (N x A)^2 + (N x O)^2 - 2 * ((N x A) . (N x O)) - r^2 * |N|^2
+
+attempt 2:
+
+
+a = ray origin
+b = cylinder position
+dir = ray direction
+d = cylinder orientation
+tmp = RayOrigin - CylinderPosition
+
+A = (dir x d)^2
+B = 2(tmp x d . dir x d)
+C = (tmp x d)^2 - r^2
+
 
 */
 
@@ -65,23 +78,19 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	double b;
 	double c;
 	double radius = cylinder.diameter / 2.0;
-	t_vec3 tmp;
+	double discriminant;
+	t_vec3 tmp = vec_sub(origin, cylinder.position);
 
-	tmp = vec_cross(cylinder.orientation, direction);
-	a = vec_dot(tmp, tmp);
-	
-	b = vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.orientation, cylinder.position));
-	b = 2 * (b - vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.orientation, origin)));
+	t_vec3 v = vec_cross(direction, cylinder.orientation);
+	a = vec_dot(v, v);
 
-	tmp = vec_cross(cylinder.orientation, cylinder.position);
-	c = vec_dot(tmp, tmp);
-	tmp = vec_cross(cylinder.orientation, origin);
-	c += vec_dot(tmp, tmp);
-	c -= 2 * vec_dot(vec_cross(cylinder.orientation, cylinder.position), vec_cross(cylinder.orientation, origin));
-	c -= (pow(radius, 2.0) * vec_dot(cylinder.orientation, cylinder.orientation));
-	double discriminant = get_discriminant(a, b, c);
+	b = 2 * (vec_dot(vec_cross(tmp, cylinder.orientation), vec_cross(direction, cylinder.orientation)));
+	v = vec_cross(tmp, cylinder.orientation);
+	c = vec_dot(v, v) - pow(radius, 2);
+
+	discriminant = get_discriminant(a, b, c);
 	if (discriminant < 0.0)
-		return (-1);
+		return (-10);
 	return (get_nearest_t_cylinder(a, b, discriminant));
 }
 
