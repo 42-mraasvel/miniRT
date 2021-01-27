@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/26 22:14:34 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 12:22:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static double	get_nearest_t_cylinder(double a, double b, double discriminant)
 	return (ft_fmin(t1, t2));
 }
 
+static double	get_discriminant(double a, double b, double c)
+{
+	return (b * b - 4 * a * c);
+}
+
 /*
 ** Source: https://mrl.cs.nyu.edu/~dzorin/rend05/lecture2.pdf
 ** https://math.stackexchange.com/questions/3248356/calculating-ray-cylinder-intersection-points
@@ -52,36 +57,25 @@ C = (N x A)^2 + (N x O)^2 - 2 * ((N x A) . (N x O)) - r^2 * |N|^2
 
 static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cylinder)
 {
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-	t_vec3	v1;
-	t_vec3	v2;
-	t_vec3	delta_p;
+	double a;
+	double b;
+	double c;
+	double radius = cylinder.diameter / 2.0;
+	t_vec3 tmp;
 
-	delta_p = vec_sub(origin, cylinder.position);
-	// a = (v - (v . va)va)^2
-	// v = ray direction
-	// va = cylinder direction
+	tmp = vec_Cross(cylinder.orientation, direction);
+	a = vec_dot(tmp, tmp);
+	
+	b = vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.origin, cylinder.position));
+	b = 2 * (b - vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.orientation, origin)));
 
-	v1 = vec_sub(direction, vec_scalar(cylinder.orientation, vec_dot(direction, cylinder.orientation)));
-	a = vec_dot(v1, v1);
-
-	// b = 2(v - (v . va)va . delta_p - (delta_p . va)va)
-	v2 = vec_sub(delta_p, vec_scalar(cylinder.orientation, vec_dot(delta_p, cylinder.orientation)));
-	b = 2 * vec_dot(v1, v2);
-
-	// c = (delta_p - (delta_p . va)va)^2 - r^2
-	c = vec_dot(v2, v2) - (cylinder.diameter / 2 * cylinder.diameter / 2);
-
-	discriminant = b * b - 4 * a * c;
-	if (discriminant < 0)
-		return (-1);
-	printf("T: %f\n%f\n", get_nearest_t_cylinder(a, b, discriminant), discriminant);
-	print_vec(vec_gen(a, b, c));
-	printf("\n");
-	return (get_nearest_t_cylinder(a, b, discriminant));
+	tmp = vec_cross(cylinder.orientation, cylinder.position);
+	c = vec_dot(tmp, tmp);
+	tmp = vec_cross(cylinder.orientation, origin);
+	c += vec_dot(tmp, tmp);
+	c -= 2 * vec_dot(vec_cross(cylinder.orientation, cylinder.position), vec_cross(cylinder.orientation, origin));
+	c -= (pow(r, 2.0) * vec_dot(cylinder.orientation, cylinder.orientation));
+	return (get_nearest_t_cylinder(a, b, get_discriminant(a, b, c)));
 }
 
 t_vec3	calculate_cylinder_normal(t_cylinder cylinder, t_vec3 intersection_point)
