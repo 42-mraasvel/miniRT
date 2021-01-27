@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/27 15:43:45 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 16:06:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ A = (dir x d)^2
 B = 2(tmp x d . dir x d)
 C = (tmp x d)^2 - r^2
 
+Right now it only intersects with the infinite cylinder, still have to make it check height intersection.
+And calculate the surface normal.
 
 */
 
@@ -80,8 +82,8 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	double radius = cylinder.diameter / 2.0;
 	double discriminant;
 	t_vec3 tmp = vec_sub(origin, cylinder.position);
-
 	t_vec3 v = vec_cross(direction, cylinder.orientation);
+
 	a = vec_dot(v, v);
 
 	b = 2 * (vec_dot(vec_cross(tmp, cylinder.orientation), vec_cross(direction, cylinder.orientation)));

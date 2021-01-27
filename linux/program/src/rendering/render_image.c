@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/27 12:29:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 15:45:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,9 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 			if (ray_tracing(camera, vec_dir(camera.position, pixel_position), scene, &color) != success)
 				return (render_error);
 			ft_pixel_put(*img, j, i, color);
-			print_vec(vec_dir(camera.position, pixel_position));
-			printf("\n");
 			pixel_position = vec_add(pixel_position, camera_space.base_x);
 			j++;
-			break;
 		}
-		break;
 		start = vec_sub(start, camera_space.base_y);
 		i++;
 	}
