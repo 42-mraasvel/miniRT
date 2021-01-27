@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/27 12:22:24 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/27 12:23:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	double radius = cylinder.diameter / 2.0;
 	t_vec3 tmp;
 
-	tmp = vec_Cross(cylinder.orientation, direction);
+	tmp = vec_cross(cylinder.orientation, direction);
 	a = vec_dot(tmp, tmp);
 	
-	b = vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.origin, cylinder.position));
+	b = vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.orientation, cylinder.position));
 	b = 2 * (b - vec_dot(vec_cross(cylinder.orientation, direction), vec_cross(cylinder.orientation, origin)));
 
 	tmp = vec_cross(cylinder.orientation, cylinder.position);
@@ -74,7 +74,7 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 	tmp = vec_cross(cylinder.orientation, origin);
 	c += vec_dot(tmp, tmp);
 	c -= 2 * vec_dot(vec_cross(cylinder.orientation, cylinder.position), vec_cross(cylinder.orientation, origin));
-	c -= (pow(r, 2.0) * vec_dot(cylinder.orientation, cylinder.orientation));
+	c -= (pow(radius, 2.0) * vec_dot(cylinder.orientation, cylinder.orientation));
 	return (get_nearest_t_cylinder(a, b, get_discriminant(a, b, c)));
 }
 
