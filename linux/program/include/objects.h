@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 20:38:04 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:06:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ typedef struct	s_sphere
 {
 	t_vec3	position;
 	double	diameter;
-	t_color	color;
+	t_col	color;
 }				t_sphere;
 
 typedef struct	s_plane
 {
 	t_vec3	position;
 	t_vec3	orientation;
-	t_color	color;
+	t_col	color;
 }				t_plane;
 
 typedef struct	s_square
@@ -58,7 +58,7 @@ typedef struct	s_square
 	t_vec3	position;
 	t_vec3	orientation;
 	double	side_size;
-	t_color	color;
+	t_col	color;
 }				t_square;
 
 typedef struct	s_cylinder
@@ -67,7 +67,7 @@ typedef struct	s_cylinder
 	t_vec3	orientation;
 	double	diameter;
 	double	height;
-	t_color	color;
+	t_col	color;
 }				t_cylinder;
 
 typedef struct	s_triangle
@@ -75,7 +75,7 @@ typedef struct	s_triangle
 	t_vec3	point_1;
 	t_vec3	point_2;
 	t_vec3	point_3;
-	t_color	color;
+	t_col	color;
 }				t_triangle;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 14:36:24 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:10:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ int		key_hook(int keycode, t_data *data);
 ** mlx_util.c
 */
 
-void	ft_pixel_put(t_img img, int x, int y, t_color color);
-t_color	gen_color(int r, int g, int b);
+void	ft_pixel_put(t_img img, int x, int y, t_col color);
 
 /*
 ** init_image.c

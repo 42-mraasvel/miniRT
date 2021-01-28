@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/24 17:20:12 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 15:29:29 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:11:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	check_normal(t_intersection_data *data)
 }
 
 //! ratio is a value between 0 and 1, where 1 is max intensity and 0 is black
-int shade_color(t_color *color, double ratio)
+int shade_color(t_col *color, double ratio)
 {
-	*color = gen_color(color->rgb.r * ratio, color->rgb.g * ratio, color->rgb.b * ratio);
+	color->val = color_gen(color->r * ratio, color->g * ratio, color->b * ratio);
 }
 
 //! wtf how does it even work it looks so good lol

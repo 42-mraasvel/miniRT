@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:35 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 17:04:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 19:20:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "prototypes.h"
 # include "mlx.h"
 # include "math_util.h"
+# include "color.h"
 
 # include "libft.h"
 # include "libvect.h"

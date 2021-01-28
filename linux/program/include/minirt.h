@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/24 17:26:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:08:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,40 @@ typedef union	u_color
 	}		rgb;
 }				t_color;
 
+// maybe something like this, one value to push to the screen
+// and 3 ints that make it easier to modify
+// instead of a union, which I think would fuck with the endiannes
+typedef struct	s_col
+{
+	int val;
+	int r;
+	int g;
+	int b;
+}				t_col;
+
 typedef struct	s_intersection_data
 {
 	double	t;
 	t_vec3	intersection_point;
 	t_vec3	surface_normal;
-	t_color	color;
+	t_col	color;
 	t_vec3	viewing_direction;
 }				t_intersection_data;
+
+typedef struct	s_hitdata
+{
+	double	t;
+	t_vec3	normal;
+	t_vec3	view_dir;
+	t_col	obj_color;
+}				t_hitdata;
+
+typedef struct	s_ray
+{
+	t_vec3		origin;
+	t_vec3		dir;
+	void		*object;
+	t_hitdata	data;
+}				t_ray;
 
 #endif

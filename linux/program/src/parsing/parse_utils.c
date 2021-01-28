@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:07:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 20:56:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:08:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	parse_coordinates(char *information, t_vec3 *point)
 
 int	parse_color(char *information)
 {
-	int		r;
-	int		g;
-	int		b;
+	int	r;
+	int	g;
+	int	b;
 
 	if (check_color(information) != success)
 		return (-1);
