@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 15:28:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 15:30:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ t_vec3	calculate_cylinder_normal(t_cylinder cylinder, t_vec3 intersection_point)
 	double	t;
 	
 	t = (vec_dot(cylinder.orientation, intersection_point) - vec_dot(cylinder.orientation, cylinder.position)) / vec_dot(cylinder.orientation, cylinder.orientation);
-	return (vec_add(cylinder.position, vec_scalar(cylinder.orientation, t)));
+	return (vec_sub(intersection_point, vec_add(cylinder.position, vec_scalar(cylinder.orientation, t))));
 }
 
 void intersect_cylinders(t_vec3 origin, t_vec3 direction, t_vect *cylinders, t_intersection_data *data)
