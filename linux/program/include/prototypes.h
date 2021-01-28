@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 22:17:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 23:13:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ t_vec3	vec_dir(t_vec3 a, t_vec3 b);
 double	vec_square(t_vec3 a);
 void	vec_invert(t_vec3 *v);
 double	vec_angle(t_vec3 v, t_vec3 u);
+double	distance(t_vec3 a, t_vec3 b);
 
 /*
 ** Matrix Operations

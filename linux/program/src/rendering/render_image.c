@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 22:03:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 23:18:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,51 @@ t_vec3	calculate_image_start(t_scene *scene, t_space camera_space, t_camera came
 	return (start);
 }
 
+t_col	compute_ambient(t_ambient ambient)
+{
+	return (color_scalar(ambient.ratio, ambient.color));
+}
+
+t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_objects objects)
+{
+	size_t	i;
+	t_light	*table;
+	t_intersection_data	useless;
+	t_col	light_color;
+	t_vec3	light_dir;
+	double	light_intensity;
+	double	distance_normalizer;
+
+	i = 0;
+	table = (t_light*)lights->table;
+	light_color = make_color(0, 0, 0);
+	while (i < lights->nmemb)
+	{
+		light_dir = vec_normalize(vec_sub(table[i].position, point));
+		ray_intersection(point, light_dir, objects, &useless);
+		if (useless.t < 0 || useless.t > distance(point, table[i].position))
+		{
+			//! no intersection between point and light source so add color
+			distance_normalizer = 4 * M_PI * pow(distance(point, table[i].position), 2);
+			light_intensity = table[i].brightness * (K_DIFFUSE * vec_dot(light_dir, data.surface_normal)) / distance_normalizer;
+			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
+		}
+		i++;
+	}
+	return (light_color);
+}
+
+t_col	compute_color(t_intersection_data data, t_scene *scene)
+{
+	t_col	light_color;
+	t_vec3	shadow_ray_origin;
+
+	shadow_ray_origin = vec_add(data.intersection_point, vec_scalar(data.surface_normal, NORMAL_BIAS));
+	light_color = compute_lights(shadow_ray_origin, scene->lights, data, scene->objects);
+	light_color = color_add(light_color, compute_ambient(scene->ambient));
+	return (color_mult(light_color, data.color));
+}
+
 int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_col *color)
 {
 	t_intersection_data data;
@@ -49,7 +94,7 @@ int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_col *color)
 	data.t = -1.0;
 	if (ray_intersection(camera.position, direction, scene->objects, &data) != success)
 	{
-		color->val = 0;
+		*color = compute_ambient(scene->ambient);
 		return (success);
 	}
 	//! Compute distance intersection point to all light sources
@@ -58,8 +103,8 @@ int	ray_tracing(t_camera camera, t_vec3 direction, t_scene *scene, t_col *color)
 	//! Here we are testing some basic shading
 	get_viewing_direction(&data, camera);
 	check_normal(&data);
-	facing_ratio(&data);
-	color->val = data.color.val;
+	// facing_ratio(&data);
+	*color = compute_color(data, scene);
 	return (success);
 }
 
