@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 15:28:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 16:23:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 	print_camera_info(camera);
 	i = 0;
 	camera_space = new_coordinate_space(camera.position, camera.orientation);
-	vec_invert(&camera_space.base_x);
+	// vec_invert(&camera_space.base_x);
 	ft_printf("Magnitudes: %.2f %.2f %.2f\n", vec_magnitude(camera_space.base_x),vec_magnitude(camera_space.base_y),vec_magnitude(camera_space.base_z));
 	start = calculate_image_start(scene, camera_space, camera);
 	while (i < scene->resolution.y)
