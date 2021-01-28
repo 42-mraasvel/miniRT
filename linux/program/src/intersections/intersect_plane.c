@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/07 13:31:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/29 00:30:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/29 00:42:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ double	intersect_plane(t_vec3 origin, t_vec3 direction, t_vec3 position, t_vec3 
 	double	n_dot_d;
 
 	n_dot_d = vec_dot(normal, direction);
-	if (n_dot_d < -1e-6)
+	if (n_dot_d < -1e-6 || n_dot_d > 1e-6)
 		return ((vec_dot(normal, vec_sub(position, origin))) / n_dot_d);
 	return (-1);
 }
