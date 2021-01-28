@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/20 13:17:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 22:18:23 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int	parse_jump(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
 	if (ft_strcmp(element[0], "R") == 0)
 		return (parse_resolution(element, scene, mlx, bools));
 	else if (ft_strcmp(element[0], "A") == 0)
-		;
+		return (parse_ambient(element, &scene->ambient));
 	else if (ft_strcmp(element[0], "c") == 0)
 		return (parse_camera(element, scene->cameras, bools));
 	else if (ft_strcmp(element[0], "l") == 0)
-		;
+		return (parse_light(element, scene->lights));
 	else if (ft_strcmp(element[0], "sp") == 0)
 		return (parse_sphere(element, scene->objects.spheres));
 	else if (ft_strcmp(element[0], "pl") == 0)

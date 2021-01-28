@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 20:37:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 22:17:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		parse_plane(char **element, t_vect* planes);
 int		parse_triangle(char **element, t_vect *triangles);
 int		parse_square(char **element, t_vect *squares);
 int		parse_cylinder(char **element, t_vect *cylinders);
+int		parse_light(char **element, t_vect *lights);
+int		parse_ambient(char **element, t_ambient *ambient);
 
 /*
 ** parsing_utils

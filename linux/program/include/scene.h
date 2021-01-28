@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:12:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 22:11:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct	s_ambient
 {
 	int		taken;
 	double	ratio;
-	t_color	color;
+	t_col	color;
 }				t_ambient;
 
 typedef struct	s_camera
@@ -51,7 +51,7 @@ typedef struct	s_light
 {
 	t_vec3	position;
 	double	brightness;
-	t_color	color;
+	t_col	color;
 }				t_light;
 
 typedef struct	s_scene
