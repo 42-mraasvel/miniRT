@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/28 12:21:07 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 20:10:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:33:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 int		color_gen(int r, int g, int b)
 {
 	return ((r << 16) + (g << 8) + b);
+}
+
+t_col	make_color(int r, int g, int b)
+{
+	t_col	color;
+
+	color.val = color_gen(r, g, b);
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	return (color);
 }
 
 // anything above 255 should be clamped to 0-255

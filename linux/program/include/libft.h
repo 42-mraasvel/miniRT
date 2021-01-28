@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 12:51:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:36:08 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,9 @@ double				ft_fmin(double a, double b);
 int					ft_abs(int a);
 double				ft_fabs(double x);
 long long			ft_absll(long long l);
+
+int					ft_inrange(int num, int min, int max);
+int					ft_inrangef(float num, float min, float max);
+int					ft_inrangell(long long num, long long min, long long max);
 
 #endif

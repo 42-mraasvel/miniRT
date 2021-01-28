@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 19:23:34 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 10:42:26 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:35:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	parse_sphere(char **element, t_vect *spheres)
 	sphere.diameter = ft_atof(element[2]);
 	if (sphere.diameter <= 0)
 		return (file_error);
-	sphere.color.val = parse_color(element[3]);
-	if (sphere.color.val < 0)
+	sphere.color = parse_color(element[3]);
+	if (valid_color(sphere.color) != success)
 		return (file_error);
 	if (vect_pushback(spheres, &sphere) == -1)
 		return (malloc_error);

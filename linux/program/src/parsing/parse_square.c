@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/17 10:37:50 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 13:21:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:31:16 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	parse_square(char **element, t_vect *squares)
 	square.side_size = ft_atof(element[3]);
 	if (square.side_size <= 0)
 		return (file_error);
-	square.color.val = parse_color(element[4]);
-	if (square.color.val < 0)
+	square.color = parse_color(element[4]);
+	if (valid_color(square.color) != success)
 		return (file_error);
 	if (vect_pushback(squares, &square) == -1)
 		return (malloc_error);

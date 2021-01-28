@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 20:10:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:37:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 int	print_vec(t_vec3 a);
 int		print_file(t_scene *scene);
+int	print_color(t_col a);
 void print_matrix(t_m34 matrix);
 
 /*
@@ -48,7 +49,8 @@ int		check_information(char **element, int expected);
 int		check_color(char *information);
 int		check_coordinates(char *information);
 int		check_number(char *information);
-int		parse_color(char *information);
+t_col	parse_color(char *information);
+int		valid_color(t_col color);
 int		parse_coordinates(char *information, t_vec3 *point);
 
 /*
@@ -177,10 +179,11 @@ void	facing_ratio(t_intersection_data *data);
 ** Color utils
 */
 
-// t_col	color_scalar(double s, t_col a);
-// t_col	color_mult(t_col a, t_col b);
-// t_col	color_add(t_col a, t_col b);
-// int		color_gen(int r, int g, int b);
+t_col	color_scalar(double s, t_col a);
+t_col	color_mult(t_col a, t_col b);
+t_col	color_add(t_col a, t_col b);
+int		color_gen(int r, int g, int b);
+t_col	make_color(int r, int g, int b);
 
 
 #endif

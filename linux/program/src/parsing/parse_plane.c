@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/08 23:36:53 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 13:21:17 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:31:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	parse_plane(char **element, t_vect *planes)
 	if (parse_coordinates(element[2], &plane.orientation) != success)
 		return (file_error);
 	plane.orientation = vec_normalize(plane.orientation);
-	plane.color.val = parse_color(element[3]);
-	if (plane.color.val < 0)
+	plane.color = parse_color(element[3]);
+	if (valid_color(plane.color) != success)
 		return (file_error);
 	if (vect_pushback(planes, &plane) == -1)
 		return (malloc_error);

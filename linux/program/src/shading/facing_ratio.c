@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/24 17:20:12 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 20:12:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 20:37:47 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ void	check_normal(t_intersection_data *data)
 	}
 }
 
-//! ratio is a value between 0 and 1, where 1 is max intensity and 0 is black
-int shade_color(t_col *color, double ratio)
-{
-	color->val = color_gen(color->r * ratio, color->g * ratio, color->b * ratio);
-}
-
-//! wtf how does it even work it looks so good lol
 void facing_ratio(t_intersection_data *data)
 {
 	double ratio;
@@ -39,5 +32,5 @@ void facing_ratio(t_intersection_data *data)
 	ratio = vec_dot(data->viewing_direction, data->surface_normal);
 	if (ratio > 1 || ratio < 0)
 		return ;
-	shade_color(&data->color, ratio);
+	data->color = color_scalar(ratio, data->color);
 }
