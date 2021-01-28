@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/29 00:31:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/29 00:33:54 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,7 @@ t_col	compute_color(t_intersection_data data, t_scene *scene)
 	t_col	light_color;
 	t_vec3	shadow_ray_origin;
 
-	// shadow_ray_origin = vec_add(data.intersection_point, vec_scalar(data.surface_normal, NORMAL_BIAS));
-	// data.surface_normal = vec_scalar(data.surface_normal, 1.0);
-	shadow_ray_origin = vec_add(data.intersection_point, data.surface_normal);
-	// data.surface_normal = vec_normalize(data.surface_normal);
+	shadow_ray_origin = vec_add(data.intersection_point, vec_scalar(data.surface_normal, NORMAL_BIAS));
 	light_color = make_color(0, 0, 0);
 	light_color = compute_lights(shadow_ray_origin, scene->lights, data, scene->objects);
 	light_color = color_add(light_color, compute_ambient(scene->ambient));
