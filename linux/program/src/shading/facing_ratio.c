@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/24 17:20:12 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 15:29:29 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 16:29:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	check_normal(t_intersection_data *data)
 {
 	if (vec_dot(data->viewing_direction, data->surface_normal) < 0)
 	{
-		printf("hmm\n");
 		vec_invert(&data->surface_normal);
 	}
 }
