@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 14:29:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 14:36:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,10 +178,10 @@ void	facing_ratio(t_intersection_data *data);
 ** Color utils
 */
 
-t_col	color_scalar(double s, t_col a);
-t_col	color_mult(t_col a, t_col b);
-t_col	color_add(t_col a, t_col b);
-int		color_gen(int r, int g, int b);
+// t_col	color_scalar(double s, t_col a);
+// t_col	color_mult(t_col a, t_col b);
+// t_col	color_add(t_col a, t_col b);
+// int		color_gen(int r, int g, int b);
 
 
 #endif
