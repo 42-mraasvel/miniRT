@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/24 17:48:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 14:29:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ t_vec3	vec_divide(t_vec3 a, double s);
 t_vec3	vec_dir(t_vec3 a, t_vec3 b);
 double	vec_square(t_vec3 a);
 void	vec_invert(t_vec3 *v);
+double	vec_angle(t_vec3 v, t_vec3 u);
 
 /*
 ** Matrix Operations
@@ -172,5 +173,15 @@ double	rad_to_deg(double radians);
 void	get_viewing_direction(t_intersection_data *data, t_camera camera);
 void	check_normal(t_intersection_data *data);
 void	facing_ratio(t_intersection_data *data);
+
+/*
+** Color utils
+*/
+
+t_col	color_scalar(double s, t_col a);
+t_col	color_mult(t_col a, t_col b);
+t_col	color_add(t_col a, t_col b);
+int		color_gen(int r, int g, int b);
+
 
 #endif

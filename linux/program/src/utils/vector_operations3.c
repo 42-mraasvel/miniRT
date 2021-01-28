@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 22:39:22 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/24 17:30:00 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 14:30:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ void	vec_invert(t_vec3 *v)
 	v->x *= -1;
 	v->y *= -1;
 	v->z *= -1;
+}
+
+double	vec_angle(t_vec3 v, t_vec3 u)
+{
+	return (acos(vec_dot(v, u) / (vec_magnitude(v) * vec_magnitude(u))));
 }

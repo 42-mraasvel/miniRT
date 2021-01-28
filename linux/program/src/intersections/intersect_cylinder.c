@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/27 16:06:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 14:34:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ static double	get_nearest_t_cylinder(double a, double b, double discriminant)
 static double	get_discriminant(double a, double b, double c)
 {
 	return (b * b - 4 * a * c);
+}
+
+static double	check_height(t_vec3 origin, t_vec3 direction, t_cylinder cylinder, double t)
+{
+	t_vec3 v;
+	t_vec3 intersection;
+	double len;
+
+	intersection = vec_add(origin, vec_scalar(direction, t));
+	v = vec_sub(intersection, cylinder.position));
+	len = cos(vec_angle(v, cylinder.orientation)) * vec_magnitude(v);
+	if (len > cylinder.height / 2.0)
+		return (-1);
+	return (t);
 }
 
 /*
@@ -92,8 +106,9 @@ static double	intersect_cylinder(t_vec3 origin, t_vec3 direction, t_cylinder cyl
 
 	discriminant = get_discriminant(a, b, c);
 	if (discriminant < 0.0)
-		return (-10);
-	return (get_nearest_t_cylinder(a, b, discriminant));
+		return (-1);
+	double t = get_nearest_t_cylinder(a, b, discriminant);
+	return (check_height(origin, direction, cylinder, t));
 }
 
 t_vec3	calculate_cylinder_normal(t_cylinder cylinder, t_vec3 intersection_point)
