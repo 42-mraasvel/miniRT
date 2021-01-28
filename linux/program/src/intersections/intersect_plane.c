@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/07 13:31:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 15:17:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/29 00:30:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 ** Derived from the plane equation: ax + by + cz = d
 */
 
+// n . p = n . p'
+// p' = o + t * dir
+// n . p = n . o + t * (n . dir)
+// t = n . p - n . o / n . dir
+
 double	intersect_plane(t_vec3 origin, t_vec3 direction, t_vec3 position, t_vec3 normal)
 {
 	double	n_dot_d;
 
 	n_dot_d = vec_dot(normal, direction);
-	if (n_dot_d == 0)
-		return (-1);
-	return ((vec_dot(normal, position) - vec_dot(normal, origin)) / n_dot_d);
-	// alternative that's slightly faster
-	return ((vec_dot(normal, vec_sub(position, origin))) / n_dot_d);
+	if (n_dot_d < -1e-6)
+		return ((vec_dot(normal, vec_sub(position, origin))) / n_dot_d);
+	return (-1);
 }
 
 void	intersect_planes(t_vec3 origin, t_vec3 direction, t_vect *planes, t_intersection_data *data)
