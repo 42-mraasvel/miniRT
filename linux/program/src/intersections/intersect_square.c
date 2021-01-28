@@ -6,12 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/17 10:22:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/17 15:05:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 16:33:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h"
-
+// make it the same as the camera coordinate system method
 t_m34	square_basis(t_square square)
 {
 	t_vec3	x;
