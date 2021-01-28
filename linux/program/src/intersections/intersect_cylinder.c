@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/20 13:17:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 14:35:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/28 15:26:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,18 @@ static double	check_height(t_vec3 origin, t_vec3 direction, t_cylinder cylinder,
 	t_vec3 v;
 	t_vec3 intersection;
 	double len;
+	double angle;
 
 	if (t < 0.0)
 		return (-1);
 	intersection = vec_add(origin, vec_scalar(direction, t));
-	v = vec_sub(intersection, cylinder.position));
-	len = cos(vec_angle(v, cylinder.orientation)) * vec_magnitude(v);
+	v = vec_sub(intersection, cylinder.position);
+	if (vec_dot(v, cylinder.orientation) < 0) {
+		angle = vec_angle(v, vec_scalar(cylinder.orientation, -1));
+	}
+	else
+		angle = vec_angle(v, cylinder.orientation);
+	len = cos(angle) * vec_magnitude(v);
 	if (len > cylinder.height / 2.0)
 		return (-1);
 	return (t);
