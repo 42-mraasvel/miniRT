@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 22:39:22 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 14:37:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/29 13:43:46 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ double	vec_square(t_vec3 a)
 
 t_vec3	vec_divide(t_vec3 a, double s)
 {
-	s = 1 / s;
-	return (vec_scalar(a, s));
+	return (vec_scalar(a, 1 / s));
 }
 
 void	vec_invert(t_vec3 *v)
