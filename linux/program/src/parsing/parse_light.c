@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/28 22:03:45 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 22:24:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/29 10:05:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	parse_light(char **element, t_vect *lights)
 	if (check_information(element, 4) != success)
 		return (file_error);
 	if (parse_coordinates(element[1], &light.position) != success)
+		return (file_error);
+	if (check_number(element[2]) != success)
 		return (file_error);
 	light.brightness = ft_atof(element[2]);
 	if (!ft_inrangef(light.brightness, 0.0, 1.0))

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/29 00:33:54 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/29 10:55:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 	i = 0;
 	table = (t_light*)lights->table;
 	light_color = make_color(0, 0, 0);
-	useless.t = -1;
 	while (i < lights->nmemb)
 	{
+		useless.t = -1;
 		light_dir = vec_normalize(vec_sub(table[i].position, point));
 		if (ray_intersection(point, light_dir, objects, &useless) == success) {
 			// print_vec(point);
@@ -73,7 +73,7 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 			//! no intersection between point and light source so add color
 			// distance_normalizer = 4 * M_PI * pow(distance(point, table[i].position), 2);
 			// distance_normalizer = 1;
-			// light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal))) / distance_normalizer;
+			// light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal))) / distance(point, table[i].position);
 			light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal)));
 			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
 		}
