@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/29 13:51:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 11:01:27 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define MINIRT_H
 
 # define WINDOW_NAME "MiniMaaRTen"
+
+# define FALSE 0
+# define TRUE 1
 
 typedef enum	e_errnums
 {
