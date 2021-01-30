@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/26 09:42:23 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/01/17 16:02:17 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/01/30 19:14:56 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
 CFLAGS = -Wall -Wextra
 IFLAGS = -I $(IDIR) -I $(MLXDIR)
-LIBFLAGS = -L$(LIBDIR) -lft -lvect -lftprintf -lm
+LIBFLAGS = -L$(LIBDIR) -lft -lvect -lftprintf -lm -pthread
 
 # MLX FLAGS
 

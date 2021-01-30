@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/30 13:17:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 13:25:00 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 19:25:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	create_bmp_file(t_data *data)
 		return (open_error);
 	if (write_header(fd, data) != success)
 		return (write_error);
-	if (write(fd, data->img->addr, file_size(data) - 54) == -1)
+	if (write(fd, data->next_image->addr, file_size(data) - 54) == -1)
 		return (write_error);
 	return (success);
 }

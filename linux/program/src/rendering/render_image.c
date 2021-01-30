@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 18:29:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 19:09:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,27 +138,28 @@ void	*multithreaded_rendering(void *tid)
 	t_vec3	start;
 	t_col color;
 
-	t_camera camera = *data->data->active_camera;
 
 	data = (t_tid*)tid;
+	t_camera camera = *data->data->active_camera;
 	i = data->thread_num;
-	print_camera_info(*data->data->active_camera);
+	// print_camera_info(*data->data->active_camera);
 	camera_space = new_coordinate_space(data->data->active_camera->position, data->data->active_camera->orientation);
 	start = calculate_image_start(data->data->scene, camera_space, *data->data->active_camera);
-	while (data->data->scene->resolution.y)
+	printf("Start rendering for thread: %d\n", data->thread_num);
+	while (i < data->data->scene->resolution.y)
 	{
 		j = 0;
 		while (j < data->data->scene->resolution.x)
 		{
 			pixel_position = compute_pixel_position(j, i, camera_space, start);
 			if (ray_tracing(camera, vec_dir(camera.position, pixel_position), data->data->scene, &color) != success)
-				return (render_error);
+				return (NULL);
 			ft_pixel_put(*data->data->next_image, j, i, color);
 			j++;
 		}
-		i += data->thread_num;
+		i += NUMTHREADS;
 	}
-
+	printf("Finished rendering for thread: %d\n", data->thread_num);
 	return (NULL);
 }
 
