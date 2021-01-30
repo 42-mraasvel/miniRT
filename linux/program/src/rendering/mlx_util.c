@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:46:07 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 12:50:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:40:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@
 void	ft_pixel_put(t_img img, int x, int y, t_col color)
 {
 	char	*addr;
+	int	max_offset;
 
-	addr = img.addr + (y * img.size_line) + x * (img.bpp);
 	if (img.bmp == true)
 	{
+		max_offset = img.height * img.size_line;
+		addr = (img.addr + max_offset) - (y * img.size_line) + x * (img.bpp);
 		addr[0] = color.b;
 		addr[1] = color.g;
 		addr[2] = color.r;
 	}
 	else
 	{
+		addr = img.addr + (y * img.size_line) + x * (img.bpp);
 		*(unsigned int*)addr = color.val;
 	}
 }

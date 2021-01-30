@@ -7,5 +7,5 @@ elif [[ $1 == "re" ]]
 then
 	make re && time ./a.out
 else
-	make && time ./a.out $1 $2
+	make && time ./a.out $1 $2 $3
 fi

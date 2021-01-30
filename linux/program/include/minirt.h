@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 13:20:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:38:03 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct	s_img
 	char	*addr;
 	int		bpp;
 	int		size_line;
+	int		height;
 	int		endian;
 	t_bool	bmp;
 }				t_img;

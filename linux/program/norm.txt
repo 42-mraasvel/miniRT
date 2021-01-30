@@ -1,0 +1,469 @@
+Norme: ./Makefile
+Warning: Not a valid file
+Norme: ./a.out
+Warning: Not a valid file
+Norme: ./norm.txt
+Warning: Not a valid file
+Norme: ./files/basic_shapes/sphere.rt
+Warning: Not a valid file
+Norme: ./files/basic_shapes/triangle.rt
+Warning: Not a valid file
+Norme: ./files/basic_shapes/cylinder.rt
+Warning: Not a valid file
+Norme: ./files/basic_shapes/plane.rt
+Warning: Not a valid file
+Norme: ./files/basic_shapes/square.rt
+Warning: Not a valid file
+Norme: ./files/scenes/spheres.rt
+Warning: Not a valid file
+Norme: ./files/scenes/shading.rt
+Warning: Not a valid file
+Norme: ./files/camera_angles/sideways.rt
+Warning: Not a valid file
+Norme: ./files/others/test_niels.rt
+Warning: Not a valid file
+Norme: ./files/others/joppe.rt
+Warning: Not a valid file
+Norme: ./files/others/niels.rt
+Warning: Not a valid file
+Norme: ./files/others/kas.rt
+Warning: Not a valid file
+Norme: ./files/others/niels_mickeymouse.rt
+Warning: Not a valid file
+Norme: ./get_lib.sh
+Warning: Not a valid file
+Norme: ./obj/free_scene.o
+Warning: Not a valid file
+Norme: ./obj/mlx_util.o
+Warning: Not a valid file
+Norme: ./obj/compute_color.o
+Warning: Not a valid file
+Norme: ./obj/free_mlx.o
+Warning: Not a valid file
+Norme: ./obj/vector_operations3.o
+Warning: Not a valid file
+Norme: ./obj/parse_triangle.o
+Warning: Not a valid file
+Norme: ./obj/print_file.o
+Warning: Not a valid file
+Norme: ./obj/intersect_sphere.o
+Warning: Not a valid file
+Norme: ./obj/vector_operations2.o
+Warning: Not a valid file
+Norme: ./obj/math_utils.o
+Warning: Not a valid file
+Norme: ./obj/parse_square.o
+Warning: Not a valid file
+Norme: ./obj/scene.o
+Warning: Not a valid file
+Norme: ./obj/intersect_triangle.o
+Warning: Not a valid file
+Norme: ./obj/facing_ratio.o
+Warning: Not a valid file
+Norme: ./obj/parse_cylinder.o
+Warning: Not a valid file
+Norme: ./obj/render_image.o
+Warning: Not a valid file
+Norme: ./obj/error_checks.o
+Warning: Not a valid file
+Norme: ./obj/bmp.o
+Warning: Not a valid file
+Norme: ./obj/parse_plane.o
+Warning: Not a valid file
+Norme: ./obj/intersect_cylinder.o
+Warning: Not a valid file
+Norme: ./obj/vector_operations.o
+Warning: Not a valid file
+Norme: ./obj/matrix_operations.o
+Warning: Not a valid file
+Norme: ./obj/color_operations.o
+Warning: Not a valid file
+Norme: ./obj/parse_resolution.o
+Warning: Not a valid file
+Norme: ./obj/parse_ambient.o
+Warning: Not a valid file
+Norme: ./obj/free_program.o
+Warning: Not a valid file
+Norme: ./obj/parse_sphere.o
+Warning: Not a valid file
+Norme: ./obj/argument_checks.o
+Warning: Not a valid file
+Norme: ./obj/intersect_square.o
+Warning: Not a valid file
+Norme: ./obj/parse_light.o
+Warning: Not a valid file
+Norme: ./obj/vector_utils.o
+Warning: Not a valid file
+Norme: ./obj/hooks.o
+Warning: Not a valid file
+Norme: ./obj/intersect_plane.o
+Warning: Not a valid file
+Norme: ./obj/print_utils.o
+Warning: Not a valid file
+Norme: ./obj/free_image.o
+Warning: Not a valid file
+Norme: ./obj/intersection.o
+Warning: Not a valid file
+Norme: ./obj/parse_file.o
+Warning: Not a valid file
+Norme: ./obj/parse_utils.o
+Warning: Not a valid file
+Norme: ./obj/init_image.o
+Warning: Not a valid file
+Norme: ./obj/parse_camera.o
+Warning: Not a valid file
+Norme: ./obj/error.o
+Warning: Not a valid file
+Norme: ./obj/main.o
+Warning: Not a valid file
+Norme: ./run_program.sh
+Warning: Not a valid file
+Norme: ./image.bmp
+Warning: Not a valid file
+Norme: ./libs/libftprintf.a
+Warning: Not a valid file
+Norme: ./libs/libft.a
+Warning: Not a valid file
+Norme: ./libs/libvect.a
+Warning: Not a valid file
+Norme: ./test.rt
+Warning: Not a valid file
+Norme: ./include/prototypes.h
+Error: global scope bad aligned
+Error (line 18): C++ comment
+Error (line 39, col 39): space after pointer
+Error (line 102): line has 105 characters
+Error (line 103): line has 104 characters
+Error (line 104): line has 102 characters
+Error (line 105): line has 90 characters
+Error (line 198): multiple empty lines
+Norme: ./include/libvect.h
+Norme: ./include/headers.h
+Norme: ./include/minirt.h
+Error (line 98): C++ comment
+Error (line 99): C++ comment
+Error (line 100): C++ comment
+Norme: ./include/math_util.h
+Error (line 24): define must be a constant value
+Error (line 25): define must be a constant value
+Norme: ./include/scene.h
+Norme: ./include/color.h
+Error (line 24): multiple empty lines
+Error (line 25): multiple empty lines
+Norme: ./include/objects.h
+Norme: ./include/libft.h
+Norme: ./include/libftprintf.h
+Norme: ./bmp_example.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error: global scope bad aligned
+Error (line 11): bad spacing after bmp_size
+Error (line 36): bad spacing before header
+Error (line 36): bad spacing after header
+Error (line 39): comment not well formatted
+Error (line 39): bad indentation
+Error (line 39): comment not well placed
+Error (line 44): Empty line
+Error (line 45): comment not well formatted
+Error (line 45): comment not well placed
+Error (line 52): bad spacing before gui_get_pixel_data
+Error (line 52): bad spacing after gui_get_pixel_data
+Error (line 54): must begin only by tabulations
+Error (line 54): spaces at the end of line
+Error (line 54): bad indentation
+Error (line 57): bad spacing before write_image
+Error (line 57): bad spacing after write_image
+Error (line 57): declarations must be followed by one empty line in write_image
+Error (line 78): bad spacing before save_bmp
+Error (line 78): declarations must be followed by one empty line in save_bmp
+Error (line 101, col 0): no newline after block
+Norme: ./src/bmp.c
+Error: global scope bad aligned
+Norme: ./src/free_functions/free_scene.c
+Norme: ./src/free_functions/free_program.c
+Norme: ./src/free_functions/free_mlx.c
+Norme: ./src/free_functions/free_image.c
+Norme: ./src/main.c
+Error (line 33): line has 102 characters
+Norme: ./src/parsing/parse_triangle.c
+Norme: ./src/parsing/parse_sphere.c
+Norme: ./src/parsing/parse_square.c
+Norme: ./src/parsing/parse_resolution.c
+Norme: ./src/parsing/error_checks.c
+Norme: ./src/parsing/parse_plane.c
+Norme: ./src/parsing/parse_camera.c
+Error (line 37): C++ comment
+Error (line 37): bad indentation
+Error (line 38): bad indentation
+Norme: ./src/parsing/parse_light.c
+Norme: ./src/parsing/scene.c
+Norme: ./src/parsing/parse_utils.c
+Norme: ./src/parsing/parse_file.c
+Error (line 81): C++ comment
+Error (line 81): bad indentation
+Norme: ./src/parsing/argument_checks.c
+Norme: ./src/parsing/parse_cylinder.c
+Error (line 27): line has 84 characters
+Norme: ./src/parsing/parse_ambient.c
+Norme: ./src/printing/print_file.c
+Error: 6 functions in the file
+Norme: ./src/printing/print_utils.c
+Error: global scope bad aligned
+Error (line 15): bad spacing after get_max_len
+Error (line 15): Space before function name
+Error (line 15): declarations must be followed by one empty line in get_max_len
+Error (line 17): multiple declarations
+Error (line 17): must begin only by tabulations
+Error (line 17): bad indentation
+Error (line 18): multiple declarations
+Error (line 18): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 19): must begin only by tabulations
+Error (line 19): bad indentation
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 21): missing newline after while
+Error (line 21): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 21, col 18): no newline before block
+Error (line 22): must begin only by tabulations
+Error (line 22): bad indentation
+Error (line 23): missing newline after while
+Error (line 23): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 23, col 22): no newline before block
+Error (line 24): must begin only by tabulations
+Error (line 24): bad indentation
+Error (line 25): must begin only by tabulations
+Error (line 25): bad indentation
+Error (line 26): must begin only by tabulations
+Error (line 26): bad indentation
+Error (line 27): must begin only by tabulations
+Error (line 27): bad indentation
+Error (line 28): must begin only by tabulations
+Error (line 28): bad indentation
+Error (line 29): must begin only by tabulations
+Error (line 29): bad indentation
+Error (line 30): must begin only by tabulations
+Error (line 30): bad indentation
+Error (line 31): must begin only by tabulations
+Error (line 31): bad indentation
+Error (line 32): must begin only by tabulations
+Error (line 32): bad indentation
+Error (line 34): bad spacing before print_matrix
+Error (line 34): Space before function name
+Error (line 34): declarations must be followed by one empty line in print_matrix
+Error (line 36): multiple declarations
+Error (line 36): must begin only by tabulations
+Error (line 36): bad indentation
+Error (line 37): must begin only by tabulations
+Error (line 37): bad indentation
+Error (line 38): must begin only by tabulations
+Error (line 38): bad indentation
+Error (line 39): must begin only by tabulations
+Error (line 39): bad indentation
+Error (line 40): missing newline after while
+Error (line 40): must begin only by tabulations
+Error (line 40): bad indentation
+Error (line 40, col 18): no newline before block
+Error (line 41): must begin only by tabulations
+Error (line 41): bad indentation
+Error (line 42): must begin only by tabulations
+Error (line 42): bad indentation
+Error (line 43): missing newline after while
+Error (line 43): must begin only by tabulations
+Error (line 43): bad indentation
+Error (line 43, col 22): no newline before block
+Error (line 44): must begin only by tabulations
+Error (line 44): bad indentation
+Error (line 45): must begin only by tabulations
+Error (line 45): bad indentation
+Error (line 46): must begin only by tabulations
+Error (line 46): bad indentation
+Error (line 47): must begin only by tabulations
+Error (line 47): bad indentation
+Error (line 48): must begin only by tabulations
+Error (line 48): bad indentation
+Error (line 49): must begin only by tabulations
+Error (line 49): bad indentation
+Error (line 50): must begin only by tabulations
+Error (line 50): bad indentation
+Error (line 51): must begin only by tabulations
+Error (line 51): bad indentation
+Error (line 52): must begin only by tabulations
+
+Norme: ./src/hooks.c
+Norme: ./src/intersections/intersection.c
+Error (line 15): C++ comment
+Error (line 21): line has 100 characters
+Norme: ./src/intersections/intersect_plane.c
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 24): line has 89 characters
+Error (line 34): line has 101 characters
+Error (line 42): missing newline after while
+Error (line 42, col 27): no newline before block
+Error (line 43): line has 100 characters
+Error (line 50): missing newline after if
+Error (line 50, col 32): no newline before block
+Error (line 52): line has 92 characters
+Norme: ./src/intersections/intersect_square.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): C++ comment
+Error (line 15): bad spacing before square_basis
+Error (line 42): line has 90 characters
+Error (line 43): line has 113 characters
+Error (line 87): line has 92 characters
+Norme: ./src/intersections/intersect_triangle.c
+Error (line 13): C++ comment
+Error (line 26): line has 93 characters
+Error (line 27): line has 93 characters
+Error (line 28): line has 93 characters
+Error (line 41): line has 89 characters
+Error (line 47): line has 129 characters
+Error (line 59): line has 129 characters
+Error (line 83): line has 92 characters
+Norme: ./src/intersections/intersect_sphere.c
+Error (line 16): C++ comment
+Error (line 90): line has 92 characters
+Error (line 91): line has 109 characters
+Norme: ./src/intersections/intersect_cylinder.c
+Error: 7 functions in the file
+Error: global scope bad aligned
+Error (line 39): line has 93 characters
+Error (line 50): missing newline after if
+Error (line 50, col 43): no newline before block
+Error (line 61): comment not well formatted
+Error (line 63): line has 97 characters
+Error (line 64): line has 87 characters
+Error (line 66): multiple empty lines
+Error (line 83): multiple empty lines
+Error (line 94): line has 106 characters
+Error (line 99): line has 89 characters
+Error (line 99): function intersect_cylinder has 36 lines
+Error (line 99): declarations in intersect_cylinder must be at the top of the function
+Error (line 99): declarations must be followed by one empty line in intersect_cylinder
+Error (line 99, col 7): intersect_cylinder has 10 variables
+Error (line 104, col 8): radius is instanciated during declaration
+Error (line 106, col 8): tmp is instanciated during declaration
+Error (line 107, col 8): v is instanciated during declaration
+Error (line 111): line has 105 characters
+Error (line 118, col 8): t is instanciated during declaration
+Error (line 119, col 8): t1 is instanciated during declaration
+Error (line 120, col 8): t2 is instanciated during declaration
+Error (line 136): line has 100 characters
+Error (line 139): line has 82 characters
+Error (line 143): line has 166 characters
+Error (line 144): line has 107 characters
+Error (line 147): line has 104 characters
+Error (line 147): Space before function name
+Error (line 167): line has 92 characters
+Error (line 168): line has 102 characters
+Norme: ./src/rendering/compute_color.c
+Error (line 15): C++ comment
+Error (line 16): C++ comment
+Error (line 17): C++ comment
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 21): spaces at the end of line
+Error (line 21): bad indentation
+Error (line 21): bad indentation
+Error (line 22): C++ comment
+Error (line 24): C++ comment
+Error (line 25): C++ comment
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 29): C++ comment
+Error (line 30): C++ comment
+Error (line 31): line has 92 characters
+Error (line 31): C++ comment
+Error (line 32): C++ comment
+Error (line 33): C++ comment
+Error (line 34): C++ comment
+Error (line 35): spaces at the end of line
+Error (line 35): bad indentation
+Error (line 35): bad indentation
+Error (line 36): C++ comment
+Norme: ./src/rendering/mlx_util.c
+Error (line 21): declarations in ft_pixel_put are bad aligned
+Norme: ./src/rendering/render_image.c
+Error: 8 functions in the file
+Error: global scope bad aligned
+Error (line 17): line has 91 characters
+Error (line 25): line has 85 characters
+Error (line 29): line has 85 characters
+Error (line 39): line has 91 characters
+Error (line 50): line has 98 characters
+Error (line 50): declarations in compute_lights are bad aligned
+Error (line 50): function compute_lights has 31 lines
+Error (line 50, col 0): compute_lights has 7 variables
+Error (line 67): missing newline after if
+Error (line 67, col 72): no newline before block
+Error (line 68): C++ comment
+Error (line 68): bad indentation
+Error (line 69): C++ comment
+Error (line 69): bad indentation
+Error (line 73): C++ comment
+Error (line 73): bad indentation
+Error (line 74): line has 92 characters
+Error (line 74): C++ comment
+Error (line 74): bad indentation
+Error (line 75): C++ comment
+Error (line 75): bad indentation
+Error (line 76): line has 159 characters
+Error (line 76): C++ comment
+Error (line 76): bad indentation
+Error (line 77): line has 119 characters
+Error (line 78): line has 97 characters
+Error (line 90): line has 104 characters
+Error (line 92): line has 90 characters
+Error (line 102): line has 88 characters
+Error (line 107): line has 87 characters
+Error (line 108): C++ comment
+Error (line 109): line has 95 characters
+Error (line 109): C++ comment
+Error (line 110): Empty line
+Error (line 111): C++ comment
+Error (line 114): C++ comment
+Error (line 130): function render_image has 29 lines
+Error (line 130): declarations in render_image must be at the top of the function
+Error (line 130, col 0): render_image has 6 variables
+Error (line 134): C++ comment
+Error (line 135): C++ comment
+Error (line 151): line has 105 characters
+Norme: ./src/rendering/init_image.c
+Error (line 42): bad spacing after init_image
+Error (line 61): #include <time.h> should be before line 16
+Error (line 62): bad spacing before next_frame
+Error (line 62): declarations in next_frame are bad aligned
+Error (line 62): declarations in next_frame must be at the top of the function
+Error (line 62): declarations must be followed by one empty line in next_frame
+Error (line 67): line has 85 characters
+Error (line 73, col 8): time_taken is instanciated during declaration
+Error (line 73, col 32): missing space around /
+Norme: ./src/error.c
+Norme: ./src/utils/vector_operations.c
+Norme: ./src/utils/math_utils.c
+Norme: ./src/utils/vector_operations3.c
+Norme: ./src/utils/vector_operations2.c
+Norme: ./src/utils/vector_utils.c
+Error (line 25): bad spacing after vec_equal
+Error (line 32): multiple empty lines
+Error (line 33): bad spacing before vec_parallel
+Error (line 35): C++ comment
+Error (line 35): bad indentation
+Error (line 36): line has 118 characters
+Error (line 36): C++ comment
+Error (line 36): bad indentation
+Norme: ./src/utils/matrix_operations.c
+Error (line 68): declarations in matrix_transpose are bad aligned
+Norme: ./src/shading/color_operations.c
+Error: 6 functions in the file
+Error (line 31): C++ comment
+Error (line 32): bad spacing before color_add
+Norme: ./src/shading/facing_ratio.c
+Error: global scope bad aligned
+Error (line 17): line has 97 characters
+Error (line 28): Space before function name
