@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 13:03:04 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 18:28:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ typedef struct	s_data
 	t_img	*img;
 	t_img	*next_image;
 	t_bool	bmp;
+	t_camera	*active_camera;
+	void	*active_object;
 }				t_data;
+
+typedef struct	s_tid
+{
+	t_data *data;
+	int	thread_num;
+}				t_tid;
 
 #endif

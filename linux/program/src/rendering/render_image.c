@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 14:29:46 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 18:29:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,40 @@ t_vec3	compute_pixel_position(int x, int y, t_space camera_space, t_vec3 start)
 	y_dir = vec_scalar(camera_space.base_y, y);
 	position = vec_sub(vec_add(start, x_dir), y_dir);
 	return (position);
+}
+
+void	*multithreaded_rendering(void *tid)
+{
+	int	i;
+	int	j;
+	t_tid	*data;
+	t_vec3	pixel_position;
+	t_space	camera_space;
+	t_vec3	start;
+	t_col color;
+
+	t_camera camera = *data->data->active_camera;
+
+	data = (t_tid*)tid;
+	i = data->thread_num;
+	print_camera_info(*data->data->active_camera);
+	camera_space = new_coordinate_space(data->data->active_camera->position, data->data->active_camera->orientation);
+	start = calculate_image_start(data->data->scene, camera_space, *data->data->active_camera);
+	while (data->data->scene->resolution.y)
+	{
+		j = 0;
+		while (j < data->data->scene->resolution.x)
+		{
+			pixel_position = compute_pixel_position(j, i, camera_space, start);
+			if (ray_tracing(camera, vec_dir(camera.position, pixel_position), data->data->scene, &color) != success)
+				return (render_error);
+			ft_pixel_put(*data->data->next_image, j, i, color);
+			j++;
+		}
+		i += data->thread_num;
+	}
+
+	return (NULL);
 }
 
 /*

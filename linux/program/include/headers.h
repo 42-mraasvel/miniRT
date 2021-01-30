@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:35 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 19:20:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 18:21:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <pthread.h>
 # include "objects.h"
 # include "scene.h"
 # include "minirt.h"

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 13:25:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 18:19:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	create_bmp_file(t_data *data);
 */
 
 int		render_image(t_scene *scene, t_img *img, t_camera camera);
+void	*multithreaded_rendering(void *tid);
+int		next_multithreaded_frame(t_data *data);
 
 /*
 ** Intersection Functions
