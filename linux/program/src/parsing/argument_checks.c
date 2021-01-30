@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 10:41:09 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 11:29:13 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:00:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ static int	print_help(void)
 	return (input_error);
 }
 
-static int	check_argument(char *argument, char *option)
+static int	check_argument(t_data *data, char *argument, char *option)
 {
 	size_t	len;
 	int		fd;
 
 	if (option != NULL)
+	{
 		if (ft_strcmp(option, "--save") != 0)
 			return (option_error);
+		else
+			data->bmp = true;
+	}
 	len = ft_strlen(argument);
 	if (ft_strcmp(argument + len - 3, ".rt") != 0)
 		return (input_error);
@@ -54,7 +58,7 @@ static int	check_argument(char *argument, char *option)
 	return (success);
 }
 
-int			check_input(int argc, char *argv[])
+int			check_input(t_data *data, int argc, char *argv[])
 {
 	t_errnums	type;
 
@@ -71,9 +75,9 @@ int			check_input(int argc, char *argv[])
 	else
 	{
 		if (argc == 2)
-			type = check_argument(argv[1], NULL);
+			type = check_argument(data, argv[1], NULL);
 		else
-			type = check_argument(argv[1], argv[2]);
+			type = check_argument(data, argv[1], argv[2]);
 		if (type != success)
 			return (ft_perror(argv[1], type));
 	}

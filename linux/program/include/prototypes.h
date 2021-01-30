@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 23:13:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:25:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void print_matrix(t_m34 matrix);
 ** argument_checks.c
 */
 
-int		check_input(int argc, char *argv[]);
+int		check_input(t_data *data, int argc, char *argv[]);
 
 /*
 ** src/parsing/
 */
 
 int		parse_file(char *pathname, t_scene *scene, t_mlx mlx);
-int		parse_resolution(char **element, t_scene *scene, t_mlx mlx, t_found *bools);
-int		parse_camera(char **element, t_vect *cameras, t_found *bools);
+int		parse_resolution(char **element, t_scene *scene, t_mlx mlx);
+int		parse_camera(char **element, t_vect *cameras);
 int		parse_sphere(char **element, t_vect *spheres);
 int		parse_plane(char **element, t_vect* planes);
 int		parse_triangle(char **element, t_vect *triangles);
@@ -80,7 +80,14 @@ void	ft_pixel_put(t_img img, int x, int y, t_col color);
 */
 
 t_img	*init_image(t_data *data);
+t_img	*init_image_bmp(t_data *data);
 int		next_frame(t_data *data);
+
+/*
+** bmp.c
+*/
+
+int	create_bmp_file(t_data *data);
 
 /*
 ** render_image.c

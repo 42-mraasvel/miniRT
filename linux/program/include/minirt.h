@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 11:01:27 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:20:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 # define WINDOW_NAME "MiniMaaRTen"
 
-# define FALSE 0
-# define TRUE 1
+# define BMPNAME "image.bmp"
+
+typedef enum	e_bool
+{
+	false,
+	true
+}				t_bool;
 
 typedef enum	e_errnums
 {
@@ -72,9 +77,9 @@ typedef struct	s_img
 	void	*img_ptr;
 	char	*addr;
 	int		bpp;
-	int		byte_pp;
 	int		size_line;
 	int		endian;
+	t_bool	bmp;
 }				t_img;
 
 typedef union	u_color

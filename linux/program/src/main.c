@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 17:04:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:25:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,22 @@ static void	activate_hooks(t_data *data)
 	mlx_expose_hook(data->mlx->win_ptr, expose_hook, data);
 }
 
+static int	run_bmp(t_data *data)
+{
+	data->img = init_image_bmp(data);
+	if (data->img == NULL)
+		return (malloc_error);
+	if (render_image(data->scene, data->img, ((t_camera*)data->scene->cameras->table)[0]) != success)
+		return (error);
+	if (create_bmp_file(data) != success)
+		return (error);
+	return (success);
+}
+
 static int	run(t_data *data)
 {
+	if (data->bmp == true)
+		return (run_bmp(data));
 	data->mlx->win_ptr = mlx_new_window(data->mlx->mlx_ptr,
 	data->scene->resolution.x, data->scene->resolution.y, WINDOW_NAME);
 	if (data->mlx->win_ptr == NULL)
@@ -61,7 +75,7 @@ int			main(int argc, char *argv[])
 	ft_bzero(&data, sizeof(data));
 	data.scene = &scene;
 	data.mlx = &mlx;
-	if (check_input(argc, argv) != success)
+	if (check_input(&data, argc, argv) != success)
 		return (0);
 	mlx.mlx_ptr = mlx_init();
 	if (mlx.mlx_ptr == NULL)

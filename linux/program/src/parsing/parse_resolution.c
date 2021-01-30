@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:03:17 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 20:12:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:03:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
 ** window size will be set depending to the current display resolution.
 */
 
-int	parse_resolution(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
+int	parse_resolution(char **element, t_scene *scene, t_mlx mlx)
 {
 	int	x;
 	int	y;
 
 	if (check_information(element, 3) != success)
 		return (file_error);
-	if (bools->resolution == 1)
+	if (scene->resolution.taken == true)
 		return (file_error);
 	mlx_get_screen_size(mlx.mlx_ptr, &x, &y);
 	scene->resolution.x = ft_min(x, ft_atoi(element[1]));
 	scene->resolution.y = ft_min(y, ft_atoi(element[2]));
 	if (scene->resolution.x < 0 || scene->resolution.y < 0)
 		return (file_error);
-	bools->resolution = 1;
+	scene->resolution.taken = true;
 	return (success);
 }

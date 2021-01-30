@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/31 08:53:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 12:53:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@ static void	*abort_image_init(void *mlx_ptr, t_img *new)
 		mlx_destroy_image(mlx_ptr, new->img_ptr);
 	free(new);
 	return (NULL);
+}
+
+t_img		*init_image_bmp(t_data *data)
+{
+	t_img	*new;
+
+	new = (t_img*)malloc(sizeof(t_img));
+	if (new == NULL)
+		return (NULL);
+	new->img_ptr = NULL;
+	new->addr = (char*)malloc(data->scene->resolution.x * data->scene->resolution.y * 3);
+	if (new->addr == NULL)
+		return (abort_image_init(NULL, new));
+	new->bpp = 3;
+	new->bmp = true;
+	new->size_line = data->scene->resolution.x * 3;
+	return (new);
 }
 
 t_img		*init_image(t_data *data)
@@ -36,7 +53,8 @@ t_img		*init_image(t_data *data)
 	&new->bpp, &new->size_line, &new->endian);
 	if (new->addr == NULL)
 		return (abort_image_init(data->mlx->mlx_ptr, new));
-	new->byte_pp = new->bpp / 8;
+	new->bpp = new->bpp / 8;
+	new->bmp = false;
 	return (new);
 }
 #include <time.h>

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/29 13:20:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:03:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 
 typedef struct	s_resolution
 {
-	int	x;
-	int	y;
-	int	upp;
+	int		x;
+	int		y;
+	t_bool	taken;
 }				t_resolution;
 
 typedef struct	s_ambient
@@ -69,6 +69,7 @@ typedef struct	s_data
 	t_scene	*scene;
 	t_img	*img;
 	t_img	*next_image;
+	t_bool	bmp;
 }				t_data;
 
 #endif

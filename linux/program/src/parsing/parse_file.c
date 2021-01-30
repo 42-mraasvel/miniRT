@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/27 20:27:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 22:18:23 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:04:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 ** we might as well create a chain of if-else statements right?
 */
 
-static int	parse_jump(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
+static int	parse_jump(char **element, t_scene *scene, t_mlx mlx)
 {
 	if (ft_strcmp(element[0], "R") == 0)
-		return (parse_resolution(element, scene, mlx, bools));
+		return (parse_resolution(element, scene, mlx));
 	else if (ft_strcmp(element[0], "A") == 0)
 		return (parse_ambient(element, &scene->ambient));
 	else if (ft_strcmp(element[0], "c") == 0)
-		return (parse_camera(element, scene->cameras, bools));
+		return (parse_camera(element, scene->cameras));
 	else if (ft_strcmp(element[0], "l") == 0)
 		return (parse_light(element, scene->lights));
 	else if (ft_strcmp(element[0], "sp") == 0)
@@ -44,7 +44,7 @@ static int	parse_jump(char **element, t_scene *scene, t_mlx mlx, t_found *bools)
 	return (file_error);
 }
 
-static int	parse_information(char *line, t_scene *scene, t_mlx mlx, t_found *bools)
+static int	parse_information(char *line, t_scene *scene, t_mlx mlx)
 {
 	char	**element;
 	int		ret;
@@ -55,7 +55,7 @@ static int	parse_information(char *line, t_scene *scene, t_mlx mlx, t_found *boo
 	ret = success;
 	if (*element != NULL)
 	{
-		ret = parse_jump(element, scene, mlx, bools);
+		ret = parse_jump(element, scene, mlx);
 		if (ret != success)
 		{
 			if (ft_printf("Parse Error:\n|%s|\n", line) == -1)
@@ -71,10 +71,8 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 	int		ret;
 	int		parse_ret;
 	char	*line;
-	t_found	bools;
 
 	ret = 1;
-	ft_bzero(&bools, sizeof(bools));
 	while (ret > 0)
 	{
 		ret = ft_getline(fd, &line);
@@ -83,7 +81,7 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 		// remove hashtag check
 		if (*line != '\0' && *line != '#')
 		{
-			parse_ret = parse_information(line, scene, mlx, &bools);
+			parse_ret = parse_information(line, scene, mlx);
 			if (parse_ret != success)
 			{
 				free(line);
@@ -92,7 +90,7 @@ static int	read_file(int fd, t_scene *scene, t_mlx mlx)
 		}
 		free(line);
 	}
-	if (bools.resolution == 0 || bools.camera == 0)
+	if (scene->resolution.taken == false || scene->cameras->nmemb == 0)
 		return (file_error);
 	return (success);
 }

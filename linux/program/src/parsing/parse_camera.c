@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:47:52 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/18 20:55:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 13:03:13 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** Alternative: normalize the orientation vector yourself
 */
 
-int	parse_camera(char **element, t_vect *cameras, t_found *bools)
+int	parse_camera(char **element, t_vect *cameras)
 {
 	t_camera	camera;
 
@@ -43,6 +43,5 @@ int	parse_camera(char **element, t_vect *cameras, t_found *bools)
 		return (file_error);
 	if (vect_pushback(cameras, &camera) == -1)
 		return (malloc_error);
-	bools->camera = 1;
 	return (success);
 }
