@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 13:25:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 19:26:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ static void	activate_hooks(t_data *data)
 
 static int	run_bmp(t_data *data)
 {
-	data->img = init_image_bmp(data);
-	if (data->img == NULL)
+	data->next_image = init_image_bmp(data);
+	if (data->next_image == NULL)
 		return (malloc_error);
-	if (render_image(data->scene, data->img, ((t_camera*)data->scene->cameras->table)[0]) != success)
+	data->active_camera = &((t_camera*)data->scene->cameras->table)[0];
+	if (MULTITHREADING == 1)
+	{
+		if (next_multithreaded_frame(data) != success)
+			return (error);
+	}
+	else if (render_image(data->scene, data->next_image, ((t_camera*)data->scene->cameras->table)[0]) != success)
 		return (error);
 	if (create_bmp_file(data) != success)
 		return (error);
