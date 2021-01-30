@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 18:29:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 21:29:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ void	*multithreaded_rendering(void *tid)
 
 	data = (t_tid*)tid;
 	i = data->thread_num;
-	print_camera_info(*data->data->active_camera);
 	camera_space = new_coordinate_space(data->data->active_camera->position, data->data->active_camera->orientation);
 	start = calculate_image_start(data->data->scene, camera_space, *data->data->active_camera);
 	while (data->data->scene->resolution.y)
@@ -158,7 +157,6 @@ void	*multithreaded_rendering(void *tid)
 		}
 		i += data->thread_num;
 	}
-
 	return (NULL);
 }
 
