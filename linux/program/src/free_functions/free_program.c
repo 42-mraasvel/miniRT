@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:31:55 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/29 14:15:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 21:40:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	free_program(t_data data, int status)
 	if (status == success)
 	{
 		ft_printf("Exit status: Success\n");
-		exit(EXIT_SUCCESS);
+		// exit(EXIT_SUCCESS);
+		return ;
 	}
 	ft_printf("Exit status: Failure\n");
 	exit(EXIT_FAILURE);

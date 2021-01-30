@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 19:26:39 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 21:40:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ int			main(int argc, char *argv[])
 	mlx.mlx_ptr = mlx_init();
 	if (mlx.mlx_ptr == NULL)
 		return (ft_perror(NULL, mlx_error));
-	if (parse_file(argv[1], &scene, mlx) != success)
+	else if (parse_file(argv[1], &scene, mlx) != success)
 		free_program(data, error);
-	if (print_file(&scene) != success)
+	else if (print_file(&scene) != success)
 		free_program(data, error);
-	if (run(&data) != success)
+	else if (run(&data) != success)
 		free_program(data, error);
 	else
 		free_program(data, success);
