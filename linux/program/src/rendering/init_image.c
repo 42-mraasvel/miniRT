@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 19:18:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/31 23:21:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			next_frame(t_data *data)
 	data->active_camera = &(((t_camera*)data->scene->cameras->table)[camera_index]);
 	ft_printf("\033[1;33mRendering Camera Number: %d\033[0;0m\n", camera_index + 1);
 	t = clock();
-	if (MULTITHREADING == 1)
+	if (MULTITHREADING == true)
 	{
 		if (next_multithreaded_frame(data) != success)
 			return (error);
