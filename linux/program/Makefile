@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/26 09:42:23 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/01/30 19:14:56 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/01/30 21:48:02 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ LIBDIR = libs
 
 # Compilation
 
-DFLAGS = -O0 -g -fsanitize=address -fsanitize=leak
-# DFLAGS = -O3
+DFLAGS = -g -fsanitize=address -fsanitize=leak
+SPEEDFLAG = -O3
 CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
 CFLAGS = -Wall -Wextra
@@ -47,7 +47,7 @@ all: $(NAME)
 $(NAME): $(OBJ) Makefile
 	$(CC) -o $@ $(OBJ) $(MLXLIB) $(LIBFLAGS) $(DFLAGS)
 $(OBJDIR)/%.o: %.c $(HEADERS) | $(OBJDIR)
-	$(CC) -c -o $@ $< $(IFLAGS) $(CFLAGS)
+	$(CC) -c -o $@ $< $(IFLAGS) $(CFLAGS) $(SPEEDFLAG)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
