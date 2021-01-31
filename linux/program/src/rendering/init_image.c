@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 19:18:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/01/30 21:53:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			next_frame(t_data *data)
 		return (error);
 	t = clock() - t;
 	double time_taken = ((double)t)/CLOCKS_PER_SEC;
-	ft_printf("\033[1;33mRender Time for frame: %f\033[0;0m\n\n", time_taken);
+	ft_printf("\033[1;33mCPU Render Time for frame: %f\033[0;0m\n\n", time_taken);
 	mlx_put_image_to_window(data->mlx->mlx_ptr,
 	data->mlx->win_ptr, data->next_image->img_ptr, 0, 0);
 	ft_swap_ptr(&data->img, &data->next_image);
