@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   check_resolution.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 13:26:54 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/01 12:45:44 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/01 12:52:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "headers.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+int check_resolution(t_data *data)
+{
+	int x;
+	int y;
 
-# define K_DIFFUSE 1.0
-# define K_SPECULAR 0.0
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	mlx_get_screen_size(data->mlx->mlx_ptr, &x, &y);
+	data->scene->resolution.x = ft_min(data->scene->resolution.x, x);
+	data->scene->resolution.y = ft_min(data->scene->resolution.y, y);
+	return (success);
+}

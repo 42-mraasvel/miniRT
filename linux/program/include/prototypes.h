@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 18:19:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 12:51:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		check_number(char *information);
 t_col	parse_color(char *information);
 int		valid_color(t_col color);
 int		parse_coordinates(char *information, t_vec3 *point);
+int		check_resolution(t_data *data);
 
 /*
 ** scene.c

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 21:50:06 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 12:57:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ static int	run(t_data *data)
 {
 	if (data->bmp == true)
 		return (run_bmp(data));
+	// initiating mlx here to make it work for windows
+	data->mlx->mlx_ptr = mlx_init();
+	if (data->mlx->mlx_ptr == NULL)
+		return (malloc_error);
+	check_resolution(data);
 	data->mlx->win_ptr = mlx_new_window(data->mlx->mlx_ptr,
 	data->scene->resolution.x, data->scene->resolution.y, WINDOW_NAME);
 	if (data->mlx->win_ptr == NULL)
@@ -81,12 +86,13 @@ int			main(int argc, char *argv[])
 	ft_bzero(&data, sizeof(data));
 	data.scene = &scene;
 	data.mlx = &mlx;
+	mlx.mlx_ptr = NULL;
 	if (check_input(&data, argc, argv) != success)
 		return (0);
-	mlx.mlx_ptr = mlx_init();
-	if (mlx.mlx_ptr == NULL)
-		return (ft_perror(NULL, mlx_error));
-	else if (parse_file(argv[1], &scene, mlx) != success)
+	// mlx.mlx_ptr = mlx_init();
+	// if (mlx.mlx_ptr == NULL)
+	// 	return (ft_perror(NULL, mlx_error));
+	if (parse_file(argv[1], &scene, mlx) != success)
 		free_program(data, error);
 	else if (print_file(&scene) != success)
 		free_program(data, error);

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 21:29:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 13:51:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 		if (useless.t < 0 || useless.t > distance(point, table[i].position))
 		{
 			//! no intersection between point and light source so add color
-			// distance_normalizer = 4 * M_PI * pow(distance(point, table[i].position), 2);
-			// distance_normalizer = 1;
-			// light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal))) / distance(point, table[i].position);
+			//!
+			// distance_normalizer = 4 * M_PI * (pow(distance(point, table[i].position), 2) / 30000.0);
+			distance_normalizer = ft_fmin(1.0, 10.0 / distance(point, table[i].position));
 			light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal)));
+			light_intensity = light_intensity * distance_normalizer;
+			// printf("%f\n", distance_normalizer);
 			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
 		}
 		i++;
@@ -74,7 +76,7 @@ t_col	compute_color(t_intersection_data data, t_scene *scene)
 	shadow_ray_origin = vec_add(data.intersection_point, vec_scalar(data.surface_normal, NORMAL_BIAS));
 	light_color = make_color(0, 0, 0);
 	light_color = compute_lights(shadow_ray_origin, scene->lights, data, scene->objects);
-	light_color = color_add(light_color, compute_ambient(scene->ambient));
+	// light_color = color_add(light_color, compute_ambient(scene->ambient));
 	return (color_mult(light_color, data.color));
 }
 
