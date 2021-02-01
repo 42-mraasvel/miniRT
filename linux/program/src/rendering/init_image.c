@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/31 23:22:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 21:49:13 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ t_img		*init_image_bmp(t_data *data)
 	if (new == NULL)
 		return (NULL);
 	new->img_ptr = NULL;
+	new->bpp = 3;
 	new->size_line = data->scene->resolution.x * 3;
 	new->height = data->scene->resolution.y;
-	new->addr = (char*)malloc(new->size_line * new->height);
+	new->addr = (char*)malloc((new->size_line * new->height) * sizeof(char));
 	if (new->addr == NULL)
 		return (abort_image_init(NULL, new));
-	new->bpp = 3;
 	new->bmp = true;
 	return (new);
 }
