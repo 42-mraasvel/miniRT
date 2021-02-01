@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 18:53:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 22:00:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 			// distance_normalizer = 4 * M_PI * (pow(distance(point, table[i].position), 2) / 30000.0);
 			distance_normalizer = ft_fmin(1.0, 10.0 / distance(point, table[i].position));
 			light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal)));
-			light_intensity = light_intensity * distance_normalizer;
+			// light_intensity = light_intensity * distance_normalizer;
 			// printf("%f\n", distance_normalizer);
 			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
 		}
@@ -200,6 +200,7 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 			pixel_position = compute_pixel_position(j, i, camera_space, start);
 			if (ray_tracing(camera, vec_dir(camera.position, pixel_position), scene, &color) != success)
 				return (render_error);
+			// printf("(%d, %d)\n", j, i);
 			ft_pixel_put(*img, j, i, color);
 			j++;
 		}
