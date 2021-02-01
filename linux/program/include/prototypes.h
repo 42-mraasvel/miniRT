@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 12:51:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 14:57:16 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,12 @@ t_col	color_mult(t_col a, t_col b);
 t_col	color_add(t_col a, t_col b);
 int		color_gen(int r, int g, int b);
 t_col	make_color(int r, int g, int b);
+
+/*
+** Transformation functions
+*/
+
+int translate_camera(int keycode, t_camera *camera);
 
 
 #endif

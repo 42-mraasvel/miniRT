@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 13:51:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 14:52:19 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_col	compute_color(t_intersection_data data, t_scene *scene)
 	shadow_ray_origin = vec_add(data.intersection_point, vec_scalar(data.surface_normal, NORMAL_BIAS));
 	light_color = make_color(0, 0, 0);
 	light_color = compute_lights(shadow_ray_origin, scene->lights, data, scene->objects);
-	// light_color = color_add(light_color, compute_ambient(scene->ambient));
+	light_color = color_add(light_color, compute_ambient(scene->ambient));
 	return (color_mult(light_color, data.color));
 }
 
@@ -144,7 +144,8 @@ void	*multithreaded_rendering(void *tid)
 	data = (t_tid*)tid;
 	t_camera camera = *data->data->active_camera;
 	i = data->thread_num;
-	camera_space = new_coordinate_space(data->data->active_camera->position, data->data->active_camera->orientation);
+	camera_space = camera.camera_space;
+	// camera_space = new_coordinate_space(data->data->active_camera->position, data->data->active_camera->orientation);
 	start = calculate_image_start(data->data->scene, camera_space, *data->data->active_camera);
 	printf("Start rendering for thread: %d\n", data->thread_num);
 	while (i < data->data->scene->resolution.y)

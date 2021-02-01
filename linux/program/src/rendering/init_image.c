@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/31 23:22:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 14:56:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int			next_frame(t_data *data)
 	mlx_put_image_to_window(data->mlx->mlx_ptr,
 	data->mlx->win_ptr, data->next_image->img_ptr, 0, 0);
 	ft_swap_ptr(&data->img, &data->next_image);
-	camera_index++;
-	if (camera_index == data->scene->cameras->nmemb)
-		camera_index = 0;
+	// camera_index++;
+	// if (camera_index == data->scene->cameras->nmemb)
+	// 	camera_index = 0;
 	return (success);
 }

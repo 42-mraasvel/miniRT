@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 13:49:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 21:44:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 14:56:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == XK_space)
 		if (next_frame(data) != success)
 			free_program(*data, error);
+	if (translate_camera(keycode, data->active_camera) == true)
+		next_frame(data);
 	return (success);
 }
 

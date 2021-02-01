@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 16:47:52 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 13:03:13 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 14:52:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	parse_camera(char **element, t_vect *cameras)
 	camera.fov = ft_atof(element[3]);
 	if (!(camera.fov >= 0 && camera.fov <= 180))
 		return (file_error);
+	camera.camera_space = new_coordinate_space(camera.position, camera.orientation);
 	if (vect_pushback(cameras, &camera) == -1)
 		return (malloc_error);
 	return (success);

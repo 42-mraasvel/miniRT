@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 18:28:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 14:51:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_camera
 	t_vec3	position;
 	t_vec3	orientation;
 	double	fov;
+	t_space	camera_space;
 }				t_camera;
 
 typedef struct	s_light
