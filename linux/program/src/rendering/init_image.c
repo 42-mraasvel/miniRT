@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:13:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 14:56:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 15:47:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,18 @@ t_img		*init_image(t_data *data)
 #include <time.h>
 int			next_frame(t_data *data)
 {
-	static size_t	camera_index = 0;
 	clock_t	t;
 
-	data->active_camera = &(((t_camera*)data->scene->cameras->table)[camera_index]);
-	ft_printf("\033[1;33mRendering Camera Number: %d\033[0;0m\n", camera_index + 1);
+	if (data->active_camera == NULL)
+		data->active_camera = &(((t_camera*)data->scene->cameras->table)[0]);
+	
 	t = clock();
 	if (MULTITHREADING == true)
 	{
 		if (next_multithreaded_frame(data) != success)
 			return (error);
 	}
-	else if (render_image(data->scene, data->next_image,
-	((t_camera*)data->scene->cameras->table)[camera_index]) != success)
+	else if (render_image(data->scene, data->next_image, *data->active_camera) != success)
 		return (error);
 	t = clock() - t;
 	double time_taken = ((double)t)/CLOCKS_PER_SEC;
@@ -81,8 +80,5 @@ int			next_frame(t_data *data)
 	mlx_put_image_to_window(data->mlx->mlx_ptr,
 	data->mlx->win_ptr, data->next_image->img_ptr, 0, 0);
 	ft_swap_ptr(&data->img, &data->next_image);
-	// camera_index++;
-	// if (camera_index == data->scene->cameras->nmemb)
-	// 	camera_index = 0;
 	return (success);
 }

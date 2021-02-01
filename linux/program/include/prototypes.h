@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 14:57:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 15:42:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ t_col	make_color(int r, int g, int b);
 */
 
 int translate_camera(int keycode, t_camera *camera);
+int rotate_camera(int keycode, t_camera *camera);
 
 
 #endif

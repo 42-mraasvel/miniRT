@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 14:52:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 18:53:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	print_camera_info(t_camera c)
 	printf("FOV: %f\nPosition:\n", c.fov);
 	printf("<%.2f %.2f %.2f>\n", c.position.x, c.position.y, c.position.z);
 	printf("Orientation:\n");
-	printf("<%.2f %.2f %.2f>\n", c.orientation.x, c.orientation.y, c.orientation.z);
+	printf("X: <%.2f %.2f %.2f>\n", c.camera_space.base_x.x, c.camera_space.base_x.y, c.camera_space.base_x.z);
+	printf("Y: <%.2f %.2f %.2f>\n", c.camera_space.base_y.x, c.camera_space.base_y.y, c.camera_space.base_y.z);
+	printf("Z: <%.2f %.2f %.2f>\n", c.camera_space.base_z.x, c.camera_space.base_z.y, c.camera_space.base_z.z);
 	printf("\n");
 }
 
@@ -138,16 +140,16 @@ void	*multithreaded_rendering(void *tid)
 	t_vec3	pixel_position;
 	t_space	camera_space;
 	t_vec3	start;
-	t_col color;
-
+	t_col	color;
 
 	data = (t_tid*)tid;
 	t_camera camera = *data->data->active_camera;
 	i = data->thread_num;
 	camera_space = camera.camera_space;
+	if (data->thread_num == 0)
+		print_camera_info(camera);
 	// camera_space = new_coordinate_space(data->data->active_camera->position, data->data->active_camera->orientation);
 	start = calculate_image_start(data->data->scene, camera_space, *data->data->active_camera);
-	printf("Start rendering for thread: %d\n", data->thread_num);
 	while (i < data->data->scene->resolution.y)
 	{
 		j = 0;
@@ -161,7 +163,6 @@ void	*multithreaded_rendering(void *tid)
 		}
 		i += NUMTHREADS;
 	}
-	printf("Finished rendering for thread: %d\n", data->thread_num);
 	return (NULL);
 }
 
