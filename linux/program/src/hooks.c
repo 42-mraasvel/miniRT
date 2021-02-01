@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 13:49:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 15:48:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 23:25:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ void next_camera(t_data *data)
 	data->active_camera = &((t_camera*)data->scene->cameras->table)[camera_index];
 }
 
+int	key_release(int keycode, t_data *data)
+{
+	ft_printf("Key release: %d\n", keycode);
+}
+
 int	key_hook(int keycode, t_data *data)
 {
-	ft_printf("Key: %d\n", keycode);
+	ft_printf("Key press: %d\n", keycode);
 	// change status to success, and exit on success as well
 	if (keycode == XK_Escape)
 		free_program(*data, error);
