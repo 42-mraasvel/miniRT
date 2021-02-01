@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/26 09:42:23 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/01 21:46:07 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/01 22:04:06 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ LIBDIR = libs
 
 # Compilation
 
-DFLAGS = -O0 -g -fsanitize=address
-# SPEEDFLAG = -O3
-CC = clang
+# DFLAGS = -O0 -g -fsanitize=address
+SPEEDFLAG = -O3
+CC = gcc
 # CFLAGS = -Wall -Werror -Wextra
 CFLAGS = -Wall -Wextra
 IFLAGS = -I $(IDIR) -I $(MLXDIR)

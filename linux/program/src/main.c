@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 19:06:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 23:24:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	abort_run(t_data *data)
 
 static void	activate_hooks(t_data *data)
 {
-	mlx_key_hook(data->mlx->win_ptr, key_hook, data);
+	// mlx_key_hook(data->mlx->win_ptr, key_hook, data);
+	mlx_hook(data->mlx->win_ptr, 2, 1L<<0, key_hook, data);
 	mlx_mouse_hook(data->mlx->win_ptr, mouse_hook, data);
 	mlx_expose_hook(data->mlx->win_ptr, expose_hook, data);
 }
