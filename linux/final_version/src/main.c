@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:18:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:14:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:15:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ int	main(int argc, char *argv[])
 	ft_bzero(&data, sizeof(t_data));
 	ft_bzero(&mlx, sizeof(t_mlx));
 	ft_bzero(&scene, sizeof(t_scene));
+	data.errnum = success;
 	if (check_arguments(&data, argc, argv) != success)
 		exit_program(&data);
+	data.scene = &scene;
 	if (init_scene(&data) != success)
 		exit_program(&data);
-	data.scene = &scene;
-	if (parse_file(&data, argv[2]) != success)
+	if (parse_file(&data, argv[1]) != success)
 		exit_program(&data);
 	data.mlx = &mlx;
 	// if (run(&data) != success)

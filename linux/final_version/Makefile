@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/02 18:36:48 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/02 22:38:43 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ LIBDIR = libft
 
 # Compilation
 
-# DFLAGS = -O0 -g -fsanitize=address
-SPEEDFLAG = -O3
+DFLAGS = -O0 -g -fsanitize=address
+# SPEEDFLAG = -O3
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 # CFLAGS = -Wall -Wextra

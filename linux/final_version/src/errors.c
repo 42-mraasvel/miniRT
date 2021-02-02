@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:47:51 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:17:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 22:43:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int		ft_error(t_data *data, t_errors error_type)
 
 void	ft_perror(t_errors error_type)
 {
+	static const char	*error_table[] = {
+		"Standard Error",
+		"Success",
+		"Argument Error",
+		"Malloc Error",
+		"Parse Error"
+	};
 	printf("Error\n");
-	printf("Error: %d\n", error_type);
+	printf("%s\n", error_table[error_type]);
 }

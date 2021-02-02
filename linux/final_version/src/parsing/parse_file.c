@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:05:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:17:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:29:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "error.h"
 #include "parsing.h"
 #include "minirt.h"
-
+#include <stdio.h>
 static int	jump_func(t_scene *scene, char **element, t_parsers jump[])
 {
 	int	i;
@@ -39,7 +39,7 @@ static int	extract_information(t_scene *scene, char *line, t_parsers jump[])
 
 	if (*line == '\0')
 		return (success);
-	element = ft_split(line, ' ');
+	element = ft_split_set(line, " \t\n\r\v\f");
 	if (element == NULL)
 		return (malloc_error);
 	if (element[0] != NULL)
@@ -55,13 +55,21 @@ static void	init_jump_table(t_parsers (*jump)[])
 	ft_strlcpy((*jump)[0].id, "R", 2);
 	(*jump)[0].parser = &parse_resolution;
 	ft_strlcpy((*jump)[1].id, "A", 2);
+	(*jump)[1].parser = &parse_ambient;
 	ft_strlcpy((*jump)[2].id, "c", 2);
+	(*jump)[2].parser = &parse_camera;
 	ft_strlcpy((*jump)[3].id, "l", 2);
-	ft_strlcpy((*jump)[4].id, "sp", 2);
-	ft_strlcpy((*jump)[5].id, "pl", 2);
-	ft_strlcpy((*jump)[6].id, "sq", 2);
-	ft_strlcpy((*jump)[7].id, "cy", 2);
-	ft_strlcpy((*jump)[8].id, "tr", 2);
+	(*jump)[3].parser = &parse_light;
+	ft_strlcpy((*jump)[4].id, "sp", 3);
+	(*jump)[4].parser = &parse_sphere;
+	ft_strlcpy((*jump)[5].id, "pl", 3);
+	(*jump)[5].parser = &parse_plane;
+	ft_strlcpy((*jump)[6].id, "sq", 3);
+	(*jump)[6].parser = &parse_square;
+	ft_strlcpy((*jump)[7].id, "cy", 3);
+	(*jump)[7].parser = &parse_cylinder;
+	ft_strlcpy((*jump)[8].id, "tr", 3);
+	(*jump)[8].parser = &parse_triangle;
 }
 
 static int	read_file(t_scene *scene, int fd)

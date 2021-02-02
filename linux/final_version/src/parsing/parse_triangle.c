@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse_resolution.c                                 :+:    :+:            */
+/*   parse_triangle.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/02/02 22:03:37 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:03:51 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/02 23:25:19 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/02 23:27:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "parsing.h"
 #include "libft.h"
+#include "parsing.h"
+#include "objects.h"
 
-int	parse_resolution(t_scene *scene, char **element)
+int	parse_triangle(t_scene *scene, char **element)
 {
-	if (ft_count_strings(element) != 3)
+	t_triangle	triangle;
+
+	if (ft_count_strings(element) != 5)
 		return (parse_error);
-	if (scene->resolution.taken == true)
+	if (parse_coordinates(element[1], &triangle.point1) != success)
 		return (parse_error);
-	if (check_number(element[1]) != success)
+	if (parse_coordinates(element[2], &triangle.point2) != success)
 		return (parse_error);
-	if (check_number(element[2]) != success)
+	if (parse_coordinates(element[3], &triangle.point3) != success)
 		return (parse_error);
-	scene->resolution.x = ft_atoi(element[1]);
-	scene->resolution.y = ft_atoi(element[2]);
-	scene->resolution.taken = true;
-	if (scene->resolution.x < 0 || scene->resolution.y < 0)
+	if (parse_color(element[4], &triangle.color) != success)
 		return (parse_error);
+	if (vectvp_pushback(scene->objects, &triangle, sizeof(t_triangle)) == -1)
+		return (malloc_error);
 	return (success);
 }

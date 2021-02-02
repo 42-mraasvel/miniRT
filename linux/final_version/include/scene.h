@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 18:45:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 22:53:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "vectors.h"
 # include "libvect.h"
+# include "lighting.h"
 # include "ft_enum.h"
 
 typedef struct	s_img
@@ -47,6 +48,7 @@ typedef struct	s_scene
 	t_vect			*cameras;
 	t_vect			*lights;
 	t_vectvp		*objects;
+	t_ambient		ambient;
 	t_resolution	resolution;
 }				t_scene;
 

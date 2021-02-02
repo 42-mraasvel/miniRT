@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 17:31:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:27:03 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 typedef enum	e_type
 {
-	sphere,
-	plane,
-	square,
-	cylinder,
-	triangle
+	sp,
+	pl,
+	sq,
+	cy,
+	tr
 }				t_type;
 
 typedef struct	s_sphere
@@ -62,9 +62,9 @@ typedef struct	s_cylinder
 typedef struct	s_triangle
 {
 	t_type	type;
-	t_vec3	one;
-	t_vec3	two;
-	t_vec3	three;
+	t_vec3	point1;
+	t_vec3	point2;
+	t_vec3	point3;
 	t_col	color;
 }				t_triangle;
 
