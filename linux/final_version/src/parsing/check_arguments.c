@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:54:39 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:45:14 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:34:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	valid_filename(char *filename)
 ** 2. Invalid input string/option
 */
 
-int	check_arguments(t_data *data, int argc, char *argv[])
+int			check_arguments(t_data *data, int argc, char *argv[])
 {
 	if (argc != 2 && argc != 3)
 		return (ft_error(data, arg_error));

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:27:45 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:36:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ int				parse_file(t_data *data, char *pathname);
 */
 
 int				parse_resolution(t_scene *scene, char **element);
-int	parse_ambient(t_scene *scene, char **element);
-int	parse_camera(t_scene *scene, char **element);
-int	parse_light(t_scene *scene, char **element);
-int	parse_sphere(t_scene *scene, char **element);
-int	parse_plane(t_scene *scene, char **element);
-int	parse_square(t_scene *scene, char **element);
-int	parse_cylinder(t_scene *scene, char **element);
-int	parse_triangle(t_scene *scene, char **element);
+int				parse_ambient(t_scene *scene, char **element);
+int				parse_camera(t_scene *scene, char **element);
+int				parse_light(t_scene *scene, char **element);
+int				parse_sphere(t_scene *scene, char **element);
+int				parse_plane(t_scene *scene, char **element);
+int				parse_square(t_scene *scene, char **element);
+int				parse_cylinder(t_scene *scene, char **element);
+int				parse_triangle(t_scene *scene, char **element);
 
 
 /*
@@ -55,6 +55,7 @@ int	parse_triangle(t_scene *scene, char **element);
 
 int				parse_coordinates(char *information, t_vec3 *point);
 int				parse_color(char *information, t_col *col);
+int				valid_data(t_data *data);
 
 /*
 ** Error handling for file parsing

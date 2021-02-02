@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:05:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:29:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:37:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "error.h"
 #include "parsing.h"
 #include "minirt.h"
-#include <stdio.h>
+
 static int	jump_func(t_scene *scene, char **element, t_parsers jump[])
 {
 	int	i;
@@ -106,5 +106,7 @@ int			parse_file(t_data *data, char *pathname)
 	close(fd);
 	if (ret != success)
 		return (ft_error(data, ret));
+	if (!valid_data(data))
+		return (ft_error(data, parse_error));
 	return (success);
 }

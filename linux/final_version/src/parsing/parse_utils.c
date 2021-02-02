@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:37:34 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:17:26 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 23:36:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ int	check_number(char *information)
 		information++;
 	}
 	return (success);
+}
+
+int	valid_data(t_data *data)
+{
+	if (data->scene->cameras->nmemb == 0)
+		return (false);
+	if (data->scene->resolution.taken == false)
+		return (false);
+	if (data->scene->ambient.taken == false)
+		return (false);
+	return (true);
 }
