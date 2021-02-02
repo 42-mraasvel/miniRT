@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 13:26:54 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 09:47:31 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 #  define ALBEDO 0.18
 # endif
 
-# define K_DIFFUSE 1.0
-# define K_SPECULAR 0.0
+# define K_AMBIENT 1.0
+# define K_DIFFUSE 0
+# define K_SPECULAR 1.0
 # define NORMAL_BIAS 0.0001
 
 

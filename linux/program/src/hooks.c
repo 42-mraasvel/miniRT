@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 13:49:11 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 23:25:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 23:26:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 void next_camera(t_data *data)
 {
-	static int camera_index = 0;
+	static size_t camera_index = 0;
 
 	camera_index++;
 	if (camera_index == data->scene->cameras->nmemb)
 		camera_index = 0;
-	printf("Camera: %d\n", camera_index + 1);
+	printf("Camera: %lu\n", camera_index + 1);
 	data->active_camera = &((t_camera*)data->scene->cameras->table)[camera_index];
 }
 

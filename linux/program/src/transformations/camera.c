@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/01 14:15:01 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 18:54:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/01 23:42:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int translate_camera(int keycode, t_camera *camera)
 	return (true);
 }
 
+/*
+** https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
+*/
+
 static t_vec3	rotate_vector(t_vec3 v, t_vec3 axis, double degrees)
 {
 	double theta;
@@ -47,7 +51,6 @@ static t_vec3	rotate_vector(t_vec3 v, t_vec3 axis, double degrees)
 	b = vec_scalar(vec_cross(axis, v), sin(theta));
 	c = vec_scalar(axis, vec_dot(axis, v) * (1 - cos(theta)));
 	return (vec_add(vec_add(a, b), c));
-	// vec_scalar(v, cos(theta)) + vec_scalar(vec_cross(axis, v), sin(theta)) + vec_scalar(axis, vec_dot(axis, v) * (1 - cos(theta)));
 }
 
 static void rotate_camera_basis(t_camera *camera, t_vec3 axis, double degrees)

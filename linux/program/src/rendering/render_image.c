@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 22:03:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 09:47:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,21 @@ void	print_camera_info(t_camera c)
 
 t_col	compute_ambient(t_ambient ambient)
 {
-	return (color_scalar(ambient.ratio, ambient.color));
+	return (color_scalar(K_AMBIENT, color_scalar(ambient.ratio, ambient.color)));
+}
+
+/*
+** https://www.fabrizioduroni.it/2017/08/25/how-to-calculate-reflection-vector.html
+*/
+
+double	compute_specular(t_vec3 lightdir, t_vec3 normal, t_vec3 viewdir)
+{
+	t_vec3	reflected_direction;
+
+	reflected_direction = vec_sub(vec_scalar(vec_scalar(normal, vec_dot(normal, lightdir)), 2), lightdir);
+	// reflected_direction = vec_sub(vec_scalar(normal, 2 * vec_dot(normal, lightdir)), lightdir);
+	double spec = K_SPECULAR * vec_dot(viewdir, reflected_direction);
+	return (K_SPECULAR * vec_dot(viewdir, reflected_direction));
 }
 
 t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_objects objects)
@@ -61,6 +75,7 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 			// distance_normalizer = 4 * M_PI * (pow(distance(point, table[i].position), 2) / 30000.0);
 			distance_normalizer = ft_fmin(1.0, 10.0 / distance(point, table[i].position));
 			light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal)));
+			light_intensity += table[i].brightness * ft_fmax(0, compute_specular(light_dir, data.surface_normal, data.viewing_direction));
 			// light_intensity = light_intensity * distance_normalizer;
 			// printf("%f\n", distance_normalizer);
 			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
