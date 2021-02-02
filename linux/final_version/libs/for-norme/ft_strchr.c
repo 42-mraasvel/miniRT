@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/26 11:17:45 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/01 11:24:13 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <stddef.h>
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+char	*ft_strchr(const char *s, int c)
+{
+	char	*r;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	r = (char*)s;
+	while (*r != 0 && *r != (char)c)
+		r++;
+	if (*r != (char)c)
+		return (0);
+	return (r);
+}

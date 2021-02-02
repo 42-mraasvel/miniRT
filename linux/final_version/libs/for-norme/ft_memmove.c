@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/25 14:52:30 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/09 22:27:27 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
-
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	if (dest == src)
+		return (dest);
+	if (dest > src)
+	{
+		while (n > 0)
+		{
+			n--;
+			((unsigned char*)dest)[n] = ((const unsigned char*)src)[n];
+		}
+	}
+	else
+		dest = ft_memcpy(dest, src, n);
+	return (dest);
+}

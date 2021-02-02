@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_pow.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/21 10:15:53 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/21 11:52:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+double	ft_pow(double x, double y)
+{
+	double	result;
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
-
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	if (y == 0.0)
+		return (1);
+	result = 1;
+	if (y < 0)
+		return (result / ft_pow(x, -y));
+	while (y > 0)
+	{
+		result *= x;
+		y--;
+	}
+	return (result);
+}

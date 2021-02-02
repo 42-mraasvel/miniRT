@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_lstlast.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/28 14:52:05 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/02 10:36:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
-
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == 0)
+		return (0);
+	while (lst->next != 0)
+		lst = lst->next;
+	return (lst);
+}

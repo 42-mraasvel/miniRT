@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   lft_gnl.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/12/10 08:59:11 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/10 09:01:52 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef LFT_GNL_H
+# define LFT_GNL_H
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
 # endif
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
+typedef enum	e_ret
+{
+	error = -1,
+	eof_read,
+	line_read,
+	cont_read
+}				t_ret;
 
+typedef struct	s_buffer
+{
+	char	buffer[BUFFER_SIZE + 1];
+	int		position;
+}				t_buffer;
 
+int				ft_getline(int fd, char **line);
 
 #endif

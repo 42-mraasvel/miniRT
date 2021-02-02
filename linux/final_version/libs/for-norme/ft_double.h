@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_double.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/19 10:20:05 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/28 15:14:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef FT_DOUBLE_H
+# define FT_DOUBLE_H
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+typedef union				u_double
+{
+	double					value;
+	struct					s_bits
+	{
+		unsigned long long	fraction : 52;
+		unsigned int		exponent : 11;
+		unsigned int		sign : 1;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
+	}						bits;
+}							t_double;
 
 #endif

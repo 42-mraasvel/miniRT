@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_numlen_base.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/13 12:57:26 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/13 17:14:59 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+/*
+** Works for all signed integers.
+** Returns len of signed nbr in requested base version.
+*/
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
+int	ft_numlen_base(long long nbr, int base)
+{
+	int	len;
 
-
-
-#endif
+	if (nbr == 0)
+		return (1);
+	len = 0;
+	while (nbr != 0)
+	{
+		nbr = nbr / base;
+		len++;
+	}
+	return (len);
+}

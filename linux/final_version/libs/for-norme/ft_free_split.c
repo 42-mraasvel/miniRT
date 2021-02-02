@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_free_split.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/12/07 13:09:54 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/10 08:56:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <stdlib.h>
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+void	ft_free_split(char **strings)
+{
+	int	i;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	i = 0;
+	while (strings[i] != NULL)
+	{
+		free(strings[i]);
+		i++;
+	}
+	free(strings);
+}

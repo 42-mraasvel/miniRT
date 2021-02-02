@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/24 14:58:40 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/09 22:29:16 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <stddef.h>
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char*)s)[i] = c;
+		i++;
+	}
+	return (s);
+}

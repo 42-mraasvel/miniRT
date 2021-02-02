@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_lstdelone.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/28 14:58:09 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/03 12:05:23 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <stdlib.h>
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
-
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (lst == 0)
+		return ;
+	if (lst->content != 0 && del != 0)
+		(*del)(lst->content);
+	free(lst);
+}

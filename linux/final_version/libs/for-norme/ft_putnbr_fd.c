@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_putnbr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/27 11:23:35 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/01 11:23:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <unistd.h>
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+static void	ft_putnbr_fd_output(unsigned int n, int fd)
+{
+	char	c;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
+	if (n != 0)
+	{
+		c = n % 10 + '0';
+		ft_putnbr_fd_output(n / 10, fd);
+		write(fd, &c, 1);
+	}
+}
 
-
-
-#endif
+void		ft_putnbr_fd(int n, int fd)
+{
+	if (n == 0)
+	{
+		write(fd, "0", 1);
+		return ;
+	}
+	if (n < 0)
+		write(fd, "-", 1);
+	if (n < 0)
+		n = -n;
+	ft_putnbr_fd_output(n, fd);
+}

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_strrchr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/26 11:35:02 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/12/09 22:37:57 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	i;
+	char	*ptc;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	if ((char)c == '\0')
+		return (ft_strchr(s, '\0'));
+	i = 0;
+	ptc = (char*)s;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			ptc = ((char*)s + i);
+		i++;
+	}
+	if (*ptc == (char)c)
+		return (ptc);
+	return (NULL);
+}

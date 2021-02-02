@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_inrange.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/01/28 20:25:00 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/01/28 20:35:52 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+/*
+** Checks if number is in particular range
+*/
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+int	ft_inrange(int num, int min, int max)
+{
+	if (num < min || num > max)
+		return (0);
+	return (1);
+}
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
+int	ft_inrangef(float num, float min, float max)
+{
+	if (num < min || num > max)
+		return (0);
+	return (1);
+}
 
-
-
-#endif
+int	ft_inrangell(long long num, long long min, long long max)
+{
+	if (num < min || num > max)
+		return (0);
+	return (1);
+}

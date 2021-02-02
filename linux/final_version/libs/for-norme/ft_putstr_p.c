@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_putstr_p.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/11/14 20:43:10 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/14 20:46:57 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <unistd.h>
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+/*
+** Will put at most precision chars.
+** Returns bytes written.
+** Return -1 on write error, or NULL pointer.
+*/
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
+ssize_t	ft_putstr_p(char *str, ssize_t precision)
+{
+	ssize_t	len;
 
-
-
-#endif
+	if (str == 0)
+		return (-1);
+	if (precision == 0)
+		return (0);
+	len = ft_strlen(str);
+	len = len < precision ? len : precision;
+	return (write(1, str, len));
+}

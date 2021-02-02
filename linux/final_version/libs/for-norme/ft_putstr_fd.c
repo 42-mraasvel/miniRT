@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/27 11:13:46 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/03 12:13:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <unistd.h>
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	i;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	if (s == 0 || *s == 0)
+		return ;
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	write(fd, s, i);
+}

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   color.h                                            :+:    :+:            */
+/*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:23:48 by mraasvel      ########   odam.nl         */
+/*   Created: 2020/10/26 10:33:54 by mraasvel      #+#    #+#                 */
+/*   Updated: 2020/11/03 12:53:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "libft.h"
 
-# ifndef ALBEDO
-#  define ALBEDO 0.18
-# endif
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	d_len;
+	size_t	s_len;
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.2
-# define SHININESS 1250
-# define NORMAL_BIAS 0.0001
-
-
-
-#endif
+	d_len = 0;
+	while (d_len < size && dst[d_len] != 0)
+		d_len++;
+	if (d_len == size)
+		return (size + ft_strlen(src));
+	s_len = ft_strlcpy(dst + d_len, src, size - d_len);
+	return (d_len + s_len);
+}

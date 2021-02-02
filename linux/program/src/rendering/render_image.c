@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 10:11:37 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 16:35:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,19 @@ t_col	compute_ambient(t_ambient ambient)
 
 /*
 ** https://www.fabrizioduroni.it/2017/08/25/how-to-calculate-reflection-vector.html
+** https://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF
 */
 
 double	compute_specular(t_vec3 lightdir, t_vec3 normal, t_vec3 viewdir)
 {
 	t_vec3	reflected_direction;
+	double	spec;
 
-	reflected_direction = vec_sub(vec_scalar(vec_scalar(normal, vec_dot(normal, lightdir)), 2), lightdir);
-	// reflected_direction = vec_sub(vec_scalar(normal, 2 * vec_dot(normal, lightdir)), lightdir);
-	double spec = K_SPECULAR * vec_dot(viewdir, reflected_direction);
-	return (K_SPECULAR * vec_dot(viewdir, reflected_direction));
+	// reflected_direction = vec_normalize(vec_sub(vec_scalar(vec_scalar(normal, vec_dot(normal, lightdir)), 2), lightdir));
+	reflected_direction = vec_normalize(vec_sub(vec_scalar(normal, 2 * vec_dot(normal, lightdir)), lightdir));
+	spec = pow(vec_dot(viewdir, reflected_direction), SHININESS);
+	spec *= K_SPECULAR;
+	return (spec);
 }
 
 t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_objects objects)
@@ -70,13 +73,10 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 		}
 		if (useless.t < 0 || useless.t > distance(point, table[i].position))
 		{
-			//! no intersection between point and light source so add color
-			//!
-			// distance_normalizer = 4 * M_PI * (pow(distance(point, table[i].position), 2) / 30000.0);
 			distance_normalizer = ft_fmin(1.0, 10.0 / distance(point, table[i].position));
+
 			light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal)));
 			light_intensity += table[i].brightness * ft_fmax(0, compute_specular(light_dir, data.surface_normal, data.viewing_direction));
-			// light_intensity = light_intensity * distance_normalizer;
 			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
 		}
 		i++;
