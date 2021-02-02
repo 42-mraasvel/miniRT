@@ -6,14 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:45:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 17:57:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 18:37:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBVECT_H
 # define LIBVECT_H
 
-# include <stdint.h>
+# include <stddef.h>
 
 typedef struct	s_vect
 {

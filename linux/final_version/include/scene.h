@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 18:00:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 18:45:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "vectors.h"
 # include "libvect.h"
-# include "ft_bool.h"
+# include "ft_enum.h"
 
 typedef struct	s_img
 {

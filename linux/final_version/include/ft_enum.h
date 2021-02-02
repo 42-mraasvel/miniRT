@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:47:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 17:47:23 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 18:44:52 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,11 @@ typedef enum	e_bool
 	false,
 	true
 }				t_bool;
+
+typedef enum	e_errors
+{
+	success,
+	error
+}				t_errors;
 
 #endif

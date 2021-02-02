@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/02 17:27:14 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/02 18:36:48 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ DEPENDENCIES = Makefile $(HEADERS)
 SRCDIR = src
 OBJDIR = obj
 IDIR = include
-LIBDIR = libs
+LIBDIR = libft
 
 # Compilation
 
@@ -31,8 +31,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 # CFLAGS = -Wall -Wextra
 IFLAGS = -I $(IDIR) -I $(MLXDIR)
-# LIBFLAGS = -L$(LIBDIR) -lft -lvect -lftprintf -lm -pthread
-LIBFLAGS = -L$(LIBDIR) -lm -pthread
+LIBFLAGS = -L$(LIBDIR) -lft -lm -pthread
 
 # MLX FLAGS
 
@@ -42,8 +41,8 @@ MLXLIB = -L$(MLXDIR) -lmlx -lXext -lX11
 # PATHS
 VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -r 's/(.*):/\1/')
 
-all: $(NAME)
-.PHONY: all clean fclean re
+all: compile_libs $(NAME)
+.PHONY: all clean fclean re compile_libs
 
 $(NAME): $(OBJ) Makefile
 	$(CC) -o $@ $(OBJ) $(MLXLIB) $(LIBFLAGS) $(DFLAGS)
@@ -52,9 +51,15 @@ $(OBJDIR)/%.o: %.c $(HEADERS) | $(OBJDIR)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+compile_libs:
+	$(MAKE) -C $(LIBDIR)
 
 clean:
 	rm -rf $(OBJ)
+	$(MAKE) clean -C $(LIBDIR)
 fclean: clean
+	$(MAKE) fclean -C $(LIBDIR)
 	rm -rf $(NAME)
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all

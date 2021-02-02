@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 18:04:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 18:46:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINI_RT_H
 
 # include "scene.h"
+# include "ft_enum.h"
 
 typedef struct	s_mlx
 {
@@ -29,6 +30,7 @@ typedef struct	s_data
 	t_img		*next_img;
 	t_camera	*active_cam;
 	t_bool		bmp;
+	t_errors	errnum;
 }				t_data;
 
 
