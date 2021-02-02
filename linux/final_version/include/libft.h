@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/24 19:27:20 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 20:36:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 22:19:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int					ft_putstr(char *str);
 char				*ft_join_n_strings(int cnt, ...);
 char				**ft_split_set(const char *src, const char *set);
 char				**ft_split_token(const char *src, const char *token);
+size_t				ft_count_strings(char **strings);
 char				*ft_strstr(const char *haystack, const char *needle);
 void				ft_free_split(char **strings);
 int					ft_strcmp(char *s1, char *s2);

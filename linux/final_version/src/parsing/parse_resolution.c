@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lighting.h                                         :+:    :+:            */
+/*   parse_resolution.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:00:27 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/02 22:03:37 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/02 22:21:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHTING_H
-# define LIGHTING_H
+#include "scene.h"
+#include "parsing.h"
+#include "libft.h"
 
-# include "vectors.h"
-# include "ft_enum.h"
-# include "color.h"
-
-typedef struct	s_ambient
+int	parse_resolution(t_scene *scene, char **element)
 {
-	float	ratio;
-	t_col	color;
-	t_bool	taken;
-}				t_ambient;
-
-typedef struct	s_light
-{
-	t_vec3	pos;
-	float	brightness;
-	t_col	color;
-}				t_light;
-
-#endif
+	if (ft_count_strings(element) != 3)
+		return (error);
+	(void)scene;
+	(void)element;
+	return (success);
+}

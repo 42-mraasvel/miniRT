@@ -6,12 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 18:46:00 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 20:53:17 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINI_RT_H
-# define MINI_RT_H
+#ifndef MINIRT_H
+# define MINIRT_H
 
 # include "scene.h"
 # include "ft_enum.h"
@@ -32,6 +32,5 @@ typedef struct	s_data
 	t_bool		bmp;
 	t_errors	errnum;
 }				t_data;
-
 
 #endif

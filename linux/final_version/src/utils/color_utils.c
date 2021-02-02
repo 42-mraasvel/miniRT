@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lighting.h                                         :+:    :+:            */
+/*   color_utils.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:00:27 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/02 21:59:26 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/02 22:01:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHTING_H
-# define LIGHTING_H
+#include "color.h"
 
-# include "vectors.h"
-# include "ft_enum.h"
-# include "color.h"
-
-typedef struct	s_ambient
+t_col	color_gen(int r, int g, int b)
 {
-	float	ratio;
-	t_col	color;
-	t_bool	taken;
-}				t_ambient;
+	t_col	result;
 
-typedef struct	s_light
-{
-	t_vec3	pos;
-	float	brightness;
-	t_col	color;
-}				t_light;
-
-#endif
+	result.r = r;
+	result.g = g;
+	result.b = b;
+	result.val = (r << 16) + (g << 8) + b;
+	return (result);
+}

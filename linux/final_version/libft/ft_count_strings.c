@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lighting.h                                         :+:    :+:            */
+/*   ft_count_strings.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:00:27 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/02 22:18:52 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/02 22:19:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHTING_H
-# define LIGHTING_H
+#include <stddef.h>
 
-# include "vectors.h"
-# include "ft_enum.h"
-# include "color.h"
-
-typedef struct	s_ambient
+size_t	ft_count_strings(char **strings)
 {
-	float	ratio;
-	t_col	color;
-	t_bool	taken;
-}				t_ambient;
+	size_t	i;
 
-typedef struct	s_light
-{
-	t_vec3	pos;
-	float	brightness;
-	t_col	color;
-}				t_light;
-
-#endif
+	i = 0;
+	while (strings[i] != NULL)
+		i++;
+	return (i);
+}

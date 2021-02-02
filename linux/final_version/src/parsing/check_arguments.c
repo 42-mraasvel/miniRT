@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   errors.c                                           :+:    :+:            */
+/*   check_arguments.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/02/02 20:47:51 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:17:33 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/02 20:54:39 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/02 21:04:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "error.h"
 #include "minirt.h"
-
+#include "error.h"
+#include "libft.h"
 
 /*
-** Wrapper for setting the error number
+** Case:
+** 1. Incorrect argument count
+** 2. Invalid input string/option
 */
 
-int		ft_error(t_data *data, t_errors error_type)
+int	check_arguments(t_data *data, int argc, char *argv[])
 {
-	data->errnum = error_type;
-	return (error_type);
-}
-
-void	ft_perror(t_errors error_type)
-{
-	printf("Error\n");
-	printf("Error: %d\n", error_type);
+	if (argc != 2 && argc != 3)
+		return (ft_error(data, arg_error));
+	if (argc == 3)
+	{
+		if (ft_strcmp(argv[2], "--save") == 0)
+			data->bmp = true;
+		else
+			return (ft_error(data, arg_error));
+	}
+	return (success);
 }
