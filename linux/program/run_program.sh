@@ -1,4 +1,4 @@
-file='./files/basic_shapes/spheres.rt'
+file='./files/basic_shapes/sphere.rt'
 
 if [ $# -eq 0 ]
 then

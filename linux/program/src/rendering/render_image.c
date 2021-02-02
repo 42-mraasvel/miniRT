@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 09:47:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 10:11:37 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ t_col	compute_lights(t_vec3 point, t_vect *lights, t_intersection_data data, t_o
 			light_intensity = table[i].brightness * (K_DIFFUSE * ft_fmax(0, vec_dot(light_dir, data.surface_normal)));
 			light_intensity += table[i].brightness * ft_fmax(0, compute_specular(light_dir, data.surface_normal, data.viewing_direction));
 			// light_intensity = light_intensity * distance_normalizer;
-			// printf("%f\n", distance_normalizer);
 			light_color = color_add(light_color, color_scalar(light_intensity, table[i].color));
 		}
 		i++;
@@ -205,7 +204,8 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 
 	print_camera_info(camera);
 	i = 0;
-	camera_space = new_coordinate_space(camera.position, camera.orientation);
+	// camera_space = new_coordinate_space(camera.position, camera.orientation);
+	camera_space = camera.camera_space;
 	start = calculate_image_start(scene, camera_space, camera);
 	while (i < scene->resolution.y)
 	{

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 09:57:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/01 21:58:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/02 10:06:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WINDOW_NAME "MiniMaaRTen"
 
 # define BMPNAME "image.bmp"
-# define MULTITHREADING 1
+# define MULTITHREADING 0
 # define NUMTHREADS 4
 
 typedef enum	e_bool
