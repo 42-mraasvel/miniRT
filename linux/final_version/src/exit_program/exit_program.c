@@ -6,11 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 21:33:31 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 12:42:23 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "minirt.h"
 #include "ft_enum.h"
 #include "error.h"
@@ -29,13 +30,14 @@ static void	free_image(void *mlx_ptr, t_img* img)
 
 static void	free_mlx(t_data *data)
 {
-	if (data->mlx == NULL || data->bmp == true)
+	if (data->mlx == NULL)
 		return ;
 	free_image(data->mlx->mlx_ptr, data->curr_img);
 	free_image(data->mlx->mlx_ptr, data->next_img);
 	if (data->mlx->mlx_ptr != NULL)
 		mlx_destroy_display(data->mlx->mlx_ptr);
-	free(data->mlx->mlx_ptr);
+	if (data->bmp != true)
+		free(data->mlx->mlx_ptr);
 }
 
 static void	free_scene(t_data *data)
@@ -54,7 +56,10 @@ void		exit_program(t_data *data)
 	if (data->errnum != success)
 	{
 		ft_perror(data->errnum);
+		printf("Exit status: Failure\n");
 		exit(EXIT_FAILURE);
 	}
-	exit(EXIT_SUCCESS);
+	printf("Exit status: Success\n");
+	// exit(EXIT_SUCCESS);
+	return ;
 }

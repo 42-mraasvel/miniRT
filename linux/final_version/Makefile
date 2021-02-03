@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/02 22:38:43 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/03 11:06:26 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRC = $(shell find $(SRCDIR) -name "*.c" -exec basename {} \;)
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 HEADERS = $(shell find $(IDIR) -name "*.h")
 DEPENDENCIES = Makefile $(HEADERS)
+LIBS = $(LIBDIR)/libft.a
 
 # DIRS
 
@@ -44,7 +45,7 @@ VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -r 's/(.*):/\1/')
 all: compile_libs $(NAME)
 .PHONY: all clean fclean re compile_libs
 
-$(NAME): $(OBJ) Makefile
+$(NAME): $(OBJ) $(LIBS) Makefile
 	$(CC) -o $@ $(OBJ) $(MLXLIB) $(LIBFLAGS) $(DFLAGS)
 $(OBJDIR)/%.o: %.c $(HEADERS) | $(OBJDIR)
 	$(CC) -c -o $@ $< $(IFLAGS) $(CFLAGS) $(SPEEDFLAG) $(DFLAGS)

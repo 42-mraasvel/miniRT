@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 22:03:37 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:03:51 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 10:45:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	parse_resolution(t_scene *scene, char **element)
 	scene->resolution.x = ft_atoi(element[1]);
 	scene->resolution.y = ft_atoi(element[2]);
 	scene->resolution.taken = true;
-	if (scene->resolution.x < 0 || scene->resolution.y < 0)
+	if (scene->resolution.x <= 0 || scene->resolution.y <= 0)
 		return (parse_error);
 	return (success);
 }

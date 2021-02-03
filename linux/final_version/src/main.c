@@ -6,23 +6,37 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:18:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:15:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 12:42:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "libft.h"
 #include "error.h"
+#include "ft_enum.h"
 #include "parsing.h"
+#include "bmp.h"
+#include "mlx_management.h"
+#include "mlx.h"
 
-// int	run(t_data *data)
-// {
-// 	if (data->bmp == true)
-// 		return (save_bmp(data));
-// 	if (initialize_mlx(data) != success)
-// 		return (error);
-// 	return (success);
-// }
+int	run(t_data *data)
+{
+	data->active_cam = &((t_camera*)data->scene->cameras->table)[0];
+	if (data->bmp == true)
+		return (save_bmp(data));
+	if (initialize_mlx(data) != success)
+		return (ft_error(data, mlx_error));
+	mlx_loop(data->mlx->mlx_ptr);
+	return (success);
+}
+
+/*
+** 1. Argument checks
+** 2. Parse RT file
+** 3. BMP or MLX
+** 4. Render image to window or file
+** 5. Free/exit program
+*/
 
 int	main(int argc, char *argv[])
 {
@@ -42,8 +56,8 @@ int	main(int argc, char *argv[])
 	if (parse_file(&data, argv[1]) != success)
 		exit_program(&data);
 	data.mlx = &mlx;
-	// if (run(&data) != success)
-	// 	exit_program(&data);
+	if (run(&data) != success)
+		exit_program(&data);
 	exit_program(&data);
 	return (0);
 }
