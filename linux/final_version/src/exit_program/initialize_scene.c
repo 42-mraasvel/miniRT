@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:09:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:09:08 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 10:23:16 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 static int	abort_scene_init(t_data *data, int count)
 {
-	if (count == 1)
+	if (count >= 1)
 		vectvp_free(data->scene->objects);
-	if (count == 2)
+	if (count >= 2)
 		vect_free(data->scene->cameras, NULL);
 	return (ft_error(data, malloc_error));
 }
