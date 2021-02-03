@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:01:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 15:58:24 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 21:46:16 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "mlx.h"
 #include "mlx_management.h"
 #include "libft.h"
+#include "raytracing.h"
 
 #ifdef BONUS
 #include <stdio.h>
@@ -24,24 +25,27 @@ void		*render_frame_threaded(void *data)
 	int			i;
 	int			j;
 	t_thread	*thread;
+	t_vec3		topleft;
+	t_ray		ray;
 
 	thread = (t_thread*)data;
 	j = thread->threadnum;
-	printf("Thread start: %d\n", thread->threadnum);
+	topleft = compute_topleft(
+				thread->data->active_cam,
+				thread->data->scene->resolution);
 	while (j < thread->data->scene->resolution.y)
 	{
 		i = 0;
 		while (i < thread->data->scene->resolution.x)
 		{
+			ray = compute_ray(topleft, thread->data->active_cam, i, j);
 			ft_pixelput(
-				thread->data->next_img,
-				i, j,
-				color_gen(255, 0, 0));
+				thread->data->next_img, i, j,
+				compute_color(ray, thread->data));
 			i++;
 		}
 		j += NUMTHREAD;
 	}
-	printf("Thread end: %d\n", thread->threadnum);
 	return (NULL);
 }
 
@@ -68,17 +72,22 @@ static int	render_frame(t_data *data)
 {
 	int	i;
 	int	j;
+	t_vec3		topleft;
+	t_ray		ray;
 
 	j = 0;
+	topleft = compute_topleft(
+				data->active_cam,
+				data->scene->resolution);
 	while (j < data->scene->resolution.y)
 	{
 		i = 0;
 		while (i < data->scene->resolution.x)
 		{
+			ray = compute_ray(topleft, data->active_cam, i, j);
 			ft_pixelput(
-				data->next_img,
-				i, j,
-				compute_color(data));
+				data->next_img, i, j,
+				compute_color(ray, data));
 			i++;
 		}
 		j++;

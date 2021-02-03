@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   render.h                                           :+:    :+:            */
+/*   ft_float.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/02/03 13:17:19 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 19:32:47 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/03 22:41:31 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/03 22:43:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef FT_FLOAT_H
+# define FT_FLOAT_H
 
-# include "minirt.h"
+# include <stdint.h>
 
-# ifdef BONUS
-#  include "multithreading.h"
-# endif
-
-int		next_frame(t_data *data);
+typedef union	u_float
+{
+	float	val;
+	struct		s_bitfield
+	{
+		uint32_t	fraction : 23;
+		uint16_t	exponent : 8;
+		uint8_t		sign : 1;
+	}		bits;
+}				t_float;
 
 #endif

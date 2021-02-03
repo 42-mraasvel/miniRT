@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 16:16:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 22:59:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_sphere
 	t_type	type;
 	t_vec3	pos;
 	float	diameter;
+	float	radius;
 	t_col	color;
 }				t_sphere;
 
@@ -66,6 +67,10 @@ typedef struct	s_triangle
 	t_vec3	point1;
 	t_vec3	point2;
 	t_vec3	point3;
+	t_vec3	side1;
+	t_vec3	side2;
+	t_vec3	side3;
+	t_vec3	norm;
 	t_col	color;
 }				t_triangle;
 

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   render.h                                           :+:    :+:            */
+/*   wrappers.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/02/03 13:17:19 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 19:32:47 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/03 22:48:37 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/03 22:51:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "vectors.h"
+#include "raytracing.h"
+#include "objects.h"
 
-# include "minirt.h"
+float	intersect_plane_wrap(t_ray ray, t_vec3 norm, t_vec3 pos)
+{
+	t_plane	plane;
 
-# ifdef BONUS
-#  include "multithreading.h"
-# endif
-
-int		next_frame(t_data *data);
-
-#endif
+	plane.norm = norm;
+	plane.pos = pos;
+	if (intersect_plane(&ray, &plane) == false)
+		return (-1);
+	return (ray.t);
+}

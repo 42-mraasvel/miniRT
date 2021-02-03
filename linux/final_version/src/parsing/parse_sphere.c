@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:04:47 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:14:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 21:06:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	parse_sphere(t_scene *scene, char **element)
 	if (check_number(element[2]) != success)
 		return (parse_error);
 	sphere.diameter = ft_atof(element[2]);
+	sphere.radius = sphere.diameter / 2.0;
 	if (sphere.diameter <= 0)
 		return (parse_error);
 	if (parse_color(element[3], &sphere.color) != success)
