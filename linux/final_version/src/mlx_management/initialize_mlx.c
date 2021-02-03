@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 11:14:58 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 12:42:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:52:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_resolution(t_mlx *mlx, t_resolution *resolution)
 
 	mlx_get_screen_size(mlx->mlx_ptr, &x, &y);
 	resolution->x = ft_min(x, resolution->x);
-	resolution->x = ft_min(y, resolution->y);
+	resolution->y = ft_min(y, resolution->y);
 }
 
 static int	init_window(t_mlx *mlx, t_scene *scene)

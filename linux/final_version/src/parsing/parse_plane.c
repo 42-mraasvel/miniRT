@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:18:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:23:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 16:00:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	parse_plane(t_scene *scene, char **element)
 	t_plane	plane;
 
 	if (ft_count_strings(element) != 4)
-		return (error);
+		return (fail);
 	if (parse_coordinates(element[1], &plane.pos) != success)
 		return (parse_error);
 	if (parse_coordinates(element[2], &plane.norm) != success)

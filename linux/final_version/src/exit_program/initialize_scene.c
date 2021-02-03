@@ -6,13 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:09:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 10:23:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:59:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libvect.h"
-#include "error.h"
+#include "ft_error.h"
 #include "minirt.h"
 #include "lighting.h"
 

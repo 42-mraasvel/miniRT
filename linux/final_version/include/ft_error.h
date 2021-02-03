@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.h                                            :+:    :+:            */
+/*   ft_error.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:49:59 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 21:00:59 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:58:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef FT_ERROR_H
+# define FT_ERROR_H
 
 # include "minirt.h"
 

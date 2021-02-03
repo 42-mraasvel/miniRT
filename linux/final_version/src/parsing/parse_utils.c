@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:37:34 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:36:36 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 16:00:34 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int	parse_coordinates(char *information, t_vec3 *point)
 {
 	if (check_coordinates(information) != success)
-		return (error);
+		return (fail);
 	point->x = ft_atof(information);
 	information = ft_strchr(information, ',');
 	point->y = ft_atof(information + 1);
@@ -31,7 +31,7 @@ int	parse_coordinates(char *information, t_vec3 *point)
 int	parse_color(char *information, t_col *col)
 {
 	if (check_color(information) != success)
-		return (error);
+		return (fail);
 	col->r = ft_atoi(information);
 	information = ft_strchr(information, ',');
 	col->g = ft_atoi(information + 1);
@@ -39,7 +39,7 @@ int	parse_color(char *information, t_col *col)
 	col->b = ft_atoi(information + 1);
 	*col = color_gen(col->r, col->g, col->b);
 	if (valid_color(*col) != success)
-		return (error);
+		return (fail);
 	return (success);
 }
 
@@ -50,7 +50,7 @@ int	check_number(char *information)
 		if (ft_isdigit(*information) == 0 && *information != '.')
 		{
 			if (*information != '-' && *information != '+')
-				return (error);
+				return (fail);
 		}
 		information++;
 	}

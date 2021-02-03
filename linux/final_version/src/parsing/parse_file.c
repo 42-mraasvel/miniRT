@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:05:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 11:16:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 16:01:03 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "libft.h"
-#include "error.h"
+#include "ft_error.h"
 #include "parsing.h"
 #include "minirt.h"
 

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:27:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 16:16:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_square
 	t_vec3	pos;
 	t_vec3	norm;
 	float	size;
+	t_m33	cob_matrix;
 	t_col	color;
 }				t_square;
 

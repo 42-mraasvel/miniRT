@@ -6,13 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:01:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 13:49:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:58:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "render.h"
-#include "error.h"
+#include "ft_error.h"
 #include "mlx.h"
 #include "mlx_management.h"
 #include "libft.h"
@@ -33,7 +33,10 @@ void		*render_frame_threaded(void *data)
 		i = 0;
 		while (i < thread->data->scene->resolution.x)
 		{
-			// ft_pixel_put(i, j, compute_color(thread->data));
+			ft_pixelput(
+				thread->data->next_img,
+				i, j,
+				color_gen(255, 0, 0));
 			i++;
 		}
 		j += NUMTHREAD;
@@ -51,8 +54,11 @@ int			next_frame(t_data *data)
 		return (ft_error(data, thread_error));
 	if (join_threads(threads) != success)
 		return (ft_error(data, thread_error));
-	push_image(data);
-	ft_swap_ptr(data->curr_img, data->next_img);
+	if (data->bmp == false)
+	{
+		push_image(data);
+		ft_swap_ptr(data->curr_img, data->next_img);
+	}
 	return (success);
 }
 
@@ -69,6 +75,10 @@ static int	render_frame(t_data *data)
 		i = 0;
 		while (i < data->scene->resolution.x)
 		{
+			ft_pixelput(
+				data->next_img,
+				i, j,
+				compute_color(data));
 			i++;
 		}
 		j++;
@@ -79,8 +89,11 @@ static int	render_frame(t_data *data)
 int			next_frame(t_data *data)
 {
 	render_frame(data);
-	push_image(data);
-	ft_swap_ptr(&data->curr_img, &data->next_img);
+	if (data->bmp == false)
+	{
+		push_image(data);
+		ft_swap_ptr(&data->curr_img, &data->next_img);
+	}
 	return (success);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:47:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 13:11:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:58:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef enum	e_bool
 
 typedef enum	e_errors
 {
-	error,
+	fail,
 	success,
 	arg_error,
 	malloc_error,

@@ -6,12 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:54:39 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:34:17 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 16:01:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "error.h"
+#include "ft_error.h"
 #include "libft.h"
 
 static int	valid_filename(char *filename)

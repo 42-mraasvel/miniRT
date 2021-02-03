@@ -6,13 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:18:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 13:46:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:59:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "libft.h"
-#include "error.h"
+#include "ft_error.h"
 #include "ft_enum.h"
 #include "parsing.h"
 #include "bmp.h"
@@ -28,7 +28,7 @@ int	run(t_data *data)
 	if (initialize_mlx(data) != success)
 		return (ft_error(data, mlx_error));
 	if (next_frame(data) != success)
-		return (error);
+		return (fail);
 	mlx_loop(data->mlx->mlx_ptr);
 	return (success);
 }

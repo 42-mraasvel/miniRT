@@ -6,14 +6,15 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 10:48:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 11:02:06 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:58:29 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minirt.h"
 #include "bmp.h"
-#include "error.h"
+#include "ft_error.h"
+#include "render.h"
 
 static t_img	*bmp_init_image(t_data *data)
 {
@@ -41,8 +42,8 @@ int				save_bmp(t_data *data)
 	data->next_img = bmp_init_image(data);
 	if (data->next_img == NULL)
 		return (ft_error(data, malloc_error));
-	//! Set active camera?
-	//! Render image to the window.
+	if (next_frame(data) != success)
+		return (ft_error(data, bmp_error));
 	if (create_bmp_file(data) != success)
 		return (ft_error(data, bmp_error));
 	return (success);

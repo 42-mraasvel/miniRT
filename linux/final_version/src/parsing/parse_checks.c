@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:41:52 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 21:57:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 15:59:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 int	valid_color(t_col color)
 {
 	if (color.val < 0)
-		return (error);
+		return (fail);
 	if (!ft_inrange(color.r, 0, 255))
-		return (error);
+		return (fail);
 	if (!ft_inrange(color.g, 0, 255))
-		return (error);
+		return (fail);
 	if (!ft_inrange(color.b, 0, 255))
-		return (error);
+		return (fail);
 	return (success);
 }
 
@@ -45,7 +45,7 @@ int	check_coordinates(char *information)
 		}
 	}
 	if (comma_count != 2 || *information != '\0')
-		return (error);
+		return (fail);
 	return (success);
 }
 
@@ -64,6 +64,6 @@ int	check_color(char *information)
 		}
 	}
 	if (comma_count != 2 || *information != '\0')
-		return (error);
+		return (fail);
 	return (success);
 }
