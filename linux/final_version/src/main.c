@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:18:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 12:42:39 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 13:46:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "bmp.h"
 #include "mlx_management.h"
 #include "mlx.h"
+#include "render.h"
 
 int	run(t_data *data)
 {
@@ -26,6 +27,8 @@ int	run(t_data *data)
 		return (save_bmp(data));
 	if (initialize_mlx(data) != success)
 		return (ft_error(data, mlx_error));
+	if (next_frame(data) != success)
+		return (error);
 	mlx_loop(data->mlx->mlx_ptr);
 	return (success);
 }

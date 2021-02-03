@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:47:51 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:43:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 13:24:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void	ft_perror(t_errors error_type)
 		"Success",
 		"Argument Error",
 		"Malloc Error",
-		"Parse Error"
+		"Parse Error",
+		"MLX Error",
+		"BMP Error",
+		"Multithreading Error"
 	};
+
 	printf("Error\n");
 	printf("%s\n", error_table[error_type]);
 }

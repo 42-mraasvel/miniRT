@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:47:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 10:56:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 13:11:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef enum	e_errors
 	malloc_error,
 	parse_error,
 	mlx_error,
-	bmp_error
+	bmp_error,
+	thread_error
 }				t_errors;
 
 #endif
