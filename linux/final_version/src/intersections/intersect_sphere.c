@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 20:09:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 21:57:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 10:53:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ t_bool			intersect_sphere(t_ray *ray, void *object)
 
 	sphere = (t_sphere*)object;
 	t = compute_t(ray, sphere);
-	if (t <= 0 || t > ray->t)
+	if (t <= 0)
 		return (false);
-	ray->t = t;
-	ray->obj = object;
-	return (true);
+	return (update_ray(ray, t, object));
 }

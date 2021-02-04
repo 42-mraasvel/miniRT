@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 22:59:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 11:20:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ typedef struct	s_cylinder
 	t_vec3	pos;
 	t_vec3	orient;
 	float	diameter;
+	float	radius_sqrd;
 	float	height;
+	float	height_half;
 	t_col	color;
 }				t_cylinder;
 

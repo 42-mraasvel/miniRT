@@ -6,13 +6,19 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:22:27 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 18:02:43 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 11:20:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parsing.h"
 #include "objects.h"
+#include <math.h>
+
+/*
+** Precompute r^2 for
+** intersection
+*/
 
 int	parse_cylinder(t_scene *scene, char **element)
 {
@@ -32,6 +38,8 @@ int	parse_cylinder(t_scene *scene, char **element)
 		return (parse_error);
 	cylinder.diameter = ft_atof(element[3]);
 	cylinder.height = ft_atof(element[4]);
+	cylinder.radius_sqrd = powf(cylinder.diameter / 2.f, 2);
+	cylinder.height_half = cylinder.height / 2.f;
 	if (parse_color(element[5], &cylinder.color) != success)
 		return (parse_error);
 	if (vectvp_pushback(scene->objects, &cylinder, sizeof(t_cylinder)) == -1)
