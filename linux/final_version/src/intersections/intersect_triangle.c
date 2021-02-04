@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 22:30:45 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:54:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:30:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,18 @@ static t_bool	point_in_triangle(t_triangle *t, t_vec3 point, t_vec3 normal)
 	t_float	t1;
 	t_float	t2;
 
-	t0.val = point_line(vec_sub(t->point2, t->point1), normal, vec_sub(point, t->point1));
-	t1.val = point_line(vec_sub(t->point3, t->point2), normal, vec_sub(point, t->point2));
-	t2.val = point_line(vec_sub(t->point1, t->point3), normal, vec_sub(point, t->point3));
+	t0.val = point_line(
+				vec_sub(t->point2, t->point1),
+				normal,
+				vec_sub(point, t->point1));
+	t1.val = point_line(
+				vec_sub(t->point3, t->point2),
+				normal,
+				vec_sub(point, t->point2));
+	t2.val = point_line(
+				vec_sub(t->point1, t->point3),
+				normal,
+				vec_sub(point, t->point3));
 	if (t0.bits.sign == t1.bits.sign && t0.bits.sign == t2.bits.sign)
 		return (true);
 	return (false);
@@ -57,7 +66,7 @@ t_bool			intersect_triangle(t_ray *ray, void *object)
 	t_vec3		intersect;
 
 	triangle = (t_triangle*)object;
-	t = intersect_plane_wrap(*ray, triangle->norm , triangle->point1);
+	t = intersect_plane_wrap(*ray, triangle->norm, triangle->point1);
 	if (t <= 0)
 		return (false);
 	intersect = vec_add(ray->origin, vec_scalar(t, ray->dir));

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:09:54 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 15:59:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:28:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	abort_scene_init(t_data *data, int count)
 	return (ft_error(data, malloc_error));
 }
 
-int	init_scene(t_data *data)
+int			init_scene(t_data *data)
 {
 	t_scene	*scene;
 

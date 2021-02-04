@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 17:48:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 22:31:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:27:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 float	deg_to_rad(float degrees)
 {
-	return (degrees * DTR);
+	return (degrees * FT_PI / 180);
 }
 
 float	rad_to_deg(float radians)
 {
-	return (radians * RTD);
+	return (radians * 180 / FT_PI);
 }
 
 /*

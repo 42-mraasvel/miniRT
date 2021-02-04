@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:01:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:47:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:35:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int			next_frame(t_data *data)
 
 static int	render_frame(t_data *data)
 {
-	int	i;
-	int	j;
-	t_vec3		topleft;
-	t_ray		ray;
+	int		i;
+	int		j;
+	t_vec3	topleft;
+	t_ray	ray;
 
 	j = 0;
 	topleft = compute_topleft(

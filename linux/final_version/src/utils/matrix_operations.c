@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:04:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:32:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:38:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_m33	matrix_transpose(t_m33 matrix)
 	int		i;
 	int		j;
 	t_m33	transposed;
-	
+
 	i = 0;
 	while (i < 3)
 	{

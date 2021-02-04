@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:37:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:57:25 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:35:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ static void		compute_hitdata(t_ray *primary_ray, t_hitdata *hitdata)
 		triangle_normal
 	};
 
-	hitdata->hitpoint = vec_add(primary_ray->origin, vec_scalar(primary_ray->t, primary_ray->dir));
-	hitdata->normal = compute_normal[*(t_type*)primary_ray->obj](hitdata->hitpoint, primary_ray->obj);
+	hitdata->hitpoint = vec_add(
+		primary_ray->origin, vec_scalar(primary_ray->t, primary_ray->dir));
+	hitdata->normal = compute_normal[*(t_type*)primary_ray->obj](
+		hitdata->hitpoint, primary_ray->obj);
 	if (vec_dot(primary_ray->dir, hitdata->normal) > 0)
 		vec_invert(&hitdata->normal);
 	hitdata->viewdir = vec_inverted(primary_ray->dir);
@@ -43,7 +45,8 @@ static t_col	add_colors(t_hitdata *data)
 {
 	t_col	final_color;
 
-	final_color = color_mult(color_add(data->ambient, data->diffuse), data->color);
+	final_color = color_mult(
+		color_add(data->ambient, data->diffuse), data->color);
 	final_color = color_add(final_color, data->specular);
 	return (final_color);
 }
@@ -58,7 +61,8 @@ t_col			compute_color(t_ray primary_ray, t_data *data)
 	compute_light_data(
 		(t_light*)data->scene->lights->table,
 		data->scene->lights->nmemb,
-		&hitdata);
+		&hitdata,
+		data->scene->objects);
 	hitdata.ambient = compute_ambient(data->scene->ambient);
 	return (add_colors(&hitdata));
 }

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 22:48:37 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:53:31 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:37:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ float	intersect_plane_wrap(t_ray ray, t_vec3 norm, t_vec3 pos)
 t_bool	update_ray(t_ray *ray, float t, void *object)
 {
 	if (t > ray->t)
-		return (false);;
+		return (false);
 	ray->t = t;
 	ray->obj = object;
 	return (true);

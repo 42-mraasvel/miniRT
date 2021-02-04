@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 12:26:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:35:54 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:31:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@
 #include "ft_error.h"
 #include "prototypes.h"
 #include "render.h"
-#include <stdio.h> // rm!
 
 static int	key_hook(int keycode, t_data *data)
 {
 	t_bool	next;
 
 	next = false;
-	printf("Key: %d\n", keycode);
 	if (keycode == XK_Tab)
 	{
 		next_camera(data);
@@ -44,9 +42,8 @@ static int	key_hook(int keycode, t_data *data)
 
 static int	close_window(int keycode, t_data *data)
 {
-	printf("Close hook: %d\n", keycode);
 	(void)keycode;
-	(void)data;
+	exit_program(data);
 	return (success);
 }
 

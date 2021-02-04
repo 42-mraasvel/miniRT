@@ -6,14 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:47:51 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 15:58:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:39:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_error.h"
 #include "minirt.h"
-
 
 /*
 ** Wrapper for setting the error number

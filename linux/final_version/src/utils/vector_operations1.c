@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 16:19:01 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 21:46:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:37:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ t_vec3	vec_gen(float x, float y, float z)
 	v.y = y;
 	v.z = z;
 	return (v);
-	//! allowed?
-	return ((t_vec3) {
-		.x = x,
-		.y = y,
-		.z = z});
 }
 
 float	vec_dot(t_vec3 a, t_vec3 b)

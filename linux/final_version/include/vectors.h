@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 13:43:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:27:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define VECTORS_H
 
 # define FT_PI 3.14159265358979323846
-# define DTR FT_PI / 180
-# define RTD 180 / FT_PI
 
 # include "ft_enum.h"
 
@@ -62,8 +60,5 @@ t_m33			matrix_gen(t_vec3 c1, t_vec3 c2, t_vec3 c3);
 float			rad_to_deg(float radians);
 float			deg_to_rad(float degrees);
 float			quadratic_equation(float a, float b, float c);
-
-void		print_vec(t_vec3 v); // rm
-void		print_matrix(t_m33 m); // rm
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:29:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 21:47:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:36:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_vec3	compute_topleft(t_camera *camera, t_resolution res)
 
 t_vec3	compute_pixel(t_vec3 topleft, t_camera *camera, int x, int y)
 {
-	topleft = vec_add(topleft, vec_scalar(x ,camera->cspace.right));
+	topleft = vec_add(topleft, vec_scalar(x, camera->cspace.right));
 	topleft = vec_sub(topleft, vec_scalar(y, camera->cspace.up));
 	return (topleft);
 }
@@ -58,7 +58,7 @@ t_ray	compute_ray(t_vec3 topleft, t_camera *camera, int x, int y)
 	ray.dir = vec_sub(pixel, camera->pos);
 	vec_normalize(&ray.dir);
 	ray.origin = camera->pos;
-	ray.obj =  NULL;
+	ray.obj = NULL;
 	ray.t = FLT_MAX;
 	return (ray);
 }

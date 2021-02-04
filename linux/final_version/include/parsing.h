@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:36:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:24:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int				parse_plane(t_scene *scene, char **element);
 int				parse_square(t_scene *scene, char **element);
 int				parse_cylinder(t_scene *scene, char **element);
 int				parse_triangle(t_scene *scene, char **element);
-
 
 /*
 ** Parsing utils

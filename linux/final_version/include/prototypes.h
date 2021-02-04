@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 18:59:05 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:34:41 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:24:13 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 # include "lighting.h"
 # include "raytracing.h"
 
-void	compute_light_data(t_light *lights, size_t nmemb, t_hitdata *hitdata);
+void	compute_light_data(
+			t_light *lights, size_t nmemb,
+			t_hitdata *hitdata, t_vectvp *objects);
 t_col	compute_ambient(t_ambient ambient);
 
 t_bool	rotate_camera(int keycode, t_camera *camera);
 t_bool	translate_camera(int keycode, t_camera *camera);
 void	next_camera(t_data *data);
-
 
 #endif

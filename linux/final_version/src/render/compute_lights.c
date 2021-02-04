@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 18:03:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 18:59:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:35:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static t_vec3	compute_reflection_dir(t_vec3 normal, t_vec3 lightdir)
 			lightdir)));
 }
 
-static t_col	compute_specular(t_light *light, t_hitdata *data, t_vec3 lightdir)
+static t_col	compute_specular(
+	t_light *light, t_hitdata *data, t_vec3 lightdir)
 {
 	float	intensity;
 	t_vec3	reflect_dir;
@@ -48,10 +49,13 @@ t_col			compute_ambient(t_ambient ambient)
 	return (color_scalar(ambient.ratio * K_AMBIENT, ambient.color));
 }
 
-void			compute_light_data(t_light *lights, size_t nmemb, t_hitdata *hitdata)
+void			compute_light_data(
+	t_light *lights, size_t nmemb,
+	t_hitdata *hitdata, t_vectvp *objects)
 {
 	size_t	i;
 	t_vec3	lightdir;
+	t_ray	shadow_ray;
 
 	i = 0;
 	hitdata->diffuse = color_gen(0, 0, 0);
@@ -59,12 +63,18 @@ void			compute_light_data(t_light *lights, size_t nmemb, t_hitdata *hitdata)
 	while (i < nmemb)
 	{
 		lightdir = vec_normalized(vec_sub(lights[i].pos, hitdata->hitpoint));
-		hitdata->diffuse = color_add(
-			hitdata->diffuse,
-			compute_diffuse(&lights[i], lightdir, hitdata->normal));
-		hitdata->specular = color_add(
-			hitdata->specular,
-			compute_specular(&lights[i], hitdata, lightdir));
+		shadow_ray.origin = vec_add(
+			hitdata->hitpoint, vec_scalar(HIT_OFFSET, hitdata->normal));
+		shadow_ray.dir = lightdir;
+		if (trace(&shadow_ray, objects) == false)
+		{
+			hitdata->diffuse = color_add(
+				hitdata->diffuse,
+				compute_diffuse(&lights[i], lightdir, hitdata->normal));
+			hitdata->specular = color_add(
+				hitdata->specular,
+				compute_specular(&lights[i], hitdata, lightdir));
+		}
 		i++;
 	}
 }

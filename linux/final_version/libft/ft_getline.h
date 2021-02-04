@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LFT_GNL_H
-# define LFT_GNL_H
+#ifndef FT_GETLINE_H
+# define FT_GETLINE_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096

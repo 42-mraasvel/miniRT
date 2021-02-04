@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:41:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:28:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ft_error.h"
 #include "mlx.h"
 
-static void	free_image(void *mlx_ptr, t_img* img)
+static void	free_image(void *mlx_ptr, t_img *img)
 {
 	if (img == NULL)
 		return ;

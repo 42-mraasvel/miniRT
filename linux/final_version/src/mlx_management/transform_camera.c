@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 19:28:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:36:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:32:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_bool			translate_camera(int keycode, t_camera *camera)
 
 static t_vec3	rotate_vector(t_vec3 v, t_vec3 axis, double degrees)
 {
-	double theta;
+	double	theta;
 	t_vec3	a;
 	t_vec3	b;
 	t_vec3	c;
@@ -66,11 +66,13 @@ static t_vec3	rotate_vector(t_vec3 v, t_vec3 axis, double degrees)
 	return (vec_add(vec_add(a, b), c));
 }
 
-static void		rotate_camera_basis(t_camera *camera, t_vec3 axis, double degrees)
+static void		rotate_camera_basis(
+					t_camera *camera, t_vec3 axis, double degrees)
 {
 	camera->cspace.right = rotate_vector(camera->cspace.right, axis, degrees);
 	camera->cspace.up = rotate_vector(camera->cspace.up, axis, degrees);
-	camera->cspace.forward = rotate_vector(camera->cspace.forward, axis, degrees);
+	camera->cspace.forward = rotate_vector(
+								camera->cspace.forward, axis, degrees);
 }
 
 t_bool			rotate_camera(int keycode, t_camera *camera)

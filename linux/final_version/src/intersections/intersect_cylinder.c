@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 10:34:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 11:47:04 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:30:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static t_bool	point_in_cyl(float t, t_ray *ray, t_cylinder *cylinder)
 	if (t <= 0)
 		return (false);
 	point = vec_add(ray->origin, vec_scalar(t, ray->dir));
-	len = sqrtf(vec_sqrd(vec_sub(point, cylinder->pos)) - cylinder->radius_sqrd);
+	len = sqrtf(
+			vec_sqrd(vec_sub(point, cylinder->pos)) - cylinder->radius_sqrd);
 	if (len > cylinder->height_half)
 		return (false);
 	return (true);

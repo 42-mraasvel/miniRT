@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 10:56:17 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 11:02:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:28:16 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	write_header(int fd, t_data *data)
 	return (success);
 }
 
-int	create_bmp_file(t_data *data)
+int			create_bmp_file(t_data *data)
 {
 	int	fd;
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   vect.c                                           :+:    :+:            */
+/*   vect.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/19 19:54:14 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/19 22:52:28 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/04 20:38:10 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/04 20:38:26 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	*vect_memcpy(void *dest, void *src, size_t n)
 	return (dest);
 }
 
-t_vect	*vect_init(size_t initial_size, unsigned int data_type)
+t_vect		*vect_init(size_t initial_size, unsigned int data_type)
 {
 	t_vect	*vect;
 
