@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:30:19 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:37:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 23:19:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void		vec_invert(t_vec3 *v)
 
 t_vec3		vec_inverted(t_vec3 v)
 {
-	vec_invert(&v);
+	v.x *= -1;
+	v.y *= -1;
+	v.z *= -1;
 	return (v);
 }

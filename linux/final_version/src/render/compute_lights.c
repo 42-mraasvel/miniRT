@@ -6,11 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 18:03:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:35:41 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 23:26:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <float.h>
 #include "libft.h"
 #include "raytracing.h"
 #include "lighting.h"
@@ -54,7 +55,6 @@ void			compute_light_data(
 	t_hitdata *hitdata, t_vectvp *objects)
 {
 	size_t	i;
-	t_vec3	lightdir;
 	t_ray	shadow_ray;
 
 	i = 0;
@@ -62,18 +62,18 @@ void			compute_light_data(
 	hitdata->specular = color_gen(0, 0, 0);
 	while (i < nmemb)
 	{
-		lightdir = vec_normalized(vec_sub(lights[i].pos, hitdata->hitpoint));
-		shadow_ray.origin = vec_add(
-			hitdata->hitpoint, vec_scalar(HIT_OFFSET, hitdata->normal));
-		shadow_ray.dir = lightdir;
+		shadow_ray.dir = vec_sub(lights[i].pos, hitdata->hitpoint);
+		shadow_ray.t = vec_len(shadow_ray.dir);
+		shadow_ray.origin = hitdata->hitpoint;
+		vec_normalize(&shadow_ray.dir);
 		if (trace(&shadow_ray, objects) == false)
 		{
 			hitdata->diffuse = color_add(
 				hitdata->diffuse,
-				compute_diffuse(&lights[i], lightdir, hitdata->normal));
+				compute_diffuse(&lights[i], shadow_ray.dir, hitdata->normal));
 			hitdata->specular = color_add(
 				hitdata->specular,
-				compute_specular(&lights[i], hitdata, lightdir));
+				compute_specular(&lights[i], hitdata, shadow_ray.dir));
 		}
 		i++;
 	}

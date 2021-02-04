@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 17:40:06 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 17:59:36 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 23:19:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,16 @@ void	vec_normalize(t_vec3 *v)
 
 t_vec3	vec_normalized(t_vec3 v)
 {
-	vec_normalize(&v);
+	float	len;
+
+	len = vec_len(v);
+	if (len != 0 && len != 1)
+	{
+		len = 1 / len;
+		v.x *= len;
+		v.y *= len;
+		v.z *= len;
+	}
 	return (v);
 }
 
