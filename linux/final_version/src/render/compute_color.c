@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:37:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:01:14 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:39:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void		compute_hitdata(t_ray *primary_ray, t_hitdata *hitdata)
 
 	hitdata->hitpoint = vec_add(primary_ray->origin, vec_scalar(primary_ray->t, primary_ray->dir));
 	hitdata->normal = compute_normal[*(t_type*)primary_ray->obj](hitdata->hitpoint, primary_ray->obj);
+	if (vec_dot(primary_ray->dir, hitdata->normal) > 0)
+		vec_invert(&hitdata->normal);
 	hitdata->viewdir = vec_inverted(primary_ray->dir);
 	hitdata->color = ((t_gen_obj*)primary_ray->obj)->color;
 }

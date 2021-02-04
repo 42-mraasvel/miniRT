@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 09:28:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 10:28:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 17:20:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct	s_img
 	int		height;
 	int		endian;
 }				t_img;
-
 
 typedef struct	s_data
 {
