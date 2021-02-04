@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 19:28:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:34:27 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:36:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_bool			translate_camera(int keycode, t_camera *camera)
 		camera->pos = vec_add(camera->pos, camera->cspace.forward);
 	else if (keycode == XK_a)
 		camera->pos = vec_sub(camera->pos, camera->cspace.right);
-	else if (keycode == XK_z)
+	else if (keycode == XK_space)
 		camera->pos = vec_add(camera->pos, camera->cspace.up);
 	else if (keycode == XK_c)
 		camera->pos = vec_sub(camera->pos, camera->cspace.up);
