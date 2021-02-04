@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:30:19 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:54:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 13:43:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,19 @@ t_cspace	new_space(t_vec3 origin, t_vec3 forward)
 float		vec_sqrd(t_vec3 v)
 {
 	return (vec_dot(v, v));
+}
+
+void		vec_invert(t_vec3 *v)
+{
+	v->x *= -1;
+	v->y *= -1;
+	v->z *= -1;
+}
+
+t_vec3		vec_inverted(t_vec3 v)
+{
+	vec_invert(&v);
+	return (v);
 }
 
 void		print_vec(t_vec3 v)

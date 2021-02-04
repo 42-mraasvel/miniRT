@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:55:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 13:43:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ float			vec_len(t_vec3 v);
 t_vec3			vec_sub(t_vec3 a, t_vec3 b);
 t_bool			vec_parallel(t_vec3 a, t_vec3 b);
 float			vec_sqrd(t_vec3 v);
+void			vec_invert(t_vec3 *v);
+t_vec3			vec_inverted(t_vec3 v);
 
 t_cspace		new_space(t_vec3 origin, t_vec3 forward);
 

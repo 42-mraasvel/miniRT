@@ -6,18 +6,57 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:37:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 19:57:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:01:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "raytracing.h"
 #include "lighting.h"
+#include "objects.h"
+#include "prototypes.h"
 
-t_col	compute_color(t_ray primary_ray, t_data *data)
+/*
+** Compute surface normals
+** and viewing direction
+*/
+
+static void		compute_hitdata(t_ray *primary_ray, t_hitdata *hitdata)
 {
+	static const t_compute_normal	compute_normal[] = {
+		sphere_normal,
+		plane_normal,
+		square_normal,
+		cylinder_normal,
+		triangle_normal
+	};
+
+	hitdata->hitpoint = vec_add(primary_ray->origin, vec_scalar(primary_ray->t, primary_ray->dir));
+	hitdata->normal = compute_normal[*(t_type*)primary_ray->obj](hitdata->hitpoint, primary_ray->obj);
+	hitdata->viewdir = vec_inverted(primary_ray->dir);
+	hitdata->color = ((t_gen_obj*)primary_ray->obj)->color;
+}
+
+static t_col	add_colors(t_hitdata *data)
+{
+	t_col	final_color;
+
+	final_color = color_mult(color_add(data->ambient, data->diffuse), data->color);
+	final_color = color_add(final_color, data->specular);
+	return (final_color);
+}
+
+t_col			compute_color(t_ray primary_ray, t_data *data)
+{
+	t_hitdata	hitdata;
+
 	if (trace(&primary_ray, data->scene->objects) == false)
-		return (color_gen(0, 0, 0));
-		// return (compute_ambient(data->scene->ambient));
-	return (color_gen(255,100,75));
+		return (compute_ambient(data->scene->ambient));
+	compute_hitdata(&primary_ray, &hitdata);
+	compute_light_data(
+		(t_light*)data->scene->lights->table,
+		data->scene->lights->nmemb,
+		&hitdata);
+	hitdata.ambient = compute_ambient(data->scene->ambient);
+	return (add_colors(&hitdata));
 }
