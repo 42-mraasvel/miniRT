@@ -16,7 +16,7 @@
 # define WINDOW_NAME "MiniMaaRTen"
 
 # define BMPNAME "image.bmp"
-# define MULTITHREADING 0
+# define MULTITHREADING 1
 # define NUMTHREADS 4
 
 typedef enum	e_bool

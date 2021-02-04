@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 16:02:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:41:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ void		exit_program(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	printf("Exit status: Success\n");
-	// exit(EXIT_SUCCESS);
-	return ;
+	exit(EXIT_SUCCESS);
 }
