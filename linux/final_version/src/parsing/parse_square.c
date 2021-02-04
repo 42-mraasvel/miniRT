@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:20:33 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 18:35:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 10:32:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_m33	square_matrix(t_square *square)
 	t_cspace	space;
 
 	space = new_space(square->pos, square->norm);
-	return (matrix_gen(space.right, space.up, space.forward));
+	return (matrix_transpose(matrix_gen(space.right, space.up, space.forward)));
 }
 
 int				parse_square(t_scene *scene, char **element)

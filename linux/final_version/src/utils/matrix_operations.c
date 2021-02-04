@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:04:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 18:28:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 10:32:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ t_m33	matrix_gen(t_vec3 c1, t_vec3 c2, t_vec3 c3)
 
 t_vec3	matrix_vec_mult(t_m33 m, t_vec3 v)
 {
-	v.x = v.x * m.m[0][0] + v.x * m.m[0][1] + v.x * m.m[0][2];
-	v.y = v.y * m.m[0][0] + v.y * m.m[0][1] + v.y * m.m[0][2];
-	v.z = v.z * m.m[0][0] + v.z * m.m[0][1] + v.z * m.m[0][2];
+	v.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z;
+	v.y = m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z;
+	v.z = m.m[2][0] * v.x + m.m[2][1] * v.y + m.m[2][2] * v.z;
 	return (v);
 }
 
@@ -45,9 +45,10 @@ t_m33	matrix_transpose(t_m33 matrix)
 	i = 0;
 	while (i < 3)
 	{
+		j = 0;
 		while (j < 3)
 		{
-			transposed.m[i][j] = matrix.m[j][i];
+			transposed.m[j][i] = matrix.m[i][j];
 			j++;
 		}
 		i++;

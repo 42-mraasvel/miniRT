@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:01:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 21:46:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:06:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "raytracing.h"
 
 #ifdef BONUS
-#include <stdio.h>
+
 void		*render_frame_threaded(void *data)
 {
 	int			i;

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:46:15 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 23:04:46 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 10:57:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_bool	trace(t_ray *ray, t_vectvp *objects)
 	static const t_intersect	intersect[] = {
 		intersect_sphere,
 		intersect_plane,
-		NULL,
-		NULL,
+		intersect_square,
+		intersect_cylinder,
 		intersect_triangle
 	};
 

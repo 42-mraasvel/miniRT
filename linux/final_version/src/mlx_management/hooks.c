@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 12:26:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 16:02:29 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:35:54 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,30 @@
 #include "minirt.h"
 #include "mlx.h"
 #include "ft_error.h"
+#include "prototypes.h"
+#include "render.h"
 #include <stdio.h> // rm!
 
 static int	key_hook(int keycode, t_data *data)
 {
+	t_bool	next;
+
+	next = false;
 	printf("Key: %d\n", keycode);
-	// if (keycode == XK_Escape)
-	// 	exit_program(data);
-	(void)keycode;
-	(void)data;
+	if (keycode == XK_Tab)
+	{
+		next_camera(data);
+		next = true;
+	}
+	else if (keycode == XK_Escape)
+		exit_program(data);
+	else if (translate_camera(keycode, data->active_cam) == true)
+		next = true;
+	else if (rotate_camera(keycode, data->active_cam) == true)
+		next = true;
+	if (next == true)
+		if (next_frame(data) != success)
+			exit_program(data);
 	return (success);
 }
 

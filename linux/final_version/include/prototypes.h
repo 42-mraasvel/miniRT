@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lighting.h                                         :+:    :+:            */
+/*   prototypes.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:04:05 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/04 18:59:05 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/04 19:34:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHTING_H
-# define LIGHTING_H
+#ifndef PROTOTYPES_H
+# define PROTOTYPES_H
 
-# include "vectors.h"
-# include "ft_enum.h"
-# include "color.h"
+# include "lighting.h"
+# include "raytracing.h"
 
-# define K_AMBIENT 1
-# define K_DIFFUSE 0.6
-# define K_SPECULAR 0.08
-# define SPEC_EXP 10
+void	compute_light_data(t_light *lights, size_t nmemb, t_hitdata *hitdata);
+t_col	compute_ambient(t_ambient ambient);
 
-typedef struct	s_ambient
-{
-	float	ratio;
-	t_col	color;
-	t_bool	taken;
-}				t_ambient;
+t_bool	rotate_camera(int keycode, t_camera *camera);
+t_bool	translate_camera(int keycode, t_camera *camera);
+void	next_camera(t_data *data);
 
-typedef struct	s_light
-{
-	t_vec3	pos;
-	float	brightness;
-	t_col	color;
-}				t_light;
 
 #endif
