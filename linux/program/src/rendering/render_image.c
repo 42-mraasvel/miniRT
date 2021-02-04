@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/29 11:45:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 16:35:40 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 21:35:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,11 @@ void	*multithreaded_rendering(void *tid)
 		while (j < data->data->scene->resolution.x)
 		{
 			pixel_position = compute_pixel_position(j, i, camera_space, start);
+			if (i == 500 && j == 500) {
+				ft_printf("PIXEL: ");
+				print_vec(pixel_position);
+				ft_printf("\n");
+			}
 			if (ray_tracing(camera, vec_dir(camera.position, pixel_position), data->data->scene, &color) != success)
 				return (NULL);
 			ft_pixel_put(*data->data->next_image, j, i, color);
@@ -207,6 +212,9 @@ int	render_image(t_scene *scene, t_img *img, t_camera camera)
 	// camera_space = new_coordinate_space(camera.position, camera.orientation);
 	camera_space = camera.camera_space;
 	start = calculate_image_start(scene, camera_space, camera);
+	ft_printf("START: ");
+	print_vec(start);
+	ft_printf("\n");
 	while (i < scene->resolution.y)
 	{
 		j = 0;

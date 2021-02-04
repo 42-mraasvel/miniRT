@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/11 15:43:00 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/30 12:44:06 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 22:20:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ static int		point_in_triangle(t_triangle t, t_vec3 point, t_vec3 normal)
 	t_double	t1;
 	t_double	t2;
 
+	// N . ((B - A) x (P - A)) 
+	// N . ((C - B) x (P - B))
+	// N . ((A - C) x (P - C))
 	t0.value = point_line(vec_sub(t.point_2, t.point_1), normal, vec_sub(point, t.point_1));
 	t1.value = point_line(vec_sub(t.point_3, t.point_2), normal, vec_sub(point, t.point_2));
 	t2.value = point_line(vec_sub(t.point_1, t.point_3), normal, vec_sub(point, t.point_3));

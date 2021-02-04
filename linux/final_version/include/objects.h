@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 16:58:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:40:59 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ typedef struct	s_cylinder
 	float	height;
 	float	height_half;
 }				t_cylinder;
+
+/*
+** Sides and norm
+** precomputed for
+** slight optimization
+*/
 
 typedef struct	s_triangle
 {
