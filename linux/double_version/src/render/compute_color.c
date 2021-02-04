@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:37:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 23:17:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 00:29:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Compute surface normals
 ** and viewing direction
 */
-#include <stdio.h>
+
 static void		compute_hitdata(t_ray *primary_ray, t_hitdata *hitdata)
 {
 	static const t_compute_normal	compute_normal[] = {
@@ -37,7 +37,8 @@ static void		compute_hitdata(t_ray *primary_ray, t_hitdata *hitdata)
 		hitdata->hitpoint, primary_ray->obj);
 	if (vec_dot(primary_ray->dir, hitdata->normal) > 0)
 		vec_invert(&hitdata->normal);
-	hitdata->hitpoint = vec_add(hitdata->hitpoint, vec_scalar(HIT_OFFSET, hitdata->normal));
+	hitdata->hitpoint = vec_add(
+		hitdata->hitpoint, vec_scalar(HIT_OFFSET, hitdata->normal));
 	hitdata->viewdir = vec_inverted(primary_ray->dir);
 	hitdata->color = ((t_gen_obj*)primary_ray->obj)->color;
 }
