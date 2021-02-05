@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 00:24:24 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/06 00:28:58 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,6 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 compile_libs:
 	$(MAKE) -C $(LIBDIR)
-	cp $(MLXDIR)/libmlx.dylib .
 
 clean:
 	rm -rf $(OBJ)
