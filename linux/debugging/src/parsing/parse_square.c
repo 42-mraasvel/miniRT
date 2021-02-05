@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:20:33 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:32:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 12:30:57 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "vectors.h"
 #include "objects.h"
+#include "debug.h"
 
 static t_m33	square_matrix(t_square *square)
 {

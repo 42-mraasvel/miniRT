@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:37:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 11:08:47 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 12:05:11 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_col			compute_color(t_ray primary_ray, t_data *data)
 {
 	t_hitdata	hitdata;
 
-	if (trace(&primary_ray, data->scene->objects) == false)
+	if (trace(&primary_ray, data->scene->objects, data) == false)
 		return (compute_ambient(data->scene->ambient));
 	compute_hitdata(&primary_ray, &hitdata);
 	compute_light_data(

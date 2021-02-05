@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:28:01 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 11:21:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 12:06:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_vec3			compute_topleft(t_camera *camera, t_resolution res);
 t_ray			compute_ray(t_vec3 topleft, t_camera *camera, int x, int y);
 
 t_col			compute_color(t_ray primary_ray, t_data *data);
-t_bool			trace(t_ray *ray, t_vectvp *objects);
+t_bool			trace(t_ray *ray, t_vectvp *objects, t_data *data);
 
 /*
 ** Intersection functions
