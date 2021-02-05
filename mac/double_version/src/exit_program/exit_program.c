@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 00:22:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 00:27:26 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ static void	free_mlx(t_data *data)
 	free_image(data->mlx->mlx_ptr, data->curr_img);
 	free_image(data->mlx->mlx_ptr, data->next_img);
 	if (data->mlx->win_ptr != NULL)
+	{
 		mlx_destroy_window(data->mlx->mlx_ptr, data->mlx->win_ptr);
+		free(data->mlx->win_ptr);
+	}
 	if (data->bmp != true)
 		free(data->mlx->mlx_ptr);
 }
