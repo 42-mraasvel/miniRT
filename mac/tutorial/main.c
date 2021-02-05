@@ -52,7 +52,7 @@ typedef enum	e_errnum
 void exit_program(t_data *data)
 {
 	if (data->mlx != NULL && data->mlx->mlx_ptr != NULL) {
-		mlx_destroy_display(data->mlx->mlx_ptr);
+		// mlx_destroy_display(data->mlx->mlx_ptr);
 		// free(data->mlx->mlx_ptr);
 	}
 	return ;
@@ -84,10 +84,10 @@ int init_images(t_data *data)
 {
 	data->curr_img = malloc(1 * sizeof(t_img));
 	if (data->curr_img == NULL)
-		return (abort_img(data->curr_img, 0, malloc_error));
+		return (abort_image(data, 0, malloc_error));
 	data->curr_img->img_ptr = mlx_new_image(data->mlx->mlx_ptr, X, Y);
 	if (data->curr_img == NULL)
-		return (abort_img(data->curr_img, 1, mlx_error));
+		return (abort_image(data, 1, mlx_error));
 	data->curr_img->addr = mlx_get_data_addr(
 		data->curr_img->img_ptr,
 		&data->curr_img->bpp,
@@ -95,7 +95,7 @@ int init_images(t_data *data)
 		&data->curr_img->endian
 	);
 	if (data->curr_img->addr == NULL)
-		return (abort_img(data->curr_img, 2, mlx_error));
+		return (abort_image(data, 2, mlx_error));
 	return (success);
 }
 
@@ -120,6 +120,6 @@ int main(void)
 	data.mlx = &mlx;
 	initialize_mlx(&mlx);
 	init_images(&data);
-	mlx_loop(data.mlx->mlx_ptr);
+	// mlx_loop(data.mlx->mlx_ptr);
 	return (0);
 }
