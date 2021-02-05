@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 00:17:16 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 10:22:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "color.h"
 
 # define K_AMBIENT 1
-# define K_DIFFUSE 0.6
+# define K_DIFFUSE 1.0
 # define K_SPECULAR 0.08
 # define SPEC_EXP 10
 
