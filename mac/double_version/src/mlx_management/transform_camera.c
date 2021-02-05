@@ -6,13 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 19:28:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:32:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 19:59:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include <X11/keysym.h>
-#include <X11/keysymdef.h>
+#include "mac_mlx_keys.h"
 #include "minirt.h"
 #include "ft_enum.h"
 
@@ -28,17 +27,17 @@ void			next_camera(t_data *data)
 
 t_bool			translate_camera(int keycode, t_camera *camera)
 {
-	if (keycode == XK_d)
+	if (keycode == K_D)
 		camera->pos = vec_add(camera->pos, camera->cspace.right);
-	else if (keycode == XK_s)
+	else if (keycode == K_S)
 		camera->pos = vec_sub(camera->pos, camera->cspace.forward);
-	else if (keycode == XK_w)
+	else if (keycode == K_W)
 		camera->pos = vec_add(camera->pos, camera->cspace.forward);
-	else if (keycode == XK_a)
+	else if (keycode == K_A)
 		camera->pos = vec_sub(camera->pos, camera->cspace.right);
-	else if (keycode == XK_space)
+	else if (keycode == K_SP)
 		camera->pos = vec_add(camera->pos, camera->cspace.up);
-	else if (keycode == XK_c)
+	else if (keycode == K_C)
 		camera->pos = vec_sub(camera->pos, camera->cspace.up);
 	else
 		return (false);
@@ -77,17 +76,17 @@ static void		rotate_camera_basis(
 
 t_bool			rotate_camera(int keycode, t_camera *camera)
 {
-	if (keycode == XK_e)
+	if (keycode == K_E)
 		rotate_camera_basis(camera, camera->cspace.forward, -15);
-	else if (keycode == XK_q)
+	else if (keycode == K_Q)
 		rotate_camera_basis(camera, camera->cspace.forward, 15);
-	else if (keycode == XK_Up)
+	else if (keycode == K_AR_U)
 		rotate_camera_basis(camera, camera->cspace.right, -15);
-	else if (keycode == XK_Down)
+	else if (keycode == K_AR_D)
 		rotate_camera_basis(camera, camera->cspace.right, 15);
-	else if (keycode == XK_Right)
+	else if (keycode == K_AR_R)
 		rotate_camera_basis(camera, camera->cspace.up, 15);
-	else if (keycode == XK_Left)
+	else if (keycode == K_AR_L)
 		rotate_camera_basis(camera, camera->cspace.up, -15);
 	else
 		return (false);

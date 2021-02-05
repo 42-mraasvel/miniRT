@@ -6,12 +6,11 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 12:26:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 10:24:57 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 19:58:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <X11/keysym.h>
-#include <X11/keysymdef.h>
+#include "mac_mlx_keys.h"
 #include "minirt.h"
 #include "mlx.h"
 #include "ft_error.h"
@@ -23,12 +22,12 @@ static int	key_hook(int keycode, t_data *data)
 	t_bool	next;
 
 	next = false;
-	if (keycode == XK_Tab)
+	if (keycode == K_TAB)
 	{
 		next_camera(data);
 		next = true;
 	}
-	else if (keycode == XK_Escape)
+	else if (keycode == K_ESC)
 		exit_program(data);
 	else if (translate_camera(keycode, data->active_cam) == true)
 		next = true;
