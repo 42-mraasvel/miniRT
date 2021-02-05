@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:13:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/03 12:13:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 23:54:19 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	ft_putstr_fd(char *s, int fd)
 	i = 0;
 	while (s[i] != 0)
 		i++;
-	write(fd, s, i);
+	if (write(fd, s, i) == -1)
+		return ;
 }

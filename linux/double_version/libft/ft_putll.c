@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 10:11:31 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/13 13:14:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 23:53:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	ft_putll(long long nbr, int precision)
 	numlen = 0;
 	if (nbr < 0)
 	{
-		write(1, "-", 1);
+		if (write(1, "-", 1) == -1)
+			return (-1);
 		numlen = ft_unumlen_base(-nbr, 10);
 		nbr = -nbr;
 	}

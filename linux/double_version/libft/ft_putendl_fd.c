@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:19:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/10/29 11:29:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 23:54:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_putendl_fd(char *s, int fd)
 		return ;
 	while (s[i] != 0)
 		i++;
-	write(fd, s, i);
-	write(fd, "\n", 1);
+	if (write(fd, s, i) == -1)
+		return ;
+	if (write(fd, "\n", 1) == -1)
+		return ;
 }
