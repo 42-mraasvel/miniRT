@@ -54,6 +54,7 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 compile_libs:
 	$(MAKE) -C $(LIBDIR)
+	$(MAKE) -C $(MLXDIR)
 
 clean:
 	rm -rf $(OBJ)
