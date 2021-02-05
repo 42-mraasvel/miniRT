@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:05:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:33:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 13:42:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "ft_error.h"
 #include "parsing.h"
 #include "minirt.h"
+#include <stdio.h>
 
 static int	jump_func(t_scene *scene, char **element, t_parsers jump[])
 {
@@ -92,6 +93,7 @@ static int	read_file(t_scene *scene, int fd)
 		if (ret == -1)
 			return (parse_error);
 		ret2 = extract_information(scene, line, jump_table);
+		printf("%s\n", line);
 		free(line);
 		if (ret2 != success)
 			return (ret2);

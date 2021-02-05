@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 18:03:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 00:20:27 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 14:43:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			compute_light_data(
 	while (i < nmemb)
 	{
 		shadow_ray.dir = vec_sub(lights[i].pos, hitdata->hitpoint);
-		shadow_ray.t = vec_len(shadow_ray.dir);
+		shadow_ray.t = vec_len(shadow_ray.dir) + 0.1;
 		shadow_ray.origin = hitdata->hitpoint;
 		vec_normalize(&shadow_ray.dir);
 		if (trace(&shadow_ray, objects) == false)

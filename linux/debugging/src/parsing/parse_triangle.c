@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:25:19 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 23:00:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 13:50:00 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 static void	set_triangle_intersect_data(t_triangle *triangle)
 {
 	triangle->side1 = vec_sub(triangle->point2, triangle->point1);
-	triangle->side1 = vec_sub(triangle->point3, triangle->point2);
-	triangle->side1 = vec_sub(triangle->point1, triangle->point3);
+	triangle->side2 = vec_sub(triangle->point3, triangle->point2);
+	triangle->side3 = vec_sub(triangle->point1, triangle->point3);
 	triangle->norm = vec_cross(triangle->side1, triangle->side2);
 	vec_normalize(&triangle->norm);
 }
