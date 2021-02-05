@@ -36,11 +36,11 @@ LIBFLAGS = -L$(LIBDIR) -lft -lm -pthread
 
 # MLX FLAGS
 
-MLXDIR = ../mlx
-MLXLIB = -L$(MLXDIR) -lmlx -lXext -lX11
+MLXDIR = ./mlx
+MLXLIB = -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit
 
 # PATHS
-VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -r 's/(.*):/\1/')
+VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':')
 
 all: compile_libs $(NAME)
 .PHONY: all clean fclean re compile_libs
