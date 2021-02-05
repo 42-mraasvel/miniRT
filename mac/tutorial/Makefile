@@ -17,7 +17,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 # compilation
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LIBS = -L $(MLXDIR) -lmlx -framework OpenGL -framework AppKit -lm
+LIBS = -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit -lm
 IFLAGS = -I$(MLXDIR)
 DFLAGS = -g -fsanitize=address
 SPDFLAGS = -O0
@@ -31,7 +31,7 @@ all: MLX $(NAME)
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LIBS) $(DFLAGS)
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
-	$(CC) -c $< -o $@$(CFLAGS) $(IFLAGS) $(SPDFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS) $(IFLAGS) $(SPDFLAGS) $(DFLAGS)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
