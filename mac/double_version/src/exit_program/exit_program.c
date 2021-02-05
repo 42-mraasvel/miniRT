@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 00:28:52 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 00:42:10 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ static void	free_image(void *mlx_ptr, t_img *img)
 	free(img);
 }
 
+/*
+** Don't free the MLX pointer,
+** because it will still contain
+** unfreed data on mac.
+*/
+
 static void	free_mlx(t_data *data)
 {
 	if (data->mlx == NULL)
@@ -36,8 +42,6 @@ static void	free_mlx(t_data *data)
 	free_image(data->mlx->mlx_ptr, data->next_img);
 	if (data->mlx->win_ptr != NULL)
 		mlx_destroy_window(data->mlx->mlx_ptr, data->mlx->win_ptr);
-	if (data->bmp != true)
-		free(data->mlx->mlx_ptr);
 }
 
 static void	free_scene(t_data *data)
@@ -56,10 +60,8 @@ void		exit_program(t_data *data)
 	if (data->errnum != success)
 	{
 		ft_perror(data->errnum);
-		printf("Exit status: Failure\n");
 		exit(EXIT_FAILURE);
 	}
-	printf("Exit status: Success\n");
 	system("leaks a.out");
 	exit(EXIT_SUCCESS);
 }
