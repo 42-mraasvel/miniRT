@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 09:36:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 11:56:50 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 12:55:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static t_bool	point_in_square(t_vec3 point, t_square *square)
 	double	half_size;
 
 	half_size = square->size / 2.0;
-	local = matrix_vec_mult(square->cob_matrix, point);
-	if (ft_fabs(local.x) <= half_size && ft_fabs(local.y) <= half_size)
-		return (true);
-	return (false);
+	local = matrix_vec_mult(square->cob_matrix, vec_sub(point, square->pos));
+	if (ft_fabs(local.x) > half_size || ft_fabs(local.y) > half_size)
+		return (false);
+	return (true);
 }
 
 /*
