@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:23:35 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/11/01 11:23:20 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 23:54:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	ft_putnbr_fd_output(unsigned int n, int fd)
 	{
 		c = n % 10 + '0';
 		ft_putnbr_fd_output(n / 10, fd);
-		write(fd, &c, 1);
+		if (write(fd, &c, 1) == -1)
+			return ;
 	}
 }
 
@@ -28,11 +29,13 @@ void		ft_putnbr_fd(int n, int fd)
 {
 	if (n == 0)
 	{
-		write(fd, "0", 1);
+		if (write(fd, "0", 1) == -1)
+			return ;
 		return ;
 	}
 	if (n < 0)
-		write(fd, "-", 1);
+		if (write(fd, "-", 1) == -1)
+			return ;
 	if (n < 0)
 		n = -n;
 	ft_putnbr_fd_output(n, fd);
