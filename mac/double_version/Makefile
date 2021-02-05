@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/05 19:16:56 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/05 20:36:19 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LIBFLAGS = -L$(LIBDIR) -lft -lm -pthread
 
 # MLX FLAGS
 
-MLXDIR = ./mlx
+MLXDIR = mlx
 MLXLIB = -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit
 
 # PATHS
@@ -55,6 +55,7 @@ $(OBJDIR):
 compile_libs:
 	$(MAKE) -C $(LIBDIR)
 	$(MAKE) -C $(MLXDIR)
+	cp $(MLXDIR)/libmlx.dylib .
 
 clean:
 	rm -rf $(OBJ)

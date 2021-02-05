@@ -6,12 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2018/01/19 17:40:13 by oouklich      #+#    #+#                 */
-/*   Updated: 2021/02/05 19:57:15 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 20:30:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_MACOS_H
-# define KEY_MACOS_H
+#ifndef MAC_MLX_KEYS_H
+# define MAC_MLX_KEYS_H
 
 /*
 ** Keyboard LETTERS

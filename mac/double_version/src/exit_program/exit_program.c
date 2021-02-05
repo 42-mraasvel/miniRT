@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:28:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 20:29:50 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	free_image(void *mlx_ptr, t_img *img)
 {
 	if (img == NULL)
 		return ;
-	if (img->img_ptr != NULL)
-		mlx_destroy_image(mlx_ptr, img->img_ptr);
 	else if (img->bmp == true)
 		free(img->addr);
 	free(img);
