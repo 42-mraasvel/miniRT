@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 12:26:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 19:58:22 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 21:08:15 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ static int	key_hook(int keycode, t_data *data)
 	return (success);
 }
 
-static int	close_window(int keycode, t_data *data)
+static int	close_window(t_data *data)
 {
-	(void)keycode;
 	exit_program(data);
 	return (success);
 }

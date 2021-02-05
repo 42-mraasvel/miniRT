@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 20:41:53 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 21:00:56 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	free_scene(t_data *data)
 {
 	if (data->scene == NULL)
 		return ;
-	vectvp_free(data->scene->objects);
 	vect_free(data->scene->cameras, NULL);
 	vect_free(data->scene->lights, NULL);
+	vectvp_free(data->scene->objects);
 }
 
 void		exit_program(t_data *data)

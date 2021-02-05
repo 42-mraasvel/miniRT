@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/05 20:36:19 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/05 20:49:59 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ LIBDIR = libft
 
 # Compilation
 
-# DFLAGS = -O0 -g -fsanitize=address
+ifdef DEBUG
+DFLAGS = -O0 -g -fsanitize=address
+endif
 SPEEDFLAG = -O3
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -43,7 +45,7 @@ MLXLIB = -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit
 VPATH = $(shell find $(SRCDIR) -type d | tr '\n' ':')
 
 all: compile_libs $(NAME)
-.PHONY: all clean fclean re compile_libs
+.PHONY: all clean fclean re compile_libs debug
 
 $(NAME): $(OBJ) $(LIBS) Makefile
 	$(CC) -o $@ $(OBJ) $(MLXLIB) $(LIBFLAGS) $(DFLAGS)
@@ -66,3 +68,5 @@ fclean: clean
 re:
 	$(MAKE) fclean
 	$(MAKE) all
+debug:
+	$(MAKE) re DEBUG=1
