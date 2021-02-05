@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/05 20:49:59 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/06 00:16:35 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,9 @@ LIBDIR = libft
 
 ifdef DEBUG
 DFLAGS = -O0 -g -fsanitize=address
-endif
+else
 SPEEDFLAG = -O3
+endif
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 # CFLAGS = -Wall -Wextra

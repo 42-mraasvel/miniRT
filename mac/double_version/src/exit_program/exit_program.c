@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 21:00:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 00:15:55 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void		exit_program(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	printf("Exit status: Success\n");
+	system("leaks a.out");
 	exit(EXIT_SUCCESS);
 }
