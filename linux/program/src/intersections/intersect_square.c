@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/17 10:22:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/01/28 16:33:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 12:26:39 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ double	intersect_square(t_vec3 origin, t_vec3 direction, t_square square)
 		return (t);
 	point = vec_add(origin, vec_scalar(direction, t));
 	cob_matrix = matrix_transpose(square_basis(square));
+	print_matrix(matrix_transpose(square_basis(square)));
 	point = matrix_vector_mult(cob_matrix, vec_sub(point, square.position));
 	if (ft_fabs(point.x) > square.side_size / 2)
 		return (-1);

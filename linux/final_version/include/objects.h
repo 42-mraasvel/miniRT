@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:27:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 19:40:59 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,48 +24,68 @@ typedef enum	e_type
 	tr
 }				t_type;
 
+typedef struct	s_gen_obj
+{
+	t_type	type;
+	t_col	color;
+}				t_gen_obj;
+
 typedef struct	s_sphere
 {
 	t_type	type;
+	t_col	color;
 	t_vec3	pos;
 	float	diameter;
-	t_col	color;
+	float	radius;
 }				t_sphere;
 
 typedef struct	s_plane
 {
 	t_type	type;
+	t_col	color;
 	t_vec3	pos;
 	t_vec3	norm;
-	t_col	color;
 }				t_plane;
 
 typedef struct	s_square
 {
 	t_type	type;
+	t_col	color;
 	t_vec3	pos;
 	t_vec3	norm;
 	float	size;
-	t_col	color;
+	t_m33	cob_matrix;
 }				t_square;
 
 typedef struct	s_cylinder
 {
 	t_type	type;
+	t_col	color;
 	t_vec3	pos;
 	t_vec3	orient;
 	float	diameter;
+	float	radius_sqrd;
 	float	height;
-	t_col	color;
+	float	height_half;
 }				t_cylinder;
+
+/*
+** Sides and norm
+** precomputed for
+** slight optimization
+*/
 
 typedef struct	s_triangle
 {
 	t_type	type;
+	t_col	color;
 	t_vec3	point1;
 	t_vec3	point2;
 	t_vec3	point3;
-	t_col	color;
+	t_vec3	side1;
+	t_vec3	side2;
+	t_vec3	side3;
+	t_vec3	norm;
 }				t_triangle;
 
 #endif

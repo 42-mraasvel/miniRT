@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 22:53:29 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/03 17:39:10 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ typedef struct	s_img
 
 typedef struct	s_camera
 {
-	t_vec3	pos;
-	t_vec3	dir;
-	float	fov;
+	t_vec3		pos;
+	t_vec3		dir;
+	float		fov;
+	t_cspace	cspace;
 }				t_camera;
 
 typedef struct	s_resolution

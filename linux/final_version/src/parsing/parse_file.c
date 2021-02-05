@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:05:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/02 23:37:07 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/04 20:33:33 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "libft.h"
-#include "error.h"
+#include "ft_error.h"
 #include "parsing.h"
 #include "minirt.h"
 
@@ -37,7 +37,8 @@ static int	extract_information(t_scene *scene, char *line, t_parsers jump[])
 	char	**element;
 	int		ret;
 
-	if (*line == '\0')
+	// remove comment check
+	if (*line == '\0' || *line == '#')
 		return (success);
 	element = ft_split_set(line, " \t\n\r\v\f");
 	if (element == NULL)
@@ -49,6 +50,10 @@ static int	extract_information(t_scene *scene, char *line, t_parsers jump[])
 	ft_free_split(element);
 	return (ret);
 }
+
+/*
+** Array of key + parse function pointers pairs
+*/
 
 static void	init_jump_table(t_parsers (*jump)[])
 {
