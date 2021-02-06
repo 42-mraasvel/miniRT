@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 18:03:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 23:26:06 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 14:43:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_vec3	compute_reflection_dir(t_vec3 normal, t_vec3 lightdir)
 static t_col	compute_specular(
 	t_light *light, t_hitdata *data, t_vec3 lightdir)
 {
-	float	intensity;
+	double	intensity;
 	t_vec3	reflect_dir;
 
 	reflect_dir = compute_reflection_dir(data->normal, lightdir);
@@ -38,7 +38,7 @@ static t_col	compute_specular(
 
 static t_col	compute_diffuse(t_light *light, t_vec3 lightdir, t_vec3 normal)
 {
-	float	intensity;
+	double	intensity;
 
 	intensity = ft_fmax(0, vec_dot(lightdir, normal));
 	intensity = K_DIFFUSE * intensity * light->brightness;
@@ -63,7 +63,7 @@ void			compute_light_data(
 	while (i < nmemb)
 	{
 		shadow_ray.dir = vec_sub(lights[i].pos, hitdata->hitpoint);
-		shadow_ray.t = vec_len(shadow_ray.dir);
+		shadow_ray.t = vec_len(shadow_ray.dir) + 0.1;
 		shadow_ray.origin = hitdata->hitpoint;
 		vec_normalize(&shadow_ray.dir);
 		if (trace(&shadow_ray, objects) == false)

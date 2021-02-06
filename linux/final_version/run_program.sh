@@ -1,11 +1,12 @@
-file='./sphere.rt'
+file='./test.rt'
+EXEC='miniRT'
 
 if [ $# -eq 0 ]
 then
-    make && time ./a.out $file
+    make && time ./$EXEC $file
 elif [[ $1 == "re" ]]
 then
-	make re && time ./a.out
+	make re && time ./$EXEC
 else
-	make && time ./a.out $1 $2 $3
+	make && time ./$EXEC $1 $2 $3
 fi

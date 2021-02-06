@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 21:05:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:33:33 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 11:33:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ static int	extract_information(t_scene *scene, char *line, t_parsers jump[])
 	char	**element;
 	int		ret;
 
-	// remove comment check
-	if (*line == '\0' || *line == '#')
+	if (*line == '\0')
 		return (success);
-	element = ft_split_set(line, " \t\n\r\v\f");
+	element = ft_split_set(line, " \t");
 	if (element == NULL)
 		return (malloc_error);
 	if (element[0] != NULL)

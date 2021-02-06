@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 10:34:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:30:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:12:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 ** l = sqrt((P - C)^2 - r^2)
 */
 
-static t_bool	point_in_cyl(float t, t_ray *ray, t_cylinder *cylinder)
+static t_bool	point_in_cyl(double t, t_ray *ray, t_cylinder *cylinder)
 {
-	float	len;
+	double	len;
 	t_vec3	point;
 
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	point = vec_add(ray->origin, vec_scalar(t, ray->dir));
 	len = sqrtf(
@@ -53,14 +53,14 @@ static t_bool	point_in_cyl(float t, t_ray *ray, t_cylinder *cylinder)
 **		return(-1)
 */
 
-static float	check_solutions(t_sol solutions, t_ray *ray, t_cylinder *cyl)
+static double	check_solutions(t_sol solutions, t_ray *ray, t_cylinder *cyl)
 {
-	float	min;
-	float	max;
+	double	min;
+	double	max;
 
 	min = ft_fmin(solutions.t1, solutions.t2);
 	max = ft_fmax(solutions.t1, solutions.t2);
-	if (min <= 0.f || max <= 0.f)
+	if (min < 1.0e-6 || max < 1.0e-6)
 	{
 		if (point_in_cyl(max, ray, cyl) == true)
 			return (max);
@@ -80,13 +80,13 @@ static float	check_solutions(t_sol solutions, t_ray *ray, t_cylinder *cyl)
 ** is valid for cylinders
 */
 
-static t_sol	quadratic_cyl(float a, float b, float c)
+static t_sol	quadratic_cyl(double a, double b, double c)
 {
-	float	discriminant;
+	double	discriminant;
 	t_sol	t;
 
 	discriminant = b * b - 4.f * a * c;
-	if (discriminant < 0.f)
+	if (discriminant < 0.0)
 	{
 		t.t1 = -1;
 		t.t2 = -1;
@@ -115,11 +115,11 @@ static t_sol	quadratic_cyl(float a, float b, float c)
 ** c = (V x N)^2 - r^2
 */
 
-static t_sol	compute_t_cy(t_vec3 norm, t_vec3 dir, t_vec3 v, float r2)
+static t_sol	compute_t_cy(t_vec3 norm, t_vec3 dir, t_vec3 v, double r2)
 {
-	float	a;
-	float	b;
-	float	c;
+	double	a;
+	double	b;
+	double	c;
 
 	a = vec_sqrd(vec_cross(dir, norm));
 	b = 2 * vec_dot(vec_cross(v, norm), vec_cross(dir, norm));
@@ -141,7 +141,7 @@ t_bool			intersect_cylinder(t_ray *ray, void *object)
 	t_cylinder	*cylinder;
 	t_vec3		v;
 	t_sol		solutions;
-	float		t;
+	double		t;
 
 	cylinder = (t_cylinder*)object;
 	v = vec_sub(ray->origin, cylinder->pos);
@@ -151,7 +151,7 @@ t_bool			intersect_cylinder(t_ray *ray, void *object)
 		v,
 		cylinder->radius_sqrd);
 	t = check_solutions(solutions, ray, cylinder);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	return (update_ray(ray, t, object));
 }

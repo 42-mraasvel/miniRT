@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    mf_p1                                              :+:    :+:             #
+#    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/14 12:06:33 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/11/14 12:06:47 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/05 23:52:36 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,13 +99,14 @@ OBJ = $(SRC:.c=.o)
 # Compilation
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+SPDFLAGS = -O3
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 %.o: %.c
-	$(CC) -o $@ -c $(CFLAGS) $<
+	$(CC) -o $@ -c $(CFLAGS) $< $(SPDFLAGS)
 
 clean:
 	rm -f $(OBJ)

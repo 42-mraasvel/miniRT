@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 21:48:03 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 22:42:18 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:12:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@
 t_bool	intersect_plane(t_ray *ray, void *object)
 {
 	t_plane *plane;
-	float	t;
-	float	denom;
+	double	t;
+	double	denom;
 
 	plane = (t_plane*)object;
 	denom = vec_dot(plane->norm, ray->dir);
-	if (denom == 0)
+	if (denom > -1.0e-6 && denom < 1.0e-6)
 		return (false);
 	t = vec_dot(plane->norm, vec_sub(plane->pos, ray->origin)) / denom;
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	return (update_ray(ray, t, object));
 }

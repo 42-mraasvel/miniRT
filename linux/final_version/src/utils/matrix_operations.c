@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:04:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:38:41 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 12:54:35 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ t_m33	matrix_gen(t_vec3 c1, t_vec3 c2, t_vec3 c3)
 
 t_vec3	matrix_vec_mult(t_m33 m, t_vec3 v)
 {
-	v.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z;
-	v.y = m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z;
-	v.z = m.m[2][0] * v.x + m.m[2][1] * v.y + m.m[2][2] * v.z;
-	return (v);
+	t_vec3	new;
+
+	new.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z;
+	new.y = m.m[1][0] * v.x + m.m[1][1] * v.y + m.m[1][2] * v.z;
+	new.z = m.m[2][0] * v.x + m.m[2][1] * v.y + m.m[2][2] * v.z;
+	return (new);
 }
 
 t_m33	matrix_transpose(t_m33 matrix)

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 18:30:19 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 23:19:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 00:21:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_cspace	new_space(t_vec3 origin, t_vec3 forward)
 	return (space);
 }
 
-float		vec_sqrd(t_vec3 v)
+double		vec_sqrd(t_vec3 v)
 {
 	return (vec_dot(v, v));
 }

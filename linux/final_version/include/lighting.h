@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 22:58:03 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 15:14:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include "color.h"
 
 # define K_AMBIENT 1
-# define K_DIFFUSE 0.6
+# define K_DIFFUSE 0.7
 # define K_SPECULAR 0.08
 # define SPEC_EXP 10
 
 typedef struct	s_ambient
 {
-	float	ratio;
+	double	ratio;
 	t_col	color;
 	t_bool	taken;
 }				t_ambient;
@@ -32,7 +32,7 @@ typedef struct	s_ambient
 typedef struct	s_light
 {
 	t_vec3	pos;
-	float	brightness;
+	double	brightness;
 	t_col	color;
 }				t_light;
 

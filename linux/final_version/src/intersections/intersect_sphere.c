@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 20:09:25 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:53:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:12:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 ** because it's a unit vector
 */
 
-static float	compute_t(t_ray *ray, t_sphere *sphere)
+static double	compute_t(t_ray *ray, t_sphere *sphere)
 {
-	float		b;
-	float		c;
+	double		b;
+	double		c;
 	t_vec3		v;
 
 	v = vec_sub(ray->origin, sphere->pos);
@@ -41,11 +41,11 @@ static float	compute_t(t_ray *ray, t_sphere *sphere)
 t_bool			intersect_sphere(t_ray *ray, void *object)
 {
 	t_sphere	*sphere;
-	float		t;
+	double		t;
 
 	sphere = (t_sphere*)object;
 	t = compute_t(ray, sphere);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	return (update_ray(ray, t, object));
 }

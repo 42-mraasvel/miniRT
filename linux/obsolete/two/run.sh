@@ -1,1 +1,0 @@
-make && time ./a.out

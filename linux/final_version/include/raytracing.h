@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:28:01 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 23:26:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 15:15:42 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 # include "minirt.h"
 
-# define HIT_OFFSET 0.001f
-// # define HIT_OFFSET 1
+# define HIT_OFFSET 0.01
 
 typedef struct	s_ray
 {
 	t_vec3	origin;
 	t_vec3	dir;
 	void	*obj;
-	float	t;
+	double	t;
 }				t_ray;
 
 typedef struct	s_hitdata
@@ -44,8 +43,8 @@ typedef struct	s_hitdata
 
 typedef struct	s_sol
 {
-	float	t1;
-	float	t2;
+	double	t1;
+	double	t2;
 }				t_sol;
 
 typedef t_bool	(*t_intersect)(t_ray*, void *);
@@ -61,8 +60,9 @@ t_bool			trace(t_ray *ray, t_vectvp *objects);
 ** Intersection functions
 */
 
-float			intersect_plane_wrap(t_ray ray, t_vec3 norm, t_vec3 pos);
-t_bool			update_ray(t_ray *ray, float t, void *object);
+double			intersect_plane_wrap(t_ray ray, t_vec3 norm, t_vec3 pos);
+double			intersect_plane_any(t_ray ray, t_vec3 norm, t_vec3 pos);
+t_bool			update_ray(t_ray *ray, double t, void *object);
 
 t_bool			intersect_sphere(t_ray *ray, void *sphere);
 t_bool			intersect_plane(t_ray *ray, void *object);

@@ -6,13 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 16:19:01 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:37:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 00:21:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_vec3	vec_gen(float x, float y, float z)
+t_vec3	vec_gen(double x, double y, double z)
 {
 	t_vec3	v;
 
@@ -22,7 +22,7 @@ t_vec3	vec_gen(float x, float y, float z)
 	return (v);
 }
 
-float	vec_dot(t_vec3 a, t_vec3 b)
+double	vec_dot(t_vec3 a, t_vec3 b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
@@ -43,7 +43,7 @@ t_vec3	vec_cross(t_vec3 a, t_vec3 b)
 		a.x * b.y - a.y * b.x));
 }
 
-t_vec3	vec_scalar(float scalar, t_vec3 v)
+t_vec3	vec_scalar(double scalar, t_vec3 v)
 {
 	return (vec_gen(
 		v.x * scalar,

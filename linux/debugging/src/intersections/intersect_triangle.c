@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 22:30:45 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 13:45:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:10:38 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_bool			intersect_triangle(t_ray *ray, void *object)
 
 	triangle = (t_triangle*)object;
 	t = intersect_plane_wrap(*ray, triangle->norm, triangle->point1);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	intersect = vec_add(ray->origin, vec_scalar(t, ray->dir));
 	if (point_in_triangle(triangle, intersect, triangle->norm) == false)

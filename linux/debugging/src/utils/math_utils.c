@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 17:48:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 00:21:02 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:08:19 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double	quadratic_equation(double a, double b, double c)
 	root = sqrtf(discriminant);
 	t1 = (-b + root) / (2 * a);
 	t2 = (-b - root) / (2 * a);
-	if (t1 <= 0 || t2 <= 0)
+	if (t1 < 1.0e-6 || t2 < 1.0e-6)
 		return (ft_fmax(t1, t2));
 	return (ft_fmin(t1, t2));
 }

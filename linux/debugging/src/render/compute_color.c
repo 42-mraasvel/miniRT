@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:37:44 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 12:05:11 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:01:31 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_col			compute_color(t_ray primary_ray, t_data *data)
 
 	if (trace(&primary_ray, data->scene->objects, data) == false)
 		return (compute_ambient(data->scene->ambient));
+	if (data->DEBUG == true)
+		printf("INTERSECT : %.2f\n", primary_ray.t);
 	compute_hitdata(&primary_ray, &hitdata);
 	compute_light_data(
 		(t_light*)data->scene->lights->table,

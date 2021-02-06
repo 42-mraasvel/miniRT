@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/02 17:17:00 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/04 20:06:05 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/06 11:37:15 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LIBFLAGS = -L$(LIBDIR) -lft -lm -pthread
 
 # MLX FLAGS
 
-MLXDIR = ../minilibx_linux
+MLXDIR = ../final_version/mlx
 MLXLIB = -L$(MLXDIR) -lmlx -lXext -lX11
 
 # PATHS

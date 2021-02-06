@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 17:40:06 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 23:19:14 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 00:21:22 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "ft_enum.h"
 #include "libft.h"
 
-float	vec_len(t_vec3 v)
+double	vec_len(t_vec3 v)
 {
 	return (sqrt(vec_dot(v, v)));
 }
 
 void	vec_normalize(t_vec3 *v)
 {
-	float	len;
+	double	len;
 
 	len = vec_len(*v);
 	if (len != 0.0 && len != 1.0)
@@ -36,7 +36,7 @@ void	vec_normalize(t_vec3 *v)
 
 t_vec3	vec_normalized(t_vec3 v)
 {
-	float	len;
+	double	len;
 
 	len = vec_len(v);
 	if (len != 0 && len != 1)

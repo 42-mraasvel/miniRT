@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/26 11:39:49 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 19:49:48 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 11:20:05 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include "scene.h"
 # include "ft_enum.h"
 
-# define BONUS
-
 typedef struct	s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_bool	destroy;
 }				t_mlx;
 
 typedef struct	s_data

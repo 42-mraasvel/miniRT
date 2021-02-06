@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 18:03:43 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 15:19:05 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:02:14 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void			compute_light_data(
 		vec_normalize(&shadow_ray.dir);
 		if (trace(&shadow_ray, objects, data) == false)
 		{
-			if (data->DEBUG == true)
-				printf("LIGHT IS HERE\n");
 			hitdata->diffuse = color_add(
 				hitdata->diffuse,
 				compute_diffuse(&lights[i], shadow_ray.dir, hitdata->normal, data));

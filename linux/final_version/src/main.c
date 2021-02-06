@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:18:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 18:00:30 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 01:04:58 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int argc, char *argv[])
 	data.mlx = &mlx;
 	if (run(&data) != success)
 		exit_program(&data);
+	mlx.destroy = true;
 	exit_program(&data);
 	return (0);
 }

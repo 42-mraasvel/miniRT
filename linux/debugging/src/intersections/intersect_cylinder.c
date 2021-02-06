@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 10:34:04 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 00:19:00 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:09:32 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_bool	point_in_cyl(double t, t_ray *ray, t_cylinder *cylinder)
 	double	len;
 	t_vec3	point;
 
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	point = vec_add(ray->origin, vec_scalar(t, ray->dir));
 	len = sqrtf(
@@ -60,7 +60,7 @@ static double	check_solutions(t_sol solutions, t_ray *ray, t_cylinder *cyl)
 
 	min = ft_fmin(solutions.t1, solutions.t2);
 	max = ft_fmax(solutions.t1, solutions.t2);
-	if (min <= 0.f || max <= 0.f)
+	if (min < 1.0e-6 || max < 1.0e-6)
 	{
 		if (point_in_cyl(max, ray, cyl) == true)
 			return (max);
@@ -151,7 +151,7 @@ t_bool			intersect_cylinder(t_ray *ray, void *object)
 		v,
 		cylinder->radius_sqrd);
 	t = check_solutions(solutions, ray, cylinder);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	return (update_ray(ray, t, object));
 }

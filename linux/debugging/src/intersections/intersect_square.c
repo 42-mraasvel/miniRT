@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 09:36:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 12:50:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:10:26 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_bool			intersect_square(t_ray *ray, void *object)
 
 	square = (t_square*)object;
 	t = intersect_plane_wrap(*ray, square->norm, square->pos);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	intersection = vec_add(ray->origin, vec_scalar(t, ray->dir));
 	if (point_in_square(intersection, square) == false)
@@ -73,7 +73,7 @@ t_bool	intersect_square_debug(t_ray *ray, void *object, t_data *data)
 
 	square = (t_square*)object;
 	t = intersect_plane_wrap(*ray, square->norm, square->pos);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	print_matrix_wrap(square->cob_matrix, data);
 	intersection = vec_add(ray->origin, vec_scalar(t, ray->dir));

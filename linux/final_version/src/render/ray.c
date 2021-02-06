@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:29:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:36:38 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/05 00:20:44 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 t_vec3	compute_topleft(t_camera *camera, t_resolution res)
 {
-	float	scale_x;
-	float	scale_y;
-	float	scale_z;
+	double	scale_x;
+	double	scale_y;
+	double	scale_z;
 	t_vec3	start;
 
-	scale_x = (float)res.x / 2.f - 0.5;
-	scale_y = (float)res.y / 2.f - 0.5;
-	scale_z = (float)scale_x / tan(camera->fov / 2.f);
+	scale_x = (double)res.x / 2.f - 0.5;
+	scale_y = (double)res.y / 2.f - 0.5;
+	scale_z = (double)scale_x / tan(camera->fov / 2.f);
 	start = vec_add(camera->pos, vec_scalar(scale_z, camera->cspace.forward));
 	start = vec_add(start, vec_scalar(scale_y, camera->cspace.up));
 	start = vec_sub(start, vec_scalar(scale_x, camera->cspace.right));

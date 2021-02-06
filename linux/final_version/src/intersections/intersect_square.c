@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 09:36:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 10:53:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 10:12:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 static t_bool	point_in_square(t_vec3 point, t_square *square)
 {
 	t_vec3	local;
-	float	half_size;
+	double	half_size;
 
-	half_size = square->size / 2.f;
-	local = matrix_vec_mult(square->cob_matrix, point);
-	if (ft_fabs(local.x) <= half_size && ft_fabs(local.y) <= half_size)
-		return (true);
-	return (false);
+	half_size = square->size / 2.0;
+	local = matrix_vec_mult(square->cob_matrix, vec_sub(point, square->pos));
+	if (ft_fabs(local.x) > half_size || ft_fabs(local.y) > half_size)
+		return (false);
+	return (true);
 }
 
 /*
@@ -38,12 +38,12 @@ static t_bool	point_in_square(t_vec3 point, t_square *square)
 t_bool			intersect_square(t_ray *ray, void *object)
 {
 	t_square	*square;
-	float		t;
+	double		t;
 	t_vec3		intersection;
 
 	square = (t_square*)object;
 	t = intersect_plane_wrap(*ray, square->norm, square->pos);
-	if (t <= 0)
+	if (t < 1.0e-6)
 		return (false);
 	intersection = vec_add(ray->origin, vec_scalar(t, ray->dir));
 	if (point_in_square(intersection, square) == false)
