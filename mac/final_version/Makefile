@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 10:21:18 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 11:41:35 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/06 12:31:47 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,7 +125,7 @@ DEPS = Makefile $(HEADERS)
 #libraries
 LFTLIB = -L$(LFTDIR) -lft
 MLXLIB = -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit
-MLXNAME = $(MLXDIR)/libmlx.a
+MLXNAME = $(MLXDIR)/libmlx.dylib
 
 
 .PHONY: all libraries
@@ -135,6 +135,7 @@ libraries:
 	$(MAKE) -C $(LFTDIR)
 $(MLXNAME):
 	$(MAKE) -C $(MLXDIR)
+	cp $(MLXNAME) .
 
 
 $(NAME): $(OBJ)

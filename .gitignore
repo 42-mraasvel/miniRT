@@ -6,5 +6,7 @@ a.out*
 *.o
 *.a
 *.bmp
-*.swift*
 *.dylib
+miniRT
+*.swiftdoc
+*.swiftmodule
