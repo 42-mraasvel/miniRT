@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 10:21:18 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 11:32:08 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/06 12:46:17 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,9 +127,13 @@ LFTLIB = -L$(LFTDIR) -lft
 MLXLIB = -L$(MLXDIR) -lmlx -lXext -lX11
 MLXNAME = $(MLXDIR)/libmlx.a
 
+#MAKE FLAGS
+MULTI_MAKE = -j4
+
 
 .PHONY: all libraries
-all: $(MLXNAME) libraries $(NAME)
+top: bonus
+all: $(NAME)
 
 libraries:
 	$(MAKE) -C $(LFTDIR)
@@ -137,7 +141,7 @@ $(MLXNAME):
 	$(MAKE) -C $(MLXDIR)
 
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) libraries $(MLXNAME)
 	$(CC) -o $@ $(CFLAGS) $(OBJ) $(LIBFLAGS)
 $(OBJDIR)/%.o:%.c $(DEPS) | $(OBJDIR)
 	$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
@@ -153,17 +157,18 @@ endif
 
 .PHONY: bonus debug clean fclean re
 bonus:
-	$(MAKE) BONUS=1
+	$(MAKE) $(MULTI_MAKE) all BONUS=1
 debug:
-	$(MAKE) re DEBUG=1
+	$(MAKE) $(MULTI_MAKE) re DEBUG=1
 clean:
 	rm -f $(OBJ)
 	rm -f $(OBJDIR)/multithreading_bonus.o
 	$(MAKE) -C $(LFTDIR) clean
+	$(MAKE) -C $(MLXDIR) clean
 fclean:
 	$(MAKE) clean
 	$(MAKE) -C $(LFTDIR) fclean
 	rm -f $(NAME)
 re:
 	$(MAKE) fclean
-	$(MAKE) all
+	$(MAKE) $(MULTI_MAKE)
