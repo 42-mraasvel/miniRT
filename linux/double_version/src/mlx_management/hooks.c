@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 12:26:46 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 10:24:57 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 01:05:20 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "ft_error.h"
 #include "prototypes.h"
 #include "render.h"
+#include <stdio.h> // rm
 
 static int	key_hook(int keycode, t_data *data)
 {
@@ -40,9 +41,9 @@ static int	key_hook(int keycode, t_data *data)
 	return (success);
 }
 
-static int	close_window(int keycode, t_data *data)
+static int	close_window(t_data *data)
 {
-	(void)keycode;
+	data->mlx->destroy = true;
 	exit_program(data);
 	return (success);
 }
@@ -50,5 +51,5 @@ static int	close_window(int keycode, t_data *data)
 void		activate_hooks(t_data *data)
 {
 	mlx_key_hook(data->mlx->win_ptr, key_hook, data);
-	mlx_hook(data->mlx->win_ptr, 33, 0L, close_window, data);
+	mlx_hook(data->mlx->win_ptr, 17, 0L, close_window, data);
 }
