@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 10:21:18 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 12:46:17 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/06 23:20:34 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,15 +133,15 @@ MULTI_MAKE = -j4
 
 .PHONY: all libraries
 top: bonus
-all: $(NAME)
+all: libraries $(NAME)
 
-libraries:
+$(LFTDIR)/libft.a:
 	$(MAKE) -C $(LFTDIR)
 $(MLXNAME):
 	$(MAKE) -C $(MLXDIR)
 
 
-$(NAME): $(OBJ) libraries $(MLXNAME)
+$(NAME): $(OBJ) $(LFTDIR)/libft.a $(MLXNAME)
 	$(CC) -o $@ $(CFLAGS) $(OBJ) $(LIBFLAGS)
 $(OBJDIR)/%.o:%.c $(DEPS) | $(OBJDIR)
 	$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)

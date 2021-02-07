@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:14:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 11:28:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/06 23:22:48 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include "mlx_management.h"
 #include "ft_error.h"
+#include <stdio.h>
 
 static void	*render_frame_threaded(void *data)
 {
