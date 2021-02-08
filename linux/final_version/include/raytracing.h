@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:28:01 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 15:15:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/08 17:53:49 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minirt.h"
 
-# define HIT_OFFSET 0.01
+# define HIT_OFFSET 1e-3
 
 typedef struct	s_ray
 {
