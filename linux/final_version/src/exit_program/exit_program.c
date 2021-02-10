@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 19:08:38 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 01:05:09 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/07 23:06:01 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void		exit_program(t_data *data)
 	if (data->errnum != success)
 	{
 		ft_perror(data->errnum);
-		printf("Exit status: Failure\n");
 		exit(EXIT_FAILURE);
 	}
-	printf("Exit status: Success\n");
 	exit(EXIT_SUCCESS);
 }

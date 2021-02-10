@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/14 12:06:33 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 12:45:39 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/05 23:52:36 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ ft_abs.c\
 ft_min.c\
 ft_max.c\
 ft_fmin.c\
-ft_pow.c
+ft_pow.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -100,10 +100,7 @@ OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SPDFLAGS = -O3
-MULTI_MAKE = -j4
 
-top:
-	$(MAKE) $(MULTI_MAKE) all
 all: $(NAME)
 
 $(NAME): $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 20:47:51 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:39:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/07 19:51:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	ft_perror(t_errors error_type)
 		"Multithreading Error"
 	};
 
-	printf("Error\n");
-	printf("%s\n", error_table[error_type]);
+	printf("Error\nType: %s\n", error_table[error_type]);
+	perror("Perror");
 }

@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 10:21:18 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 23:20:34 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/02/10 23:04:51 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,7 @@ IFLAGS = -I $(IDIR) -I $(MLXDIR)
 LIBFLAGS += $(MLXLIB) $(LFTLIB) -lm
 
 # All object files will have this as a dependency
+LFTNAME = $(LFTDIR)/libft.a
 DEPS = Makefile $(HEADERS)
 
 #libraries
@@ -127,21 +128,20 @@ LFTLIB = -L$(LFTDIR) -lft
 MLXLIB = -L$(MLXDIR) -lmlx -lXext -lX11
 MLXNAME = $(MLXDIR)/libmlx.a
 
-#MAKE FLAGS
-MULTI_MAKE = -j4
 
+.PHONY: all libft
+all:
+	$(MAKE) libft
+	$(MAKE) $(MLXNAME)
+	$(MAKE) $(NAME) BONUS=1
 
-.PHONY: all libraries
-top: bonus
-all: libraries $(NAME)
-
-$(LFTDIR)/libft.a:
+libft:
 	$(MAKE) -C $(LFTDIR)
 $(MLXNAME):
 	$(MAKE) -C $(MLXDIR)
 
 
-$(NAME): $(OBJ) $(LFTDIR)/libft.a $(MLXNAME)
+$(NAME): $(OBJ) $(LFTNAME) $(MLXNAME)
 	$(CC) -o $@ $(CFLAGS) $(OBJ) $(LIBFLAGS)
 $(OBJDIR)/%.o:%.c $(DEPS) | $(OBJDIR)
 	$(CC) -c -o $@ $< $(CFLAGS) $(IFLAGS)
@@ -150,16 +150,11 @@ $(OBJDIR)/%.o:%.c $(DEPS) | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-ifdef BONUS
-$(BONUS_DEPS): $(BONUS_SRC)
-endif
-
-
 .PHONY: bonus debug clean fclean re
 bonus:
-	$(MAKE) $(MULTI_MAKE) all BONUS=1
+	$(MAKE) BONUS=1
 debug:
-	$(MAKE) $(MULTI_MAKE) re DEBUG=1
+	$(MAKE) re DEBUG=1
 clean:
 	rm -f $(OBJ)
 	rm -f $(OBJDIR)/multithreading_bonus.o
@@ -171,4 +166,4 @@ fclean:
 	rm -f $(NAME)
 re:
 	$(MAKE) fclean
-	$(MAKE) $(MULTI_MAKE)
+	$(MAKE) all
