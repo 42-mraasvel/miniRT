@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/28 15:08:36 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/28 15:25:32 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/05/01 22:27:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ double			ft_atof(char *str)
 			sign = 1;
 		i++;
 	}
-	if (ft_isdigit(str[i]) == 0)
+	if (ft_isdigit(str[i]) == 0 && str[i] != '.')
 		return (0);
 	while (str[i] == '0')
 		i++;

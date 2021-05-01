@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   mlx_management.h                                   :+:    :+:            */
+/*   translation.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/02/03 12:34:40 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/03/10 11:43:34 by mraasvel      ########   odam.nl         */
+/*   Created: 2021/02/17 14:25:04 by mraasvel      #+#    #+#                 */
+/*   Updated: 2021/02/18 17:47:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_MANAGEMENT_H
-# define MLX_MANAGEMENT_H
+#include "headers.h"
 
-# include "minirt.h"
-# define WINDOW_NAME "MiniMaaRTen"
+void translate_square(void *object, t_vec2 translation)
+{
+	t_square *square;
 
-int		initialize_mlx(t_data *data);
-int		init_images(t_data *data);
-void	activate_hooks(t_data *data);
+	square = (t_square*)object;
+	square->center.x += translation.x;
+	square->center.y += translation.y;
 
-/*
-** Wrappers / utils
-*/
-
-void	ft_pixelput(t_img *img, int x, int y, t_col color);
-int		push_image(t_data *data);
-
-#endif
+	if (square->center.y - square->length / 2 < 0)
+		square->center.y = square->length / 2;
+	else if (square->center.y + square->length / 2 > Y)
+		square->center.y = Y - square->length / 2;
+}

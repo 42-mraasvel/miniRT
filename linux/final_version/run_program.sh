@@ -1,12 +1,12 @@
 file='./test.rt'
-EXEC='miniRT'
+EXEC='a.out'
 
 if [ $# -eq 0 ]
 then
-    make && time ./$EXEC $file
+    make > /dev/null && time ./$EXEC $file
 elif [[ $1 == "re" ]]
 then
 	make re && time ./$EXEC
 else
-	make && time ./$EXEC $1 $2 $3
+	make > /dev/null && time ./$EXEC $1 $2 $3
 fi

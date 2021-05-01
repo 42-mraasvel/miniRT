@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/04 19:28:32 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 20:32:42 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/19 14:16:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ static void		rotate_camera_basis(
 {
 	camera->cspace.right = rotate_vector(camera->cspace.right, axis, degrees);
 	camera->cspace.up = rotate_vector(camera->cspace.up, axis, degrees);
-	camera->cspace.forward = rotate_vector(
-								camera->cspace.forward, axis, degrees);
+	camera->cspace.forward = rotate_vector(camera->cspace.forward, axis, degrees);
 }
 
 t_bool			rotate_camera(int keycode, t_camera *camera)

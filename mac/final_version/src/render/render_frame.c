@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:01:13 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 11:43:26 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/20 19:35:40 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,14 @@ static int	render_frame(t_data *data)
 	t_ray	ray;
 
 	j = 0;
-	topleft = compute_topleft(
-				data->active_cam,
-				data->scene->resolution);
+	topleft = compute_topleft(data->active_cam, data->scene->resolution);
 	while (j < data->scene->resolution.y)
 	{
 		i = 0;
 		while (i < data->scene->resolution.x)
 		{
 			ray = compute_ray(topleft, data->active_cam, i, j);
-			ft_pixelput(
-				data->next_img, i, j,
-				compute_color(ray, data));
+			ft_pixelput(data->next_img, i, j, compute_color(ray, data));
 			i++;
 		}
 		j++;

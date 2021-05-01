@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 17:18:56 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 01:04:58 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/03/23 18:05:50 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "bmp.h"
 #include "mlx_management.h"
 #include "mlx.h"
+#include <stdio.h> // rm
 #include "render.h"
 
 int	run(t_data *data)

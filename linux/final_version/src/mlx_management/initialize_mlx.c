@@ -6,13 +6,14 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 11:14:58 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 15:52:55 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/05/01 22:08:25 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft.h"
 #include "mlx_management.h"
+#include <stdio.h>
 
 static void	check_resolution(t_mlx *mlx, t_resolution *resolution)
 {

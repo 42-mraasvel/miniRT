@@ -6,11 +6,12 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 13:14:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 11:28:19 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/03/23 18:05:28 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
+#include <stdio.h>
 #include "multithreading.h"
 #include "raytracing.h"
 #include "libft.h"

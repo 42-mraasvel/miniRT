@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 10:21:18 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/06 12:31:47 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/03/24 17:56:16 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # COMPILE WITH DEBUG FLAGS: make debug
 
 # EXECUTABLE
-NAME = miniRT
+NAME = a.out
 
 # All files explicitly named in Makefile
 SRC = src/bmp/bmp.c \

@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 10:21:18 by mraasvel      #+#    #+#                  #
-#    Updated: 2021/02/10 23:04:51 by mraasvel      ########   odam.nl          #
+#    Updated: 2021/03/23 18:04:57 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # COMPILE WITH DEBUG FLAGS: make debug
 
 # EXECUTABLE
-NAME = miniRT
+NAME = a.out
 
 # All files explicitly named in Makefile
 SRC = src/bmp/bmp.c \
@@ -116,6 +116,7 @@ DFLAGS = -O3
 endif
 
 CFLAGS = $(DFLAGS) -Wall -Werror -Wextra
+CFLAGS = $(DFLAGS)
 IFLAGS = -I $(IDIR) -I $(MLXDIR)
 LIBFLAGS += $(MLXLIB) $(LFTLIB) -lm
 
@@ -133,7 +134,8 @@ MLXNAME = $(MLXDIR)/libmlx.a
 all:
 	$(MAKE) libft
 	$(MAKE) $(MLXNAME)
-	$(MAKE) $(NAME) BONUS=1
+	# $(MAKE) $(NAME) BONUS=1
+	$(MAKE) $(NAME)
 
 libft:
 	$(MAKE) -C $(LFTDIR)

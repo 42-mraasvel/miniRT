@@ -1,0 +1,40 @@
+Making mlx work on WSL:
+
+	1. Clone https://github.com/42Paris/minilibx-linux
+
+		- Note: (cd test ; make -f Makefile.gen all ) command at the bottom in the 'configure' file gives me a make error on WSL
+	2. Get the required libraries:
+		sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev
+
+	3. Install Xming, just keep clicking next, the defaults will do. After installing, you will see a little Xming icon in your icon tray. Now exit xming, and open XLaunch, proceed with the following 		steps:
+	4. Click multiple windows and go to the next page
+	5. Click start a program and go to the next page
+	6. Make sure that the No Access Control box is ticked and go to the next page
+	7. Click save configuration and then finish
+	8. Run the following command in your WSL terminal:
+		export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+	9. type the 'xeyes' command to test if it works (should display a pair of eyes following your cursor)
+
+		1. launch xming via xlaunch
+				- Multiple windows
+				- Start no client
+				- Clipboard + No access control
+				- Finish
+		2. (?) launch with command1 via powershell:
+
+				& 'C:\Program Files (x86)\Xming\Xming.exe' -multiwindow -clipboard -ac
+
+		3. Export display with command2:
+
+				export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+	10. Link the libraries to your program with the following flags:
+
+		-L$(MLXDIR) -lmlx -lXext -lX11
+
+Making mlx work on Linux:
+
+	1. Clone https://github.com/42Paris/minilibx-linux
+	2. sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev
+	3. Compile with the following flags:
+
+		-L$(MLXDIR) -lmlx -lXext -lX11

@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:20:33 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 11:58:01 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/05/01 22:33:53 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int				parse_square(t_scene *scene, char **element)
 	if (parse_coordinates(element[1], &square.pos) != success)
 		return (parse_error);
 	if (parse_coordinates(element[2], &square.norm) != success)
+		return (parse_error);
+	if (vec_len(square.norm) == 0)
 		return (parse_error);
 	vec_normalize(&square.norm);
 	square.cob_matrix = square_matrix(&square);

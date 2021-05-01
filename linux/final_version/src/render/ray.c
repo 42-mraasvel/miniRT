@@ -6,12 +6,13 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 19:29:28 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/05 00:20:44 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/03/23 18:10:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <float.h>
+#include <stdio.h>
 #include "scene.h"
 #include "raytracing.h"
 
@@ -55,6 +56,7 @@ t_ray	compute_ray(t_vec3 topleft, t_camera *camera, int x, int y)
 	t_vec3	pixel;
 
 	pixel = compute_pixel(topleft, camera, x, y);
+	// printf("PIXEL(%.2f, %.2f, %.2f)\n", pixel.x, pixel.y, pixel.z);
 	ray.dir = vec_sub(pixel, camera->pos);
 	vec_normalize(&ray.dir);
 	ray.origin = camera->pos;

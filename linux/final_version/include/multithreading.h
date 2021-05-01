@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 18:03:39 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/06 11:32:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/02/14 21:59:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include "minirt.h"
 
-# define NUMTHREAD 4
+# ifndef NUMTHREAD
+#  define NUMTHREAD 4
+# endif
 
 # include <pthread.h>
 # include "multithreading.h"

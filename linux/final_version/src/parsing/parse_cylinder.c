@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:22:27 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/04 11:20:28 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/05/01 22:32:59 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	parse_cylinder(t_scene *scene, char **element)
 		return (parse_error);
 	if (parse_coordinates(element[2], &cylinder.orient) != success)
 		return (parse_error);
+	if (vec_len(cylinder.orient) == 0)
+		return (parse_error);
 	vec_normalize(&cylinder.orient);
 	if (check_number(element[3]) != success)
 		return (parse_error);
@@ -38,6 +40,8 @@ int	parse_cylinder(t_scene *scene, char **element)
 		return (parse_error);
 	cylinder.diameter = ft_atof(element[3]);
 	cylinder.height = ft_atof(element[4]);
+	if (cylinder.diameter <= 0 || cylinder.height <= 0)
+		return (parse_error);
 	cylinder.radius_sqrd = powf(cylinder.diameter / 2.f, 2);
 	cylinder.height_half = cylinder.height / 2.f;
 	if (parse_color(element[5], &cylinder.color) != success)

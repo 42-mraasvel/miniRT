@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/02 23:18:08 by mraasvel      #+#    #+#                 */
-/*   Updated: 2021/02/03 18:02:35 by mraasvel      ########   odam.nl         */
+/*   Updated: 2021/05/01 22:33:24 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	parse_plane(t_scene *scene, char **element)
 	if (parse_coordinates(element[1], &plane.pos) != success)
 		return (parse_error);
 	if (parse_coordinates(element[2], &plane.norm) != success)
+		return (parse_error);
+	if (vec_len(plane.norm) == 0)
 		return (parse_error);
 	vec_normalize(&plane.norm);
 	if (parse_color(element[3], &plane.color) != success)
